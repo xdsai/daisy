@@ -64,7 +64,7 @@ def magnet_converter(link) -> str:
             if abs_link.startswith('magnet:?xt=') and '1080p' in abs_link:
                 magnets.append(abs_link)
         return magnets
-    elif link.startwith('magnet:?xt='):
+    elif link.startswith('magnet:?xt='):
         return [link]
     
 def dl(magnet, save_path):
