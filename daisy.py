@@ -81,7 +81,7 @@ def dl(magnet, save_path):
 
 
 if '__name__' == '__main__':
-    if sys.argc < 4:
+    if sys.argc < 3:
         print('invalid amount of args')
         exit(1)
     if sys.argv[1] not in ['movie', 'other', 'show']:
