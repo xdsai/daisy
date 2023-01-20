@@ -26,8 +26,8 @@ drives = [{"type":"movies",
             "free":""
            }]
 
-for drive in drives:
-    drive['free'] = round(shutil.disk_usage(drive['path']).free/1000000)
+#for drive in drives:
+#    drive['free'] = round(shutil.disk_usage(drive['path']).free/1000000)
 
 def process(type, name, link):
     magnets = magnet_converter(link)
@@ -80,16 +80,15 @@ def dl(magnet, save_path):
     return torrent_info, file_name
 
 
-if '__name__' == '__main__':
-    print(sys.argv[1])
-    if sys.argc < 3:
+if __name__ == '__main__':
+    if len(sys.argv) < 3:
         print('invalid amount of args')
         exit(1)
     if sys.argv[1] not in ['movie', 'other', 'show']:
         print('invalid torrent type')
         exit(1)
     else:
-        type = sys.argv[1]
+        torrent_type = sys.argv[1]
     name = sys.argv[2]
     link = sys.argv[3]
-    process(type, name, link)
+    process(torrent_type, name, link)
