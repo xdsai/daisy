@@ -68,15 +68,20 @@ def magnet_converter(link) -> str:
         return [link]
     
 def dl(magnet, save_path):
-    info_hash = magnet.split('magnet:?xt=urn:btih:')[1].split('&')[0]
     qb.download_from_link(magnet, save_path = save_path)
     time.sleep(5)
-    torrent_info = qb.get_torrent(info_hash)
-    requests.post(daisy_webhook_link, json = {'embeds':[{'title':f'Download of {torrent_info["name"]} started', 'color':65436}]})
+    torrent_info = qb.torrents(limit=1, sort = 'added_on', reverse = True)[0]
     file_name = re.sub(save_path,'',torrent_info['content_path'])
+    torrent_name = torrent_info['name']
+    requests.post(daisy_webhook_link, json = {'embeds':[{'title':f'Download of {torrent_name} started', 'color':65436}]})
+
     while torrent_info['amount_left'] != 0:
-        torrent_info = qb.torrent(info_hash)
+        for torrent in qb.torrents():
+            if torrent['name'] == torrent_name:
+                torrent_info = torrent
+                break
         time.sleep(1)
+        
     return torrent_info, file_name
 
 
