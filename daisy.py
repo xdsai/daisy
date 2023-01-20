@@ -81,6 +81,7 @@ def dl(magnet, save_path):
 
 
 if '__name__' == '__main__':
+    print(sys.argv[1])
     if sys.argc < 3:
         print('invalid amount of args')
         exit(1)
