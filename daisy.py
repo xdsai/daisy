@@ -180,12 +180,19 @@ def magnet_converter(link) -> str:
             
     elif 'subsplease.org' in link:
         logging.info(f"Link contains subsplease, getting magnets...")
-        init = session.get(link, headers = useragent)
-        init.html.render(wait = 10)
         magnets = []
-        for abs_link in init.html.absolute_links:
-            if abs_link.startswith('magnet:?xt=') and '1080p' in abs_link:
-                magnets.append(abs_link)
+        retrycounter = 0
+        while retrycounter < 10:
+            init = session.get(link, headers = useragent)
+            init.html.render(wait = 10)
+            for abs_link in init.html.absolute_links:
+                if abs_link.startswith('magnet:?xt=') and '1080p' in abs_link:
+                    magnets.append(abs_link)
+            if len(magnets) == 0:
+                retrycounter += 1
+                logging.info(f"Retrying: on {retrycounter}. retry")
+            else:
+                break
         logging.info(f"Returning {magnets}")
         return magnets
     
