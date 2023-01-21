@@ -146,6 +146,7 @@ def process(torrent_type, show_name, link):
 
                     os.rename(f"{path_temp}/{movie_file_name}", f"{path}/{normalized_name}")
                     logging.info(f"Renamed {path_temp}/{movie_file_name} to {path}/{normalized_name}")
+    requests.post(daisy_webhook_link, json = {'embeds':[{'title':f'Download of {torrent_info["name"]} completed', 'color':65436}]})
 
 
 def magnet_converter(link) -> str:
