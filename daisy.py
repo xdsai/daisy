@@ -168,7 +168,7 @@ def magnet_converter(link) -> str:
     elif 'subsplease.org' in link:
         logging.info(f"Link contains subsplease, getting magnets...")
         init = session.get(link, headers = useragent)
-        init.html.render(wait = 3)
+        init.html.render(wait = 5)
         magnets = []
         for abs_link in init.html.absolute_links:
             if abs_link.startswith('magnet:?xt=') and '1080p' in abs_link:
