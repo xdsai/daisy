@@ -180,7 +180,7 @@ def magnet_converter(link) -> str:
 def dl(magnet, save_path):
     logging.info(f"Beginning download to {save_path}")
     download = qb.download_from_link(magnet, savepath = save_path)
-    if download == 'Failed.':
+    if 'fails.' in download.lower():
         logging.error(f"Failed to download {magnet.split('magnet:?xt=urn:btih:')[1].split('&')[0]}")
         return 1
     else:
