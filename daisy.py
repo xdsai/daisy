@@ -152,6 +152,7 @@ def process(torrent_type, show_name, link):
     else:
         logging.error("Could not find magnets.")
     requests.post(daisy_webhook_link, json = {'embeds':[{'title':f'Download of {torrent_info["name"]} completed', 'color':65436}]})
+    logging.info(f"Download of {torrent_info['name']} completed")
 
 
 def magnet_converter(link) -> str:
