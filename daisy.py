@@ -232,4 +232,8 @@ if __name__ == '__main__':
     name = args.n
     link = args.m
     logging.info(f"Starting new torrent - type: {torrent_type}, name: {name}, link: {link[:20]}")
-    process(torrent_type, name, link)
+    try:
+        process(torrent_type, name, link)
+    except Exception as e:
+        logging.error(f"Callback: {e}")
+        sys.exit(1)
