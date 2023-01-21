@@ -149,10 +149,11 @@ def process(torrent_type, show_name, link):
 
                             logging.info(f"Trying to rename {path_temp}{movie_file_name} to {path}{normalized_name}/{movie_file_name}")
                             os.rename(f"{path_temp}{movie_file_name}", f"{path}{normalized_name}/{movie_file_name}")
+        requests.post(daisy_webhook_link, json = {'embeds':[{'title':f'Download of {torrent_info["name"]} completed', 'color':65436}]})
+        logging.info(f"Download of {torrent_info['name']} completed")
     else:
         logging.error("Could not find magnets.")
-    requests.post(daisy_webhook_link, json = {'embeds':[{'title':f'Download of {torrent_info["name"]} completed', 'color':65436}]})
-    logging.info(f"Download of {torrent_info['name']} completed")
+        requests.post(daisy_webhook_link, json = {'embeds':[{'title':f'Could not find magnets for {link}!', 'color':16711680}]})
 
 
 def magnet_converter(link) -> str:
@@ -169,7 +170,7 @@ def magnet_converter(link) -> str:
     elif 'subsplease.org' in link:
         logging.info(f"Link contains subsplease, getting magnets...")
         init = session.get(link, headers = useragent)
-        init.html.render(wait = 5)
+        init.html.render(wait = 10)
         magnets = []
         for abs_link in init.html.absolute_links:
             if abs_link.startswith('magnet:?xt=') and '1080p' in abs_link:
