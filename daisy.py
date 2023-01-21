@@ -62,17 +62,18 @@ def process(torrent_type, show_name, link):
                         logging.info(f"Found movie - {movie_file_name}")
                         movie_extensionless = movie_file_name[:len(movie_file_name)-4]
                         logging.info(f"Extensionless - {movie_extensionless}")
-                        os.rename(f"{path_temp}/{movie_file_name}", f"{path}/{movie_file_name}")
-                        logging.info(f"Renamed - {path_temp}/{movie_file_name}", f"{path}/{movie_file_name}")
+
+                        logging.info(f"Trying to rename - {path_temp}{movie_file_name} to {path}{movie_file_name}")
+                        os.rename(f"{path_temp}{movie_file_name}", f"{path}{movie_file_name}")
                         break
                 for file in files_within:
                     if file.endswith('.srt'):
                         logging.info(f"Found .srt file")
-                        os.rename(f"{path_temp}/{file}", f"{path}/{movie_extensionless}.srt")
-                        logging.info(f"Renamed - {path_temp}/{file}", f"{path}/{movie_extensionless}.srt")
+                        logging.info(f"Trying to rename - {path_temp}/{file} to {path}{movie_extensionless}.srt")
+                        os.rename(f"{path_temp}{file}", f"{path}{movie_extensionless}.srt")
             else:
-                os.rename(save_path, f"{path}/{movie_file_name}")
-                logging.info(f"Renamed - {save_path}, {path}/{movie_file_name}")
+                logging.info(f"Trying to rename - {save_path} to {path}{movie_file_name}")
+                os.rename(save_path, f"{path}{movie_file_name}")
             plex.library.update()
             logging.info("Updated plex library")
             
@@ -93,9 +94,9 @@ def process(torrent_type, show_name, link):
             if os.path.isdir(save_path):
                 logging.info("Is directory = True")
 
-                os.rename(f"{path_temp}/{movie_file_name}", f"{path}/{normalized_name}")
-                logging.info(f"Renamed - {path_temp}/{movie_file_name} to {path}/{normalized_name}")
-                os.chmod(f'{path}/{normalized_name}', 0o777)
+                logging.info(f"Trying to rename - {path_temp}{movie_file_name} to {path}{normalized_name}")
+                os.rename(f"{path_temp}{movie_file_name}", f"{path}{normalized_name}")
+                os.chmod(f'{path}{normalized_name}', 0o777)
                 logging.info("Changed mod to 777")
 
                 if torrent_type == 'show':
@@ -113,38 +114,41 @@ def process(torrent_type, show_name, link):
                     normalized_name = re.sub(' ','_', show_name).lower()
 
                     logging.info(f"Generated - show_name: {show_name}, normalized_name = {normalized_name}")
-                    logging.info(f"Checking for if folder {path}/{normalized_name} exists")
+                    logging.info(f"Checking for if folder {path}{normalized_name} exists")
 
-                    if not os.path.exists(f"{path}/{normalized_name}"):
+                    if not os.path.exists(f"{path}{normalized_name}"):
                         logging.info("Folder not found, creating it...")
-                        os.mkdir(f"{path}/{normalized_name}")
-                        os.chmod(f'{path}/{normalized_name}', 0o777)
-                        logging.info(f"Created {path}/{normalized_name} and set mod to 777")
+                        os.mkdir(f"{path}{normalized_name}")
+                        os.chmod(f'{path}{normalized_name}', 0o777)
+                        logging.info(f"Created {path}{normalized_name} and set mod to 777")
 
                         requests.post(f"http://192.168.0.101:32400/library/sections?show_name={show_name}&type=movie&agent=com.plexapp.agents.none&scanner=Plex Video Files Scanner&language=xn&importFromiTunes=&enableAutoPhotoTags=&downloadMedia=&location={path}/{normalized_name}&X-Plex-Product=Plex Web&X-Plex-Version=4.76.1&X-Plex-Client-Identifier=9fqw27x73r6ygz9hstlg47kq&X-Plex-Platform=Firefox&X-Plex-Platform-Version=99.0&X-Plex-Sync-Version=2&X-Plex-Features=external-media,indirect-media&X-Plex-Model=bundled&X-Plex-Device=Linux&X-Plex-Device-Name=Firefox&X-Plex-Device-Screen-Resolution=1920x921,1920x1080&X-Plex-Token=KMUHALDo6oHH-dLamrAP&X-Plex-Language=en")
                         logging.info("Posted to plex")
-
-                    os.rename(f"{path_temp}/{movie_file_name}", f"{path}/{normalized_name}")
-                    logging.info(f"Renamed {path_temp}/{movie_file_name} to {path}/{normalized_name}")
+                        
+                    logging.info(f"Trying to rename {path_temp}{movie_file_name} to {path}{normalized_name}")
+                    os.rename(f"{path_temp}{movie_file_name}", f"{path}{normalized_name}")
+                    logging.info(f"Successfully renamed")
 
                 else:
                     logging.info("No Subsplease found")
                     normalized_name = re.sub(' ','_', show_name).lower()
                     logging.info(f"Generated normalized_name: {normalized_name}")
-                    logging.info(f"Checking for if {path}/{normalized_name} exists")
-                    if not os.path.exists(f"{path}/{normalized_name}"):
+                    logging.info(f"Checking for if {path}{normalized_name} exists")
+
+                    if not os.path.exists(f"{path}{normalized_name}"):
                         logging.info("Does not exist, attempting to create it...")
-                        os.mkdir(f"{path}/{normalized_name}")
-                        os.chmod(f'{path}/{normalized_name}', 0o777)
-                        logging.info(f"Created {path}/{normalized_name} and set mod to 777")
+                        os.mkdir(f"{path}{normalized_name}")
+                        os.chmod(f'{path}{normalized_name}', 0o777)
+                        logging.info(f"Created {path}{normalized_name} and set mod to 777")
                         if torrent_type == 'show':
                             requests.post(f"http://192.168.0.101:32400/library/sections?show_name={show_name}&type=show&agent=com.plexapp.agents.none&scanner=Plex Video Files Scanner&language=xn&importFromiTunes=&enableAutoPhotoTags=&downloadMedia=&location={path}/{normalized_name}&X-Plex-Product=Plex Web&X-Plex-Version=4.76.1&X-Plex-Client-Identifier=9fqw27x73r6ygz9hstlg47kq&X-Plex-Platform=Firefox&X-Plex-Platform-Version=99.0&X-Plex-Sync-Version=2&X-Plex-Features=external-media,indirect-media&X-Plex-Model=bundled&X-Plex-Device=Linux&X-Plex-Device-Name=Firefox&X-Plex-Device-Screen-Resolution=1920x921,1920x1080&X-Plex-Token=KMUHALDo6oHH-dLamrAP&X-Plex-Language=en")
                         else:
                             requests.post(f"http://192.168.0.101:32400/library/sections?show_name={show_name}&type=movie&agent=com.plexapp.agents.none&scanner=Plex Video Files Scanner&language=xn&importFromiTunes=&enableAutoPhotoTags=&downloadMedia=&location={path}/{normalized_name}&X-Plex-Product=Plex Web&X-Plex-Version=4.76.1&X-Plex-Client-Identifier=9fqw27x73r6ygz9hstlg47kq&X-Plex-Platform=Firefox&X-Plex-Platform-Version=99.0&X-Plex-Sync-Version=2&X-Plex-Features=external-media,indirect-media&X-Plex-Model=bundled&X-Plex-Device=Linux&X-Plex-Device-Name=Firefox&X-Plex-Device-Screen-Resolution=1920x921,1920x1080&X-Plex-Token=KMUHALDo6oHH-dLamrAP&X-Plex-Language=en")
                         logging.info("Posted to plex")
 
+                    logging.info(f"Trying to rename {path_temp}{movie_file_name} to {path}{normalized_name}")
                     os.rename(f"{path_temp}/{movie_file_name}", f"{path}/{normalized_name}")
-                    logging.info(f"Renamed {path_temp}/{movie_file_name} to {path}/{normalized_name}")
+
     requests.post(daisy_webhook_link, json = {'embeds':[{'title':f'Download of {torrent_info["name"]} completed', 'color':65436}]})
 
 
@@ -207,4 +211,8 @@ if __name__ == '__main__':
     name = args.n
     link = args.m
     logging.info(f"Starting new torrent - type: {torrent_type}, name: {name}, link: {link[:20]}")
-    process(torrent_type, name, link)
+    try:
+        process(torrent_type, name, link)
+    except Exception as e:
+        logging.error(f"Error callback: {e}")
+        sys.exit(1)
