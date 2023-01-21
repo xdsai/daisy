@@ -182,23 +182,37 @@ def magnet_converter(link) -> str:
     
 def dl(magnet, save_path):
     logging.info(f"Beginning download to {save_path}")
-    download = qb.download_from_link(magnet, savepath = save_path)
-    if 'fails.' in download.lower():
-        logging.error(f"Failed to download {magnet.split('magnet:?xt=urn:btih:')[1].split('&')[0]}")
-        return 1
+    
+    try:
+        download = qb.download_from_link(magnet, savepath = save_path)
+        if 'fails.' in download.lower():
+            logging.error(f"Failed to download {magnet.split('magnet:?xt=urn:btih:')[1].split('&')[0]}")
+            return 1
+        
+    except Exception as e:
+        logging.error(f"Error callback: {e}")
+        logging.debug(f"Local variables: magnet: {magnet} ||| save_path: {save_path}, download: {download}")
+        sys.exit(1)
+
     else:
         time.sleep(5)
-        torrent_info = qb.torrents(limit=1, sort = 'added_on', reverse = True)[0]
-        torrent_name = torrent_info['name']
-        logging.info(f"Found torrent name - {torrent_info['name']}")
-        requests.post(daisy_webhook_link, json = {'embeds':[{'title':f'Download of {torrent_name} started', 'color':65436}]})
+        try:
+            torrent_info = qb.torrents(limit=1, sort = 'added_on', reverse = True)[0]
+            torrent_name = torrent_info['name']
+            logging.info(f"Found torrent name - {torrent_info['name']}")
+            requests.post(daisy_webhook_link, json = {'embeds':[{'title':f'Download of {torrent_name} started', 'color':65436}]})
 
-        while torrent_info['amount_left'] != 0:
-            for torrent in qb.torrents():
-                if torrent['name'] == torrent_name:
-                    torrent_info = torrent
-                    break
-            time.sleep(1)
+            while torrent_info['amount_left'] != 0:
+                for torrent in qb.torrents():
+                    if torrent['name'] == torrent_name:
+                        torrent_info = torrent
+                        break
+                time.sleep(1)
+        except Exception as e:
+            logging.error(f"Error callback: {e}")
+            logging.debug(f"Local variables: magnet: {magnet} ||| save_path: {save_path}, download: {download}, torrent_info: {torrent_info}")
+            sys.exit(1)
+
         logging.info(f"Torrent download finished, returning...")
         logging.info(f"{torrent_info}")
         return torrent_info
@@ -218,8 +232,4 @@ if __name__ == '__main__':
     name = args.n
     link = args.m
     logging.info(f"Starting new torrent - type: {torrent_type}, name: {name}, link: {link[:20]}")
-    try:
-        process(torrent_type, name, link)
-    except Exception as e:
-        logging.error(f"Error callback: {e}")
-        sys.exit(1)
+    process(torrent_type, name, link)
