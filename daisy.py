@@ -22,7 +22,7 @@ logging.basicConfig(filename='log.txt',
                     filemode='a',
                     format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
                     datefmt='%H:%M:%S',
-                    level=logging.DEBUG)
+                    level=logging.info)
 
 drives = [{"type":"movies",
            "path":"/home/alex/hdd5a",
