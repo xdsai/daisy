@@ -77,78 +77,78 @@ def process(torrent_type, show_name, link):
                     plex.library.update()
                     logging.info("Updated plex library")
                     
-            else:
-                logging.info("Detected type: other/show")
-                path = '/home/alex/hdd1a/'
-                path_temp = '/home/alex/hdd1a/temp/'
-                docker_save_path = '/other/temp/'
-                for magnet in magnets:
-                    torrent_info = dl(magnet, docker_save_path)
+        else:
+            logging.info("Detected type: other/show")
+            path = '/home/alex/hdd1a/'
+            path_temp = '/home/alex/hdd1a/temp/'
+            docker_save_path = '/other/temp/'
+            for magnet in magnets:
+                torrent_info = dl(magnet, docker_save_path)
 
-                    if torrent_info != 1:
-                        save_path = re.sub(docker_save_path, path_temp, torrent_info['content_path'])
-                        movie_file_name = re.sub(docker_save_path,'', torrent_info['content_path'])
-                        normalized_name = re.sub(' ', '_', show_name)
-                        logging.info(f"Generated - save_path: {save_path}, movie_file_name: {movie_file_name}, normalized_name: {normalized_name}")
-                        logging.info("Checking for directory...")
+                if torrent_info != 1:
+                    save_path = re.sub(docker_save_path, path_temp, torrent_info['content_path'])
+                    movie_file_name = re.sub(docker_save_path,'', torrent_info['content_path'])
+                    normalized_name = re.sub(' ', '_', show_name)
+                    logging.info(f"Generated - save_path: {save_path}, movie_file_name: {movie_file_name}, normalized_name: {normalized_name}")
+                    logging.info("Checking for directory...")
 
-                        if os.path.isdir(save_path):
-                            logging.info("Is directory = True")
+                    if os.path.isdir(save_path):
+                        logging.info("Is directory = True")
 
-                            logging.info(f"Trying to rename - {path_temp}{movie_file_name} to {path}{normalized_name}")
-                            os.rename(f"{path_temp}{movie_file_name}", f"{path}{normalized_name}")
-                            os.chmod(f'{path}{normalized_name}', 0o777)
-                            logging.info("Changed mod to 777")
+                        logging.info(f"Trying to rename - {path_temp}{movie_file_name} to {path}{normalized_name}")
+                        os.rename(f"{path_temp}{movie_file_name}", f"{path}{normalized_name}")
+                        os.chmod(f'{path}{normalized_name}', 0o777)
+                        logging.info("Changed mod to 777")
 
-                            if torrent_type == 'show':
-                                requests.post(f"http://192.168.0.101:32400/library/sections?show_name={show_name}&type=show&agent=com.plexapp.agents.none&scanner=Plex Video Files Scanner&language=xn&importFromiTunes=&enableAutoPhotoTags=&downloadMedia=&location={path}/{normalized_name}&X-Plex-Product=Plex Web&X-Plex-Version=4.76.1&X-Plex-Client-Identifier=9fqw27x73r6ygz9hstlg47kq&X-Plex-Platform=Firefox&X-Plex-Platform-Version=99.0&X-Plex-Sync-Version=2&X-Plex-Features=external-media,indirect-media&X-Plex-Model=bundled&X-Plex-Device=Linux&X-Plex-Device-Name=Firefox&X-Plex-Device-Screen-Resolution=1920x921,1920x1080&X-Plex-Token=KMUHALDo6oHH-dLamrAP&X-Plex-Language=en")
-                            else:
-                                requests.post(f"http://192.168.0.101:32400/library/sections?show_name={show_name}&type=movie&agent=com.plexapp.agents.none&scanner=Plex Video Files Scanner&language=xn&importFromiTunes=&enableAutoPhotoTags=&downloadMedia=&location={path}/{normalized_name}&X-Plex-Product=Plex Web&X-Plex-Version=4.76.1&X-Plex-Client-Identifier=9fqw27x73r6ygz9hstlg47kq&X-Plex-Platform=Firefox&X-Plex-Platform-Version=99.0&X-Plex-Sync-Version=2&X-Plex-Features=external-media,indirect-media&X-Plex-Model=bundled&X-Plex-Device=Linux&X-Plex-Device-Name=Firefox&X-Plex-Device-Screen-Resolution=1920x921,1920x1080&X-Plex-Token=KMUHALDo6oHH-dLamrAP&X-Plex-Language=en")
-                            logging.info("Posted to plex")
-                            
+                        if torrent_type == 'show':
+                            requests.post(f"http://192.168.0.101:32400/library/sections?show_name={show_name}&type=show&agent=com.plexapp.agents.none&scanner=Plex Video Files Scanner&language=xn&importFromiTunes=&enableAutoPhotoTags=&downloadMedia=&location={path}/{normalized_name}&X-Plex-Product=Plex Web&X-Plex-Version=4.76.1&X-Plex-Client-Identifier=9fqw27x73r6ygz9hstlg47kq&X-Plex-Platform=Firefox&X-Plex-Platform-Version=99.0&X-Plex-Sync-Version=2&X-Plex-Features=external-media,indirect-media&X-Plex-Model=bundled&X-Plex-Device=Linux&X-Plex-Device-Name=Firefox&X-Plex-Device-Screen-Resolution=1920x921,1920x1080&X-Plex-Token=KMUHALDo6oHH-dLamrAP&X-Plex-Language=en")
                         else:
-                            logging.info(f"Checking for SubsPlease in {movie_file_name}")
+                            requests.post(f"http://192.168.0.101:32400/library/sections?show_name={show_name}&type=movie&agent=com.plexapp.agents.none&scanner=Plex Video Files Scanner&language=xn&importFromiTunes=&enableAutoPhotoTags=&downloadMedia=&location={path}/{normalized_name}&X-Plex-Product=Plex Web&X-Plex-Version=4.76.1&X-Plex-Client-Identifier=9fqw27x73r6ygz9hstlg47kq&X-Plex-Platform=Firefox&X-Plex-Platform-Version=99.0&X-Plex-Sync-Version=2&X-Plex-Features=external-media,indirect-media&X-Plex-Model=bundled&X-Plex-Device=Linux&X-Plex-Device-Name=Firefox&X-Plex-Device-Screen-Resolution=1920x921,1920x1080&X-Plex-Token=KMUHALDo6oHH-dLamrAP&X-Plex-Language=en")
+                        logging.info("Posted to plex")
+                        
+                    else:
+                        logging.info(f"Checking for SubsPlease in {movie_file_name}")
 
-                            if '[SubsPlease]' in movie_file_name:
-                                logging.info("SubsPlease found")
-                                show_name = re.search(r'\] (.*) - (\d*)', movie_file_name)[1]
-                                normalized_name = re.sub(' ','_', show_name).lower()
+                        if '[SubsPlease]' in movie_file_name:
+                            logging.info("SubsPlease found")
+                            show_name = re.search(r'\] (.*) - (\d*)', movie_file_name)[1]
+                            normalized_name = re.sub(' ','_', show_name).lower()
 
-                                logging.info(f"Generated - show_name: {show_name}, normalized_name = {normalized_name}")
-                                logging.info(f"Checking for if folder {path}{normalized_name} exists")
+                            logging.info(f"Generated - show_name: {show_name}, normalized_name = {normalized_name}")
+                            logging.info(f"Checking for if folder {path}{normalized_name} exists")
 
-                                if not os.path.exists(f"{path}{normalized_name}"):
-                                    logging.info("Folder not found, creating it...")
-                                    os.mkdir(f"{path}{normalized_name}")
-                                    os.chmod(f'{path}{normalized_name}', 0o777)
-                                    logging.info(f"Created {path}{normalized_name} and set mod to 777")
+                            if not os.path.exists(f"{path}{normalized_name}"):
+                                logging.info("Folder not found, creating it...")
+                                os.mkdir(f"{path}{normalized_name}")
+                                os.chmod(f'{path}{normalized_name}', 0o777)
+                                logging.info(f"Created {path}{normalized_name} and set mod to 777")
 
+                                requests.post(f"http://192.168.0.101:32400/library/sections?show_name={show_name}&type=movie&agent=com.plexapp.agents.none&scanner=Plex Video Files Scanner&language=xn&importFromiTunes=&enableAutoPhotoTags=&downloadMedia=&location={path}/{normalized_name}&X-Plex-Product=Plex Web&X-Plex-Version=4.76.1&X-Plex-Client-Identifier=9fqw27x73r6ygz9hstlg47kq&X-Plex-Platform=Firefox&X-Plex-Platform-Version=99.0&X-Plex-Sync-Version=2&X-Plex-Features=external-media,indirect-media&X-Plex-Model=bundled&X-Plex-Device=Linux&X-Plex-Device-Name=Firefox&X-Plex-Device-Screen-Resolution=1920x921,1920x1080&X-Plex-Token=KMUHALDo6oHH-dLamrAP&X-Plex-Language=en")
+                                logging.info("Posted to plex")
+                                
+                            logging.info(f"Trying to rename {path_temp}{movie_file_name} to {path}{normalized_name}")
+                            os.rename(f"{path_temp}{movie_file_name}", f"{path}{normalized_name}")
+                            logging.info(f"Successfully renamed")
+
+                        else:
+                            logging.info("No Subsplease found")
+                            normalized_name = re.sub(' ','_', show_name).lower()
+                            logging.info(f"Generated normalized_name: {normalized_name}")
+                            logging.info(f"Checking for if {path}{normalized_name} exists")
+
+                            if not os.path.exists(f"{path}{normalized_name}"):
+                                logging.info("Does not exist, attempting to create it...")
+                                os.mkdir(f"{path}{normalized_name}")
+                                os.chmod(f'{path}{normalized_name}', 0o777)
+                                logging.info(f"Created {path}{normalized_name} and set mod to 777")
+                                if torrent_type == 'show':
+                                    requests.post(f"http://192.168.0.101:32400/library/sections?show_name={show_name}&type=show&agent=com.plexapp.agents.none&scanner=Plex Video Files Scanner&language=xn&importFromiTunes=&enableAutoPhotoTags=&downloadMedia=&location={path}/{normalized_name}&X-Plex-Product=Plex Web&X-Plex-Version=4.76.1&X-Plex-Client-Identifier=9fqw27x73r6ygz9hstlg47kq&X-Plex-Platform=Firefox&X-Plex-Platform-Version=99.0&X-Plex-Sync-Version=2&X-Plex-Features=external-media,indirect-media&X-Plex-Model=bundled&X-Plex-Device=Linux&X-Plex-Device-Name=Firefox&X-Plex-Device-Screen-Resolution=1920x921,1920x1080&X-Plex-Token=KMUHALDo6oHH-dLamrAP&X-Plex-Language=en")
+                                else:
                                     requests.post(f"http://192.168.0.101:32400/library/sections?show_name={show_name}&type=movie&agent=com.plexapp.agents.none&scanner=Plex Video Files Scanner&language=xn&importFromiTunes=&enableAutoPhotoTags=&downloadMedia=&location={path}/{normalized_name}&X-Plex-Product=Plex Web&X-Plex-Version=4.76.1&X-Plex-Client-Identifier=9fqw27x73r6ygz9hstlg47kq&X-Plex-Platform=Firefox&X-Plex-Platform-Version=99.0&X-Plex-Sync-Version=2&X-Plex-Features=external-media,indirect-media&X-Plex-Model=bundled&X-Plex-Device=Linux&X-Plex-Device-Name=Firefox&X-Plex-Device-Screen-Resolution=1920x921,1920x1080&X-Plex-Token=KMUHALDo6oHH-dLamrAP&X-Plex-Language=en")
-                                    logging.info("Posted to plex")
-                                    
-                                logging.info(f"Trying to rename {path_temp}{movie_file_name} to {path}{normalized_name}")
-                                os.rename(f"{path_temp}{movie_file_name}", f"{path}{normalized_name}")
-                                logging.info(f"Successfully renamed")
+                                logging.info("Posted to plex")
 
-                            else:
-                                logging.info("No Subsplease found")
-                                normalized_name = re.sub(' ','_', show_name).lower()
-                                logging.info(f"Generated normalized_name: {normalized_name}")
-                                logging.info(f"Checking for if {path}{normalized_name} exists")
-
-                                if not os.path.exists(f"{path}{normalized_name}"):
-                                    logging.info("Does not exist, attempting to create it...")
-                                    os.mkdir(f"{path}{normalized_name}")
-                                    os.chmod(f'{path}{normalized_name}', 0o777)
-                                    logging.info(f"Created {path}{normalized_name} and set mod to 777")
-                                    if torrent_type == 'show':
-                                        requests.post(f"http://192.168.0.101:32400/library/sections?show_name={show_name}&type=show&agent=com.plexapp.agents.none&scanner=Plex Video Files Scanner&language=xn&importFromiTunes=&enableAutoPhotoTags=&downloadMedia=&location={path}/{normalized_name}&X-Plex-Product=Plex Web&X-Plex-Version=4.76.1&X-Plex-Client-Identifier=9fqw27x73r6ygz9hstlg47kq&X-Plex-Platform=Firefox&X-Plex-Platform-Version=99.0&X-Plex-Sync-Version=2&X-Plex-Features=external-media,indirect-media&X-Plex-Model=bundled&X-Plex-Device=Linux&X-Plex-Device-Name=Firefox&X-Plex-Device-Screen-Resolution=1920x921,1920x1080&X-Plex-Token=KMUHALDo6oHH-dLamrAP&X-Plex-Language=en")
-                                    else:
-                                        requests.post(f"http://192.168.0.101:32400/library/sections?show_name={show_name}&type=movie&agent=com.plexapp.agents.none&scanner=Plex Video Files Scanner&language=xn&importFromiTunes=&enableAutoPhotoTags=&downloadMedia=&location={path}/{normalized_name}&X-Plex-Product=Plex Web&X-Plex-Version=4.76.1&X-Plex-Client-Identifier=9fqw27x73r6ygz9hstlg47kq&X-Plex-Platform=Firefox&X-Plex-Platform-Version=99.0&X-Plex-Sync-Version=2&X-Plex-Features=external-media,indirect-media&X-Plex-Model=bundled&X-Plex-Device=Linux&X-Plex-Device-Name=Firefox&X-Plex-Device-Screen-Resolution=1920x921,1920x1080&X-Plex-Token=KMUHALDo6oHH-dLamrAP&X-Plex-Language=en")
-                                    logging.info("Posted to plex")
-
-                                logging.info(f"Trying to rename {path_temp}{movie_file_name} to {path}{normalized_name}")
-                                os.rename(f"{path_temp}/{movie_file_name}", f"{path}/{normalized_name}")
+                            logging.info(f"Trying to rename {path_temp}{movie_file_name} to {path}{normalized_name}")
+                            os.rename(f"{path_temp}/{movie_file_name}", f"{path}/{normalized_name}")
     else:
         logging.error("Could not find magnets.")
     requests.post(daisy_webhook_link, json = {'embeds':[{'title':f'Download of {torrent_info["name"]} completed', 'color':65436}]})
