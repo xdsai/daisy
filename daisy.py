@@ -182,7 +182,7 @@ def magnet_converter(link) -> str:
         logging.info(f"Link contains subsplease, getting magnets...")
         magnets = []
         retrycounter = 0
-        while retrycounter < 10:
+        while retrycounter < 5:
             init = session.get(link, headers = useragent)
             init.html.render(wait = 10)
             for abs_link in init.html.absolute_links:
