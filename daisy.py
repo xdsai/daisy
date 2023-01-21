@@ -52,7 +52,7 @@ def process(torrent_type, show_name, link):
             logging.info(f"Generated save path - {save_path}, movie_file_name: {movie_file_name}")
             logging.info(f"Checking for directory...")
 
-            if os.isdir(save_path):
+            if os.path.isdir(save_path):
                 logging.info(f"Is directory = True")
                 files_within = os.listdir(save_path)
                 logging.info(f"Files within - {files_within}")
@@ -75,8 +75,7 @@ def process(torrent_type, show_name, link):
                 logging.info(f"Renamed - {save_path}, {path}/{movie_file_name}")
             plex.library.update()
             logging.info("Updated plex library")
-
-               
+            
     else:
         logging.info("Detected type: other/show")
         path = '/home/alex/hdd1a/'
@@ -91,7 +90,7 @@ def process(torrent_type, show_name, link):
             logging.info(f"Generated - save_path: {save_path}, movie_file_name: {movie_file_name}, normalized_name: {normalized_name}")
             logging.info("Checking for directory...")
 
-            if os.isdir(save_path):
+            if os.path.isdir(save_path):
                 logging.info("Is directory = True")
 
                 os.rename(f"{path_temp}/{movie_file_name}", f"{path}/{normalized_name}")
