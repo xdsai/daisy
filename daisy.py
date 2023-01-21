@@ -126,8 +126,8 @@ def process(torrent_type, show_name, link):
                                 requests.post(f"http://192.168.0.101:32400/library/sections?show_name={show_name}&type=movie&agent=com.plexapp.agents.none&scanner=Plex Video Files Scanner&language=xn&importFromiTunes=&enableAutoPhotoTags=&downloadMedia=&location={path}/{normalized_name}&X-Plex-Product=Plex Web&X-Plex-Version=4.76.1&X-Plex-Client-Identifier=9fqw27x73r6ygz9hstlg47kq&X-Plex-Platform=Firefox&X-Plex-Platform-Version=99.0&X-Plex-Sync-Version=2&X-Plex-Features=external-media,indirect-media&X-Plex-Model=bundled&X-Plex-Device=Linux&X-Plex-Device-Name=Firefox&X-Plex-Device-Screen-Resolution=1920x921,1920x1080&X-Plex-Token=KMUHALDo6oHH-dLamrAP&X-Plex-Language=en")
                                 logging.info("Posted to plex")
                                 
-                            logging.info(f"Trying to rename {path_temp}{movie_file_name} to {path}{normalized_name}")
-                            os.rename(f"{path_temp}{movie_file_name}", f"{path}{normalized_name}")
+                            logging.info(f"Trying to rename {path_temp}{movie_file_name} to {path}{normalized_name}/{movie_file_name}")
+                            os.rename(f"{path_temp}{movie_file_name}", f"{path}{normalized_name}/{movie_file_name}")
                             logging.info(f"Successfully renamed")
 
                         else:
@@ -147,8 +147,8 @@ def process(torrent_type, show_name, link):
                                     requests.post(f"http://192.168.0.101:32400/library/sections?show_name={show_name}&type=movie&agent=com.plexapp.agents.none&scanner=Plex Video Files Scanner&language=xn&importFromiTunes=&enableAutoPhotoTags=&downloadMedia=&location={path}/{normalized_name}&X-Plex-Product=Plex Web&X-Plex-Version=4.76.1&X-Plex-Client-Identifier=9fqw27x73r6ygz9hstlg47kq&X-Plex-Platform=Firefox&X-Plex-Platform-Version=99.0&X-Plex-Sync-Version=2&X-Plex-Features=external-media,indirect-media&X-Plex-Model=bundled&X-Plex-Device=Linux&X-Plex-Device-Name=Firefox&X-Plex-Device-Screen-Resolution=1920x921,1920x1080&X-Plex-Token=KMUHALDo6oHH-dLamrAP&X-Plex-Language=en")
                                 logging.info("Posted to plex")
 
-                            logging.info(f"Trying to rename {path_temp}{movie_file_name} to {path}{normalized_name}")
-                            os.rename(f"{path_temp}/{movie_file_name}", f"{path}/{normalized_name}")
+                            logging.info(f"Trying to rename {path_temp}{movie_file_name} to {path}{normalized_name}/{movie_file_name}")
+                            os.rename(f"{path_temp}{movie_file_name}", f"{path}{normalized_name}/{movie_file_name}")
     else:
         logging.error("Could not find magnets.")
     requests.post(daisy_webhook_link, json = {'embeds':[{'title':f'Download of {torrent_info["name"]} completed', 'color':65436}]})
