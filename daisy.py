@@ -240,7 +240,7 @@ def dl(magnet, save_path):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Process some integers.')
+    parser = argparse.ArgumentParser()
     parser.add_argument('-t', type=str)
     parser.add_argument('-n', default = '', type=str)
     parser.add_argument('-m', type=str)
