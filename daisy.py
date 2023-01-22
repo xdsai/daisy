@@ -245,6 +245,7 @@ if __name__ == '__main__':
     parser.add_argument('-n', default = '', type=str)
     parser.add_argument('-m', type=str)
     args = parser.parse_args()
+    logging.info(f"Parsed args - type: {args.t}, name: {args.n}, link: {args.m}")
     if args.t.lower() not in ['movie', 'show', 'other']:
         print('invalid movie type')
         exit(1)
@@ -252,7 +253,7 @@ if __name__ == '__main__':
         torrent_type = args.t.lower()
     name = args.n
     link = args.m
-    logging.info(f"Starting new torrent - type: {torrent_type}, name: {name}, link: {link[:20]}")
+    logging.info(f"Starting new torrent")
     try:
         process(torrent_type, name, link)
     except Exception as e:
