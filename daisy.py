@@ -74,8 +74,6 @@ def process(torrent_type, show_name, link):
                     else:
                         logging.info(f"Trying to rename - {save_path} to {path}{movie_file_name}")
                         os.rename(save_path, f"{path}{movie_file_name}")
-                    plex.library.update()
-                    logging.info("Updated plex library")
                     
         else:
             logging.info("Detected type: other/show")
@@ -162,6 +160,8 @@ def process(torrent_type, show_name, link):
                             os.rename(f"{path_temp}{movie_file_name}", f"{path}{normalized_name}/{movie_file_name}")
         requests.post(daisy_webhook_link, json = {'embeds':[{'title':f'Download of {torrent_info["name"]} completed', 'color':65436}]})
         logging.info(f"Download of {torrent_info['name']} completed")
+        plex.library.update()
+        logging.info("Updated plex library")
     else:
         logging.error("Could not find magnets.")
         requests.post(daisy_webhook_link, json = {'embeds':[{'title':f'Could not find magnets for {link}!', 'color':16711680}]})
