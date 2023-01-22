@@ -46,7 +46,7 @@ def process(torrent_type, show_name, link):
             docker_save_path = '/movies/temp/'
             for magnet in magnets:
                 torrent_info = dl(magnet, docker_save_path)
-                if torrent_info != 1:
+                if torrent_info != 1 and torrent_info['content_path'] != '':
                     save_path = re.sub(docker_save_path, path_temp, torrent_info['content_path'])
                     movie_file_name = re.sub(docker_save_path,'', torrent_info['content_path'])
                     logging.info(f"Generated save path - {save_path}, movie_file_name: {movie_file_name}")
@@ -84,7 +84,7 @@ def process(torrent_type, show_name, link):
             for magnet in magnets:
                 torrent_info = dl(magnet, docker_save_path)
 
-                if torrent_info != 1:
+                if torrent_info != 1 and torrent_info['content_path'] != '':
                     save_path = re.sub(docker_save_path, path_temp, torrent_info['content_path'])
                     movie_file_name = re.sub(docker_save_path,'', torrent_info['content_path'])
                     normalized_name = re.sub(' ', '_', show_name)
