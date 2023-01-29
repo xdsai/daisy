@@ -3,6 +3,7 @@ import sys
 import requests
 import os
 import re
+import getpass
 import shutil
 import argparse
 import logging
@@ -18,11 +19,15 @@ useragent = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit
 daisy_webhook_link = 'https://discord.com/api/webhooks/993897033259810946/7mDq6-TXPL5BPM7n0zsAnUlMzdtXJQBCinRsyCQZzJ4GwIxM3CfjqUdiIP-Y6P1LCKSZ'
 token = 'KMUHALDo6oHH-dLamrAP'
 plex = PlexServer('http://192.168.0.101:32400',token)
-logging.basicConfig(filename='log.txt',
+logging.basicConfig(filename='/daisy/log.txt',
                     filemode='a',
                     format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
                     datefmt='%H:%M:%S',
                     level=logging.INFO)
+
+
+logging.info(f"Env thinks the user is {os.getlogin()}")
+logging.info(f"Effective user is {getpass.getuser()}")
 
 drives = [{"type":"movies",
            "path":"/home/alex/hdd5a",
