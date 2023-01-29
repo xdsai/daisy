@@ -251,7 +251,7 @@ if __name__ == '__main__':
     daisy_webhook_link = 'https://discord.com/api/webhooks/993897033259810946/7mDq6-TXPL5BPM7n0zsAnUlMzdtXJQBCinRsyCQZzJ4GwIxM3CfjqUdiIP-Y6P1LCKSZ'
     token = 'KMUHALDo6oHH-dLamrAP'
     plex = PlexServer('http://192.168.0.101:32400',token)
-    logging.basicConfig(filename='/home/alex/daisy/log.txt',
+    logging.basicConfig(filename='log.txt',
                         filemode='a',
                         format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
                         datefmt='%H:%M:%S',
