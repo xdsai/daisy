@@ -146,9 +146,9 @@ def process(torrent_type, show_name, link):
                                 else:
                                     logging.info(f"Failed to post to plex, post request status code: {posty.status_code}, reason: {posty.reason}")
 
-
                             logging.info(f"Trying to rename {path_temp}{movie_file_name} to {path}{normalized_name}/{movie_file_name}")
                             os.rename(f"{path_temp}{movie_file_name}", f"{path}{normalized_name}/{movie_file_name}")
+
         requests.post(daisy_webhook_link, json = {'embeds':[{'title':f'Download of {torrent_info["name"]} completed', 'color':65436}]})
         logging.info(f"Download of {torrent_info['name']} completed")
         plex.library.update()
@@ -252,7 +252,7 @@ if __name__ == '__main__':
     daisy_webhook_link = 'https://discord.com/api/webhooks/993897033259810946/7mDq6-TXPL5BPM7n0zsAnUlMzdtXJQBCinRsyCQZzJ4GwIxM3CfjqUdiIP-Y6P1LCKSZ'
     token = 'KMUHALDo6oHH-dLamrAP'
     plex = PlexServer('http://192.168.0.101:32400',token)
-    logging.basicConfig(filename=f'/home/alex/daisy/logs/{name}-{datetime.now().strftime("%d-%m-%Y-%H-%M-%S")}',
+    logging.basicConfig(filename=f'/home/alex/daisy/logs/{name}-{datetime.now().strftime("%d-%m-%Y")}',
                         filemode='w',
                         format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
                         datefmt='%H:%M:%S',
