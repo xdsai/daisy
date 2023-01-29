@@ -7,27 +7,12 @@ import getpass
 import shutil
 import argparse
 import logging
+from datetime import datetime
 from bs4 import BeautifulSoup
 from plexapi.server import PlexServer
 from qbittorrent import Client
 from requests_html import HTMLSession
 
-session = HTMLSession()
-qb = Client("http://192.168.0.101:8090")
-qb.login("xdsai","admins")
-useragent = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"}
-daisy_webhook_link = 'https://discord.com/api/webhooks/993897033259810946/7mDq6-TXPL5BPM7n0zsAnUlMzdtXJQBCinRsyCQZzJ4GwIxM3CfjqUdiIP-Y6P1LCKSZ'
-token = 'KMUHALDo6oHH-dLamrAP'
-plex = PlexServer('http://192.168.0.101:32400',token)
-logging.basicConfig(filename='/daisy/log.txt',
-                    filemode='a',
-                    format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
-                    datefmt='%H:%M:%S',
-                    level=logging.INFO)
-
-
-logging.info(f"Env thinks the user is {os.getlogin()}")
-logging.info(f"Effective user is {getpass.getuser()}")
 
 drives = [{"type":"movies",
            "path":"/home/alex/hdd5a",
@@ -245,6 +230,7 @@ def dl(magnet, save_path):
 
 
 if __name__ == '__main__':
+
     parser = argparse.ArgumentParser()
     parser.add_argument('-t', type=str)
     parser.add_argument('-n', default = '', type=str)
@@ -258,6 +244,24 @@ if __name__ == '__main__':
         torrent_type = args.t.lower()
     name = args.n
     link = args.m
+
+    session = HTMLSession()
+    qb = Client("http://192.168.0.101:8090")
+    qb.login("xdsai","admins")
+    useragent = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"}
+    daisy_webhook_link = 'https://discord.com/api/webhooks/993897033259810946/7mDq6-TXPL5BPM7n0zsAnUlMzdtXJQBCinRsyCQZzJ4GwIxM3CfjqUdiIP-Y6P1LCKSZ'
+    token = 'KMUHALDo6oHH-dLamrAP'
+    plex = PlexServer('http://192.168.0.101:32400',token)
+    logging.basicConfig(filename=f'/logs/{name}-{datetime.now().strftime("%d-%m-%Y-%H-%M-%S")}',
+                        filemode='w',
+                        format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+                        datefmt='%H:%M:%S',
+                        level=logging.INFO)
+
+
+    logging.info(f"Env thinks the user is {os.getlogin()}")
+    logging.info(f"Effective user is {getpass.getuser()}")
+
     logging.info(f"Starting new torrent")
     try:
         process(torrent_type, name, link)
