@@ -1,0 +1,257 @@
+17:55:25 root INFO Starting loop...
+17:55:25 root INFO autodl_queries.json loaded
+17:55:25 root INFO ['chainsaw man', 'blue lock', 'mob psycho 100 s3', 'buddy daddies', 'nier']
+17:55:25 root INFO downloaded.json loaded
+17:55:25 root INFO ['[SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv', '[SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv']
+17:55:25 root INFO Returned releases
+17:55:25 root INFO Checking query: chainsaw man
+17:55:25 root INFO Checking query: blue lock
+17:55:25 root INFO Checking query: mob psycho 100 s3
+17:55:25 root INFO Checking query: buddy daddies
+17:55:25 root INFO Query matched! - Buddy Daddies 
+17:55:25 root INFO Checking for if match is not in downloaded - [SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv
+17:55:25 root INFO Show is in downloaded, skipping... - [SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv
+17:55:25 root INFO Checking query: nier
+17:55:25 root INFO Query matched! - NieR Automata Ver1.1a 
+17:55:25 root INFO Checking for if match is not in downloaded - [SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv
+17:55:25 root INFO Show is in downloaded, skipping... - [SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv
+17:55:54 root INFO Starting loop...
+17:55:54 root INFO autodl_queries.json loaded
+17:55:54 root INFO ['chainsaw man', 'blue lock', 'mob psycho 100 s3', 'buddy daddies', 'nier']
+17:55:54 root INFO downloaded.json loaded
+17:55:54 root INFO ['[SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv', '[SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv']
+17:55:54 root INFO Returned releases
+17:55:54 root INFO Checking query: chainsaw man
+17:55:54 root INFO Checking query: blue lock
+17:55:54 root INFO Checking query: mob psycho 100 s3
+17:55:54 root INFO Checking query: buddy daddies
+17:55:54 root INFO Query matched! - Buddy Daddies 
+17:55:54 root INFO Checking for if match is not in downloaded - [SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv
+17:55:54 root INFO Show is in downloaded, skipping... - [SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv
+17:55:54 root INFO Checking query: nier
+17:55:54 root INFO Query matched! - NieR Automata Ver1.1a 
+17:55:54 root INFO Checking for if match is not in downloaded - [SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv
+17:55:54 root INFO Show is in downloaded, skipping... - [SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv
+Traceback (most recent call last):
+  File "/home/alex/daisy/daisy_autodl.py", line 53, in <module>
+    time.sleep(1200)
+KeyboardInterrupt
+nohup: ignoring input
+17:56:45 root INFO Starting loop...
+17:56:45 root INFO autodl_queries.json loaded
+17:56:45 root INFO ['chainsaw man', 'blue lock', 'mob psycho 100 s3', 'buddy daddies', 'nier']
+17:56:45 root INFO downloaded.json loaded
+17:56:45 root INFO ['[SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv', '[SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv']
+17:56:46 root INFO Returned releases
+17:56:46 root INFO Checking query: chainsaw man
+17:56:46 root INFO Checking query: blue lock
+17:56:46 root INFO Checking query: mob psycho 100 s3
+17:56:46 root INFO Checking query: buddy daddies
+17:56:46 root INFO Query matched! - Buddy Daddies 
+17:56:46 root INFO Checking for if match is not in downloaded - [SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv
+17:56:46 root INFO Show is in downloaded, skipping... - [SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv
+17:56:46 root INFO Checking query: nier
+17:56:46 root INFO Query matched! - NieR Automata Ver1.1a 
+17:56:46 root INFO Checking for if match is not in downloaded - [SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv
+17:56:46 root INFO Show is in downloaded, skipping... - [SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv
+18:16:46 root INFO autodl_queries.json loaded
+18:16:46 root INFO ['chainsaw man', 'blue lock', 'mob psycho 100 s3', 'buddy daddies', 'nier']
+18:16:46 root INFO downloaded.json loaded
+18:16:46 root INFO ['[SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv', '[SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv']
+18:16:46 root INFO Returned releases
+18:16:46 root INFO Checking query: chainsaw man
+18:16:46 root INFO Checking query: blue lock
+18:16:46 root INFO Checking query: mob psycho 100 s3
+18:16:46 root INFO Checking query: buddy daddies
+18:16:46 root INFO Query matched! - Buddy Daddies 
+18:16:46 root INFO Checking for if match is not in downloaded - [SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv
+18:16:46 root INFO Show is in downloaded, skipping... - [SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv
+18:16:46 root INFO Checking query: nier
+18:16:46 root INFO Query matched! - NieR Automata Ver1.1a 
+18:16:46 root INFO Checking for if match is not in downloaded - [SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv
+18:16:46 root INFO Show is in downloaded, skipping... - [SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv
+18:36:46 root INFO autodl_queries.json loaded
+18:36:46 root INFO ['chainsaw man', 'blue lock', 'mob psycho 100 s3', 'buddy daddies', 'nier']
+18:36:46 root INFO downloaded.json loaded
+18:36:46 root INFO ['[SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv', '[SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv']
+18:36:46 root INFO Returned releases
+18:36:46 root INFO Checking query: chainsaw man
+18:36:46 root INFO Checking query: blue lock
+18:36:46 root INFO Checking query: mob psycho 100 s3
+18:36:46 root INFO Checking query: buddy daddies
+18:36:46 root INFO Query matched! - Buddy Daddies 
+18:36:46 root INFO Checking for if match is not in downloaded - [SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv
+18:36:46 root INFO Show is in downloaded, skipping... - [SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv
+18:36:46 root INFO Checking query: nier
+18:36:46 root INFO Query matched! - NieR Automata Ver1.1a 
+18:36:46 root INFO Checking for if match is not in downloaded - [SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv
+18:36:46 root INFO Show is in downloaded, skipping... - [SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv
+18:56:46 root INFO autodl_queries.json loaded
+18:56:46 root INFO ['chainsaw man', 'blue lock', 'mob psycho 100 s3', 'buddy daddies', 'nier']
+18:56:46 root INFO downloaded.json loaded
+18:56:46 root INFO ['[SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv', '[SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv']
+18:56:47 root INFO Returned releases
+18:56:47 root INFO Checking query: chainsaw man
+18:56:47 root INFO Checking query: blue lock
+18:56:47 root INFO Checking query: mob psycho 100 s3
+18:56:47 root INFO Checking query: buddy daddies
+18:56:47 root INFO Query matched! - Buddy Daddies 
+18:56:47 root INFO Checking for if match is not in downloaded - [SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv
+18:56:47 root INFO Show is in downloaded, skipping... - [SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv
+18:56:47 root INFO Checking query: nier
+18:56:47 root INFO Query matched! - NieR Automata Ver1.1a 
+18:56:47 root INFO Checking for if match is not in downloaded - [SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv
+18:56:47 root INFO Show is in downloaded, skipping... - [SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv
+19:16:47 root INFO autodl_queries.json loaded
+19:16:47 root INFO ['chainsaw man', 'blue lock', 'mob psycho 100 s3', 'buddy daddies', 'nier']
+19:16:47 root INFO downloaded.json loaded
+19:16:47 root INFO ['[SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv', '[SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv']
+19:16:47 root INFO Returned releases
+19:16:47 root INFO Checking query: chainsaw man
+19:16:47 root INFO Checking query: blue lock
+19:16:47 root INFO Query matched! - Blue Lock 
+19:16:47 root INFO Checking for if match is not in downloaded - [SubsPlease] Blue Lock - 20 (1080p) [96A5140C].mkv
+19:16:47 root INFO Show is not in downloaded, continuing...
+19:16:47 root INFO Calling subprocess with params - ./daisy_shell.sh Other autodl "magnet:?xt=urn:btih:GNV6S7NTFAXBMHDD4D5XQ2KN4D32HCYI&dn=%5BSubsPlease%5D%20Blue%20Lock%20-%2020%20%281080p%29%20%5B96A5140C%5D.mkv&xl=1446855182&tr=http%3A%2F%2Fnyaa.tracker.wf%3A7777%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2710%2Fannounce&tr=udp%3A%2F%2F9.rarbg.me%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker3.itzmx.com%3A6961%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker.lanta-net.ru%3A2710%2Fannounce&tr=http%3A%2F%2Fopen.acgnxtracker.com%3A80%2Fannounce&tr=wss%3A%2F%2Ftracker.openwebtorrent.com"
+19:17:07 root INFO Checking query: mob psycho 100 s3
+19:17:07 root INFO Checking query: buddy daddies
+19:17:07 root INFO Query matched! - Buddy Daddies 
+19:17:07 root INFO Checking for if match is not in downloaded - [SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv
+19:17:07 root INFO Show is in downloaded, skipping... - [SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv
+19:17:07 root INFO Checking query: nier
+19:17:07 root INFO Query matched! - NieR Automata Ver1.1a 
+19:17:07 root INFO Checking for if match is not in downloaded - [SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv
+19:17:07 root INFO Show is in downloaded, skipping... - [SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv
+19:37:07 root INFO autodl_queries.json loaded
+19:37:07 root INFO ['chainsaw man', 'blue lock', 'mob psycho 100 s3', 'buddy daddies', 'nier']
+19:37:07 root INFO downloaded.json loaded
+19:37:07 root INFO ['[SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv', '[SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv', '[SubsPlease] Blue Lock - 20 (1080p) [96A5140C].mkv']
+19:37:07 root INFO Returned releases
+19:37:07 root INFO Checking query: chainsaw man
+19:37:07 root INFO Checking query: blue lock
+19:37:07 root INFO Query matched! - Blue Lock 
+19:37:07 root INFO Checking for if match is not in downloaded - [SubsPlease] Blue Lock - 20 (1080p) [96A5140C].mkv
+19:37:07 root INFO Show is in downloaded, skipping... - [SubsPlease] Blue Lock - 20 (1080p) [96A5140C].mkv
+19:37:07 root INFO Checking query: mob psycho 100 s3
+19:37:07 root INFO Checking query: buddy daddies
+19:37:07 root INFO Query matched! - Buddy Daddies 
+19:37:07 root INFO Checking for if match is not in downloaded - [SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv
+19:37:07 root INFO Show is in downloaded, skipping... - [SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv
+19:37:07 root INFO Checking query: nier
+19:37:07 root INFO Query matched! - NieR Automata Ver1.1a 
+19:37:07 root INFO Checking for if match is not in downloaded - [SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv
+19:37:07 root INFO Show is in downloaded, skipping... - [SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv
+19:57:07 root INFO autodl_queries.json loaded
+19:57:07 root INFO ['chainsaw man', 'blue lock', 'mob psycho 100 s3', 'buddy daddies', 'nier']
+19:57:07 root INFO downloaded.json loaded
+19:57:07 root INFO ['[SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv', '[SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv', '[SubsPlease] Blue Lock - 20 (1080p) [96A5140C].mkv']
+19:57:07 root INFO Returned releases
+19:57:07 root INFO Checking query: chainsaw man
+19:57:07 root INFO Checking query: blue lock
+19:57:07 root INFO Query matched! - Blue Lock 
+19:57:07 root INFO Checking for if match is not in downloaded - [SubsPlease] Blue Lock - 20 (1080p) [96A5140C].mkv
+19:57:07 root INFO Show is in downloaded, skipping... - [SubsPlease] Blue Lock - 20 (1080p) [96A5140C].mkv
+19:57:07 root INFO Checking query: mob psycho 100 s3
+19:57:07 root INFO Checking query: buddy daddies
+19:57:07 root INFO Query matched! - Buddy Daddies 
+19:57:07 root INFO Checking for if match is not in downloaded - [SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv
+19:57:07 root INFO Show is in downloaded, skipping... - [SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv
+19:57:07 root INFO Checking query: nier
+19:57:07 root INFO Query matched! - NieR Automata Ver1.1a 
+19:57:07 root INFO Checking for if match is not in downloaded - [SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv
+19:57:07 root INFO Show is in downloaded, skipping... - [SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv
+20:17:07 root INFO autodl_queries.json loaded
+20:17:07 root INFO ['chainsaw man', 'blue lock', 'mob psycho 100 s3', 'buddy daddies', 'nier']
+20:17:07 root INFO downloaded.json loaded
+20:17:07 root INFO ['[SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv', '[SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv', '[SubsPlease] Blue Lock - 20 (1080p) [96A5140C].mkv']
+20:17:08 root INFO Returned releases
+20:17:08 root INFO Checking query: chainsaw man
+20:17:08 root INFO Checking query: blue lock
+20:17:08 root INFO Query matched! - Blue Lock 
+20:17:08 root INFO Checking for if match is not in downloaded - [SubsPlease] Blue Lock - 20 (1080p) [96A5140C].mkv
+20:17:08 root INFO Show is in downloaded, skipping... - [SubsPlease] Blue Lock - 20 (1080p) [96A5140C].mkv
+20:17:08 root INFO Checking query: mob psycho 100 s3
+20:17:08 root INFO Checking query: buddy daddies
+20:17:08 root INFO Query matched! - Buddy Daddies 
+20:17:08 root INFO Checking for if match is not in downloaded - [SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv
+20:17:08 root INFO Show is in downloaded, skipping... - [SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv
+20:17:08 root INFO Checking query: nier
+20:17:08 root INFO Query matched! - NieR Automata Ver1.1a 
+20:17:08 root INFO Checking for if match is not in downloaded - [SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv
+20:17:08 root INFO Show is in downloaded, skipping... - [SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv
+20:37:08 root INFO autodl_queries.json loaded
+20:37:08 root INFO ['chainsaw man', 'blue lock', 'mob psycho 100 s3', 'buddy daddies', 'nier']
+20:37:08 root INFO downloaded.json loaded
+20:37:08 root INFO ['[SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv', '[SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv', '[SubsPlease] Blue Lock - 20 (1080p) [96A5140C].mkv']
+20:37:08 root INFO Returned releases
+20:37:08 root INFO Checking query: chainsaw man
+20:37:08 root INFO Checking query: blue lock
+20:37:08 root INFO Query matched! - Blue Lock 
+20:37:08 root INFO Checking for if match is not in downloaded - [SubsPlease] Blue Lock - 20 (1080p) [96A5140C].mkv
+20:37:08 root INFO Show is in downloaded, skipping... - [SubsPlease] Blue Lock - 20 (1080p) [96A5140C].mkv
+20:37:08 root INFO Checking query: mob psycho 100 s3
+20:37:08 root INFO Checking query: buddy daddies
+20:37:08 root INFO Query matched! - Buddy Daddies 
+20:37:08 root INFO Checking for if match is not in downloaded - [SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv
+20:37:08 root INFO Show is in downloaded, skipping... - [SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv
+20:37:08 root INFO Checking query: nier
+20:37:08 root INFO Query matched! - NieR Automata Ver1.1a 
+20:37:08 root INFO Checking for if match is not in downloaded - [SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv
+20:37:08 root INFO Show is in downloaded, skipping... - [SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv
+20:57:08 root INFO autodl_queries.json loaded
+20:57:08 root INFO ['chainsaw man', 'blue lock', 'mob psycho 100 s3', 'buddy daddies', 'nier']
+20:57:08 root INFO downloaded.json loaded
+20:57:08 root INFO ['[SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv', '[SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv', '[SubsPlease] Blue Lock - 20 (1080p) [96A5140C].mkv']
+20:57:08 root INFO Returned releases
+20:57:08 root INFO Checking query: chainsaw man
+20:57:08 root INFO Checking query: blue lock
+20:57:08 root INFO Query matched! - Blue Lock 
+20:57:08 root INFO Checking for if match is not in downloaded - [SubsPlease] Blue Lock - 20 (1080p) [96A5140C].mkv
+20:57:08 root INFO Show is in downloaded, skipping... - [SubsPlease] Blue Lock - 20 (1080p) [96A5140C].mkv
+20:57:08 root INFO Checking query: mob psycho 100 s3
+20:57:08 root INFO Checking query: buddy daddies
+20:57:08 root INFO Query matched! - Buddy Daddies 
+20:57:08 root INFO Checking for if match is not in downloaded - [SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv
+20:57:08 root INFO Show is in downloaded, skipping... - [SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv
+20:57:08 root INFO Checking query: nier
+20:57:08 root INFO Query matched! - NieR Automata Ver1.1a 
+20:57:08 root INFO Checking for if match is not in downloaded - [SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv
+20:57:08 root INFO Show is in downloaded, skipping... - [SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv
+21:17:08 root INFO autodl_queries.json loaded
+21:17:08 root INFO ['chainsaw man', 'blue lock', 'mob psycho 100 s3', 'buddy daddies', 'nier']
+21:17:08 root INFO downloaded.json loaded
+21:17:08 root INFO ['[SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv', '[SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv', '[SubsPlease] Blue Lock - 20 (1080p) [96A5140C].mkv']
+21:17:08 root INFO Returned releases
+21:17:08 root INFO Checking query: chainsaw man
+21:17:08 root INFO Checking query: blue lock
+21:17:08 root INFO Query matched! - Blue Lock 
+21:17:08 root INFO Checking for if match is not in downloaded - [SubsPlease] Blue Lock - 20 (1080p) [96A5140C].mkv
+21:17:08 root INFO Show is in downloaded, skipping... - [SubsPlease] Blue Lock - 20 (1080p) [96A5140C].mkv
+21:17:08 root INFO Checking query: mob psycho 100 s3
+21:17:08 root INFO Checking query: buddy daddies
+21:17:08 root INFO Query matched! - Buddy Daddies 
+21:17:08 root INFO Checking for if match is not in downloaded - [SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv
+21:17:08 root INFO Show is in downloaded, skipping... - [SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv
+21:17:08 root INFO Checking query: nier
+21:17:08 root INFO Query matched! - NieR Automata Ver1.1a 
+21:17:08 root INFO Checking for if match is not in downloaded - [SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv
+21:17:08 root INFO Show is in downloaded, skipping... - [SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv
+21:37:08 root INFO autodl_queries.json loaded
+21:37:08 root INFO ['chainsaw man', 'blue lock', 'mob psycho 100 s3', 'buddy daddies', 'nier']
+21:37:08 root INFO downloaded.json loaded
+21:37:08 root INFO ['[SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv', '[SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv', '[SubsPlease] Blue Lock - 20 (1080p) [96A5140C].mkv']
+21:37:08 root INFO Returned releases
+21:37:08 root INFO Checking query: chainsaw man
+21:37:08 root INFO Checking query: blue lock
+21:37:08 root INFO Query matched! - Blue Lock 
+21:37:08 root INFO Checking for if match is not in downloaded - [SubsPlease] Blue Lock - 20 (1080p) [96A5140C].mkv
+21:37:08 root INFO Show is in downloaded, skipping... - [SubsPlease] Blue Lock - 20 (1080p) [96A5140C].mkv
+21:37:08 root INFO Checking query: mob psycho 100 s3
+21:37:08 root INFO Checking query: buddy daddies
+21:37:08 root INFO Query matched! - Buddy Daddies 
+21:37:08 root INFO Checking for if match is not in downloaded - [SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv
+21:37:08 root INFO Show is in downloaded, skipping... - [SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv
+21:37:08 root INFO Checking query: nier
+21:37:08 root INFO Query matched! - NieR Automata Ver1.1a 
+21:37:08 root INFO Checking for if match is not in downloaded - [SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv
+21:37:08 root INFO Show is in downloaded, skipping... - [SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv

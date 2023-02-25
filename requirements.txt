@@ -1,4 +1,4 @@
-beautifulsoup4==4.11.1
+beautifulsoup4==4.11.2
 PlexAPI==4.13.1
 qbittorrent==0.1.6
 requests==2.25.1

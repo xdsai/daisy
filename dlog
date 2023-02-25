@@ -1,0 +1,519 @@
+19:35:40 root INFO ------------------NEW TORRENT------------------
+19:35:40 root INFO Parsed args - type: Movie, name: mov, link: https://www.1337x.to/torrent/4438042/Kamikaze-Girls-2004-1080p-BluRay-5-1-YTS-YIFY/
+19:35:40 root INFO QB object: <qbittorrent.client.Client object at 0x7ff0c0985050>
+19:35:40 root INFO Using user-agent: {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'}
+19:35:40 root INFO PLEX server entity: <PlexServer:http://192.168.0.101>
+19:35:40 root INFO Env thinks the user is alex, effective user is alex
+19:35:40 root INFO Starting new torrent
+19:35:40 root INFO Magnet converter - https://www.1337x.to/torrent/4438042/Kam
+19:35:41 root INFO Made soup
+19:35:41 root INFO Returning [magnet:?xt=urn:btih:5086191DD7690E2E05A0B271B00991F3F0B21E93&dn=Kamikaze+Girls+%282004%29+%5B1080p%5D+%5BBluRay%5D+%5B5.1%5D+%5BYTS%5D+%5BYIFY%5D&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce]
+19:35:41 root INFO Detected type: movie
+19:35:41 root INFO Beginning download to /movies/temp/
+19:35:41 root INFO QB response: Ok.
+19:35:46 root INFO Found torrent name - Kamikaze Girls (2004) [1080p] [BluRay] [5.1] [YTS] [YIFY]
+19:59:37 root INFO ------------------NEW TORRENT------------------
+19:59:37 root INFO Parsed args - type: Movie, name: mov, link: https://www.1337x.to/torrent/4437951/Kamikaze-Girls-2004-720p-BluRay-YTS-YIFY/
+19:59:37 root INFO QB object: <qbittorrent.client.Client object at 0x7f5f26f87210>
+19:59:37 root INFO Using user-agent: {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'}
+19:59:37 root INFO PLEX server entity: <PlexServer:http://192.168.0.101>
+19:59:37 root INFO Env thinks the user is alex, effective user is alex
+19:59:37 root INFO Starting new torrent
+19:59:37 root INFO Magnet converter - https://www.1337x.to/torrent/4437951/Kam
+19:59:37 root INFO Made soup
+19:59:37 root INFO Returning [magnet:?xt=urn:btih:08F7439F3369001533FC6AA612B0FF25650194EF&dn=Kamikaze+Girls+%282004%29+%5B720p%5D+%5BBluRay%5D+%5BYTS%5D+%5BYIFY%5D&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce]
+19:59:37 root INFO Detected type: movie
+19:59:37 root INFO Beginning download to /movies/temp/
+19:59:37 root INFO QB response: Ok.
+19:59:42 root INFO Found torrent name - Kamikaze Girls (2004) [720p] [BluRay] [YTS] [YIFY]
+20:45:20 root INFO Torrent download finished, returning...
+20:45:20 root INFO {'added_on': 1676491177, 'amount_left': 0, 'auto_tmm': False, 'availability': -1, 'category': '', 'completed': 984322777, 'completion_on': 1676493919, 'content_path': '/movies/temp/Kamikaze Girls (2004) [720p] [BluRay] [YTS.MX]', 'dl_limit': 0, 'dlspeed': 237061, 'download_path': '', 'downloaded': 984522666, 'downloaded_session': 984522666, 'eta': 18000, 'f_l_piece_prio': False, 'force_start': False, 'hash': '08f7439f3369001533fc6aa612b0ff25650194ef', 'infohash_v1': '08f7439f3369001533fc6aa612b0ff25650194ef', 'infohash_v2': '', 'last_activity': 1676493919, 'magnet_uri': 'magnet:?xt=urn:btih:08f7439f3369001533fc6aa612b0ff25650194ef&dn=Kamikaze%20Girls%20(2004)%20%5b720p%5d%20%5bBluRay%5d%20%5bYTS.MX%5d&tr=udp%3a%2f%2ftracker.coppersurfer.tk%3a6969%2fannounce&tr=udp%3a%2f%2f9.rarbg.com%3a2710%2fannounce&tr=udp%3a%2f%2fp4p.arenabg.com%3a1337&tr=udp%3a%2f%2ftracker.internetwarriors.net%3a1337&tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce&tr=http%3a%2f%2ftracker.openbittorrent.com%3a80%2fannounce&tr=udp%3a%2f%2fopentracker.i2p.rocks%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.internetwarriors.net%3a1337%2fannounce&tr=udp%3a%2f%2ftracker.leechers-paradise.org%3a6969%2fannounce&tr=udp%3a%2f%2fcoppersurfer.tk%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.zer0day.to%3a1337%2fannounce', 'max_ratio': 1, 'max_seeding_time': 300, 'name': 'Kamikaze Girls (2004) [720p] [BluRay] [YTS] [YIFY]', 'num_complete': 9, 'num_incomplete': 2, 'num_leechs': 0, 'num_seeds': 0, 'priority': 0, 'progress': 1, 'ratio': 0, 'ratio_limit': -2, 'save_path': '/movies/temp', 'seeding_time': 0, 'seeding_time_limit': -2, 'seen_complete': 1676493919, 'seq_dl': False, 'size': 984322777, 'state': 'stalledUP', 'super_seeding': False, 'tags': '', 'time_active': 2741, 'total_size': 984322777, 'tracker': 'udp://tracker.opentrackr.org:1337/announce', 'trackers_count': 11, 'up_limit': 0, 'uploaded': 0, 'uploaded_session': 0, 'upspeed': 0}
+20:45:20 root INFO Generated save path - /home/alex/hdd5a/temp/Kamikaze Girls (2004) [720p] [BluRay] [YTS.MX], movie_file_name: Kamikaze Girls (2004) [720p] [BluRay] [YTS.MX]
+20:45:20 root INFO Checking for directory...
+20:45:20 root INFO Is directory = True
+20:45:20 root INFO Files within - ['www.YTS.MX.jpg', 'Kamikaze.Girls.2004.720p.BluRay.x264.AAC-[YTS.MX].mp4', 'Subs']
+20:45:20 root INFO Found movie - Kamikaze.Girls.2004.720p.BluRay.x264.AAC-[YTS.MX].mp4
+20:45:20 root INFO Extensionless - Kamikaze.Girls.2004.720p.BluRay.x264.AAC-[YTS.MX]
+20:45:20 root INFO Trying to rename - /home/alex/hdd5a/temp/Kamikaze Girls (2004) [720p] [BluRay] [YTS.MX]/Kamikaze.Girls.2004.720p.BluRay.x264.AAC-[YTS.MX].mp4 to /home/alex/hdd5a/movies//Kamikaze.Girls.2004.720p.BluRay.x264.AAC-[YTS.MX].mp4
+20:45:21 root INFO Download of Kamikaze Girls (2004) [720p] [BluRay] [YTS] [YIFY] completed
+20:45:21 root INFO Updated plex library
+12:15:10 root INFO ------------------NEW TORRENT------------------
+12:15:10 root INFO Parsed args - type: Movie, name: mov, link: https://1337x.to/torrent/5495949/Glass-Onion-A-Knives-Out-Mystery-2022-1080p-NF-WEB-DL-DDP5-1-Atmos-HDR10-HEVC-ShiNobi-TGx/
+12:15:10 root INFO QB object: <qbittorrent.client.Client object at 0x7fe7d98c4a50>
+12:15:10 root INFO Using user-agent: {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'}
+12:15:10 root INFO PLEX server entity: <PlexServer:http://192.168.0.101>
+12:15:10 root INFO Env thinks the user is alex, effective user is alex
+12:15:10 root INFO Starting new torrent
+12:15:10 root INFO Magnet converter - https://1337x.to/torrent/5495949/Glass-O
+12:15:10 root INFO Made soup
+12:15:10 root INFO Returning [magnet:?xt=urn:btih:9F680E94E6CE21FAFD12B210099AC07FCB67228E&dn=Glass.Onion.A.Knives.Out.Mystery.2022.1080p.NF.WEB-DL.DDP5.1.Atmos.HDR10.HEVC-ShiNobi%5BTGx%5D&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.birkenwald.de%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.moeking.me%3A6969%2Fannounce&tr=udp%3A%2F%2Fopentor.org%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.me%3A2970%2Fannounce&tr=https%3A%2F%2Ftracker.foreverpirates.co%3A443%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce]
+12:15:10 root INFO Detected type: movie
+12:15:10 root INFO Beginning download to /movies/temp/
+12:15:10 root INFO QB response: Ok.
+12:15:15 root INFO Found torrent name - Glass.Onion.A.Knives.Out.Mystery.2022.1080p.NF.WEB-DL.DDP5.1.Atmos.HDR10.HEVC-ShiNobi[TGx]
+12:20:08 root INFO Torrent download finished, returning...
+12:20:08 root INFO {'added_on': 1676895310, 'amount_left': 0, 'auto_tmm': False, 'availability': -1, 'category': '', 'completed': 4251990746, 'completion_on': 1676895606, 'content_path': '/movies/temp/Glass.Onion.A.Knives.Out.Mystery.2022.1080p.NF.WEB-DL.DDP5.1.Atmos.HDR10.HEVC-ShiNobi[TGx]', 'dl_limit': 0, 'dlspeed': 7741958, 'download_path': '', 'downloaded': 4265936775, 'downloaded_session': 4267056796, 'eta': 18000, 'f_l_piece_prio': False, 'force_start': False, 'hash': '9f680e94e6ce21fafd12b210099ac07fcb67228e', 'infohash_v1': '9f680e94e6ce21fafd12b210099ac07fcb67228e', 'infohash_v2': '', 'last_activity': 1676895606, 'magnet_uri': 'magnet:?xt=urn:btih:9f680e94e6ce21fafd12b210099ac07fcb67228e&dn=Glass.Onion.A.Knives.Out.Mystery.2022.1080p.NF.WEB-DL.DDP5.1.Atmos.HDR10.HEVC-ShiNobi%5bTGx%5d&tr=udp%3a%2f%2fopen.stealth.si%3a80%2fannounce&tr=udp%3a%2f%2ftracker.tiny-vps.com%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce&tr=udp%3a%2f%2ftracker.torrent.eu.org%3a451%2fannounce&tr=udp%3a%2f%2fexplodie.org%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.cyberia.is%3a6969%2fannounce&tr=udp%3a%2f%2fipv4.tracker.harry.lu%3a80%2fannounce&tr=udp%3a%2f%2fp4p.arenabg.com%3a1337%2fannounce&tr=udp%3a%2f%2ftracker.birkenwald.de%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.moeking.me%3a6969%2fannounce&tr=udp%3a%2f%2fopentor.org%3a2710%2fannounce&tr=udp%3a%2f%2ftracker.dler.org%3a6969%2fannounce&tr=udp%3a%2f%2f9.rarbg.me%3a2970%2fannounce&tr=https%3a%2f%2ftracker.foreverpirates.co%3a443%2fannounce&tr=http%3a%2f%2ftracker.openbittorrent.com%3a80%2fannounce&tr=udp%3a%2f%2fopentracker.i2p.rocks%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.internetwarriors.net%3a1337%2fannounce&tr=udp%3a%2f%2ftracker.leechers-paradise.org%3a6969%2fannounce&tr=udp%3a%2f%2fcoppersurfer.tk%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.zer0day.to%3a1337%2fannounce', 'max_ratio': 1, 'max_seeding_time': 300, 'name': 'Glass.Onion.A.Knives.Out.Mystery.2022.1080p.NF.WEB-DL.DDP5.1.Atmos.HDR10.HEVC-ShiNobi[TGx]', 'num_complete': 385, 'num_incomplete': 55, 'num_leechs': 2, 'num_seeds': 0, 'priority': 0, 'progress': 1, 'ratio': 2.0426228656424474e-05, 'ratio_limit': -2, 'save_path': '/movies/temp', 'seeding_time': 0, 'seeding_time_limit': -2, 'seen_complete': 1676895606, 'seq_dl': False, 'size': 4251990746, 'state': 'uploading', 'super_seeding': False, 'tags': '', 'time_active': 296, 'total_size': 4251990746, 'tracker': 'udp://explodie.org:6969/announce', 'trackers_count': 20, 'up_limit': 0, 'uploaded': 87137, 'uploaded_session': 87665, 'upspeed': 402}
+12:20:08 root INFO Generated save path - /home/alex/hdd5a/temp/Glass.Onion.A.Knives.Out.Mystery.2022.1080p.NF.WEB-DL.DDP5.1.Atmos.HDR10.HEVC-ShiNobi[TGx], movie_file_name: Glass.Onion.A.Knives.Out.Mystery.2022.1080p.NF.WEB-DL.DDP5.1.Atmos.HDR10.HEVC-ShiNobi[TGx]
+12:20:08 root INFO Checking for directory...
+12:20:08 root INFO Is directory = True
+12:20:08 root INFO Files within - ['NEW upcoming releases by Xclusive.txt', '[TGx]Downloaded from torrentgalaxy.to .txt', 'Glass.Onion.A.Knives.Out.Mystery.2022.1080p.NF.WEB-DL.DDP5.1.Atmos.HDR10.HEVC-ShiNobi.mkv']
+12:20:08 root INFO Found movie - Glass.Onion.A.Knives.Out.Mystery.2022.1080p.NF.WEB-DL.DDP5.1.Atmos.HDR10.HEVC-ShiNobi.mkv
+12:20:08 root INFO Extensionless - Glass.Onion.A.Knives.Out.Mystery.2022.1080p.NF.WEB-DL.DDP5.1.Atmos.HDR10.HEVC-ShiNobi
+12:20:08 root INFO Trying to rename - /home/alex/hdd5a/temp/Glass.Onion.A.Knives.Out.Mystery.2022.1080p.NF.WEB-DL.DDP5.1.Atmos.HDR10.HEVC-ShiNobi[TGx]/Glass.Onion.A.Knives.Out.Mystery.2022.1080p.NF.WEB-DL.DDP5.1.Atmos.HDR10.HEVC-ShiNobi.mkv to /home/alex/hdd5a/movies//Glass.Onion.A.Knives.Out.Mystery.2022.1080p.NF.WEB-DL.DDP5.1.Atmos.HDR10.HEVC-ShiNobi.mkv
+12:20:08 root INFO Download of Glass.Onion.A.Knives.Out.Mystery.2022.1080p.NF.WEB-DL.DDP5.1.Atmos.HDR10.HEVC-ShiNobi[TGx] completed
+12:20:08 root INFO Updated plex library
+20:25:56 root INFO ------------------NEW TORRENT------------------
+20:25:56 root INFO Parsed args - type: Other, name: asd, link: magnet:?xt=urn:btih:5AVEUNVYH4CPYG5WESGREIDY37NGI6RK
+20:25:56 root INFO QB object: <qbittorrent.client.Client object at 0x7f9906cb8950>
+20:25:56 root INFO Using user-agent: {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'}
+20:25:56 root INFO PLEX server entity: <PlexServer:http://192.168.0.101>
+20:25:56 root INFO Env thinks the user is alex, effective user is alex
+20:25:56 root INFO Starting new torrent
+20:25:56 root INFO Magnet converter - magnet:?xt=urn:btih:5AVEUNVYH4CPYG5WESGR
+20:25:56 root INFO Link already is a magnet, returning...
+20:25:56 root INFO Detected type: other/show
+20:25:56 root INFO Beginning download to /other/temp/
+20:25:56 root INFO QB response: Ok.
+20:26:01 root INFO Found torrent name - [SubsPlease] Buddy Daddies - 07 (1080p) [315742E1].mkv
+20:28:47 root INFO Torrent download finished, returning...
+20:28:47 root INFO {'added_on': 1677011156, 'amount_left': 0, 'auto_tmm': False, 'availability': -1, 'category': '', 'completed': 1467271833, 'completion_on': 1677011325, 'content_path': '/other/temp/[SubsPlease] Buddy Daddies - 07 (1080p) [315742E1].mkv', 'dl_limit': 0, 'dlspeed': 3087975, 'download_path': '', 'downloaded': 1473120410, 'downloaded_session': 1473740281, 'eta': 18000, 'f_l_piece_prio': False, 'force_start': False, 'hash': 'e82a4a36b83f04fc1bb6248d122078dfda647a2a', 'infohash_v1': 'e82a4a36b83f04fc1bb6248d122078dfda647a2a', 'infohash_v2': '', 'last_activity': 1677011325, 'magnet_uri': 'magnet:?xt=urn:btih:e82a4a36b83f04fc1bb6248d122078dfda647a2a&dn=%5bSubsPlease%5d%20Buddy%20Daddies%20-%2007%20(1080p)%20%5b315742E1%5d.mkv', 'max_ratio': 1, 'max_seeding_time': 300, 'name': '[SubsPlease] Buddy Daddies - 07 (1080p) [315742E1].mkv', 'num_complete': 35, 'num_incomplete': 98, 'num_leechs': 1, 'num_seeds': 0, 'priority': 0, 'progress': 1, 'ratio': 0, 'ratio_limit': -2, 'save_path': '/other/temp', 'seeding_time': 0, 'seeding_time_limit': -2, 'seen_complete': 1677011325, 'seq_dl': False, 'size': 1467271833, 'state': 'stalledUP', 'super_seeding': False, 'tags': '', 'time_active': 168, 'total_size': 1467271833, 'tracker': '', 'trackers_count': 0, 'up_limit': 0, 'uploaded': 0, 'uploaded_session': 0, 'upspeed': 0}
+20:28:47 root INFO Generated - save_path: /home/alex/hdd1a/temp/[SubsPlease] Buddy Daddies - 07 (1080p) [315742E1].mkv, movie_file_name: [SubsPlease] Buddy Daddies - 07 (1080p) [315742E1].mkv, normalized_name: asd
+20:28:47 root INFO Checking for directory...
+20:28:47 root INFO Checking for SubsPlease in [SubsPlease] Buddy Daddies - 07 (1080p) [315742E1].mkv
+20:28:47 root INFO SubsPlease found
+20:28:47 root INFO Generated - show_name: Buddy Daddies, normalized_name = buddy_daddies
+20:28:47 root INFO Checking for if folder /home/alex/hdd1a/buddy_daddies exists
+20:28:47 root INFO Trying to rename /home/alex/hdd1a/temp/[SubsPlease] Buddy Daddies - 07 (1080p) [315742E1].mkv to /home/alex/hdd1a/buddy_daddies/[SubsPlease] Buddy Daddies - 07 (1080p) [315742E1].mkv
+20:28:47 root INFO Successfully renamed
+20:28:47 root INFO Download of [SubsPlease] Buddy Daddies - 07 (1080p) [315742E1].mkv completed
+20:28:47 root INFO Updated plex library
+18:20:10 root INFO ------------------NEW TORRENT------------------
+18:20:10 root INFO Parsed args - type: Movie, name: mov, link: https://1337x.to/torrent/3783629/The-Poison-Rose-2019-WEBRip-1080p-YTS-YIFY/
+18:20:10 root INFO QB object: <qbittorrent.client.Client object at 0x7fc2c8975510>
+18:20:10 root INFO Using user-agent: {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'}
+18:20:10 root INFO PLEX server entity: <PlexServer:http://192.168.0.101>
+18:20:10 root INFO Env thinks the user is alex, effective user is alex
+18:20:10 root INFO Starting new torrent
+18:20:10 root INFO Magnet converter - https://1337x.to/torrent/3783629/The-Poi
+18:20:11 root INFO Made soup
+18:20:11 root INFO Returning [magnet:?xt=urn:btih:C42DE1ACAB75C8B715634B88E792A5F9AC7879D1&dn=The+Poison+Rose+%282019%29+%5BWEBRip%5D+%5B1080p%5D+%5BYTS%5D+%5BYIFY%5D&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce]
+18:20:11 root INFO Detected type: movie
+18:20:11 root INFO Beginning download to /movies/temp/
+18:20:11 root INFO QB response: Ok.
+18:20:16 root INFO Found torrent name - The Poison Rose (2019) [WEBRip] [1080p] [YTS] [YIFY]
+18:20:16 root INFO Torrent download finished, returning...
+18:20:16 root INFO {'added_on': 1677262811, 'amount_left': 0, 'auto_tmm': False, 'availability': 0, 'category': '', 'completed': 0, 'completion_on': 0, 'content_path': '', 'dl_limit': 0, 'dlspeed': 0, 'download_path': '', 'downloaded': 0, 'downloaded_session': 0, 'eta': 8640000, 'f_l_piece_prio': False, 'force_start': False, 'hash': 'c42de1acab75c8b715634b88e792a5f9ac7879d1', 'infohash_v1': 'c42de1acab75c8b715634b88e792a5f9ac7879d1', 'infohash_v2': '', 'last_activity': 1677262811, 'magnet_uri': 'magnet:?xt=urn:btih:c42de1acab75c8b715634b88e792a5f9ac7879d1&dn=The%20Poison%20Rose%20(2019)%20%5bWEBRip%5d%20%5b1080p%5d%20%5bYTS%5d%20%5bYIFY%5d&tr=udp%3a%2f%2ftracker.coppersurfer.tk%3a6969%2fannounce&tr=udp%3a%2f%2f9.rarbg.com%3a2710%2fannounce&tr=udp%3a%2f%2fp4p.arenabg.com%3a1337&tr=udp%3a%2f%2ftracker.internetwarriors.net%3a1337&tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce&tr=http%3a%2f%2ftracker.openbittorrent.com%3a80%2fannounce&tr=udp%3a%2f%2fopentracker.i2p.rocks%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.internetwarriors.net%3a1337%2fannounce&tr=udp%3a%2f%2ftracker.leechers-paradise.org%3a6969%2fannounce&tr=udp%3a%2f%2fcoppersurfer.tk%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.zer0day.to%3a1337%2fannounce', 'max_ratio': 1, 'max_seeding_time': 300, 'name': 'The Poison Rose (2019) [WEBRip] [1080p] [YTS] [YIFY]', 'num_complete': 4, 'num_incomplete': 2, 'num_leechs': 3, 'num_seeds': 0, 'priority': 7, 'progress': 0, 'ratio': 0, 'ratio_limit': -2, 'save_path': '/movies/temp', 'seeding_time': 0, 'seeding_time_limit': -2, 'seen_complete': 0, 'seq_dl': False, 'size': 0, 'state': 'metaDL', 'super_seeding': False, 'tags': '', 'time_active': 4, 'total_size': -1, 'tracker': 'udp://tracker.opentrackr.org:1337/announce', 'trackers_count': 11, 'up_limit': 0, 'uploaded': 0, 'uploaded_session': 0, 'upspeed': 0}
+11:35:13 root INFO ------------------NEW TORRENT------------------
+11:35:13 root INFO Parsed args - type: Movie, name: mov, link: https://1337x.to/torrent/3783629/The-Poison-Rose-2019-WEBRip-1080p-YTS-YIFY/
+11:35:13 root INFO QB object: <qbittorrent.client.Client object at 0x7f719f785450>
+11:35:13 root INFO Using user-agent: {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'}
+11:35:13 root INFO PLEX server entity: <PlexServer:http://192.168.0.101>
+11:35:13 root INFO Env thinks the user is alex, effective user is alex
+11:35:13 root INFO Starting new torrent
+11:35:13 root INFO Magnet converter - https://1337x.to/torrent/3783629/The-Poi
+11:35:14 root INFO Made soup
+11:35:14 root INFO Returning [magnet:?xt=urn:btih:C42DE1ACAB75C8B715634B88E792A5F9AC7879D1&dn=The+Poison+Rose+%282019%29+%5BWEBRip%5D+%5B1080p%5D+%5BYTS%5D+%5BYIFY%5D&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce]
+11:35:14 root INFO Detected type: movie
+11:35:14 root INFO Beginning download to /movies/temp/
+11:35:14 root INFO QB response: Ok.
+11:35:19 root INFO Found torrent name - The Poison Rose (2019) [WEBRip] [1080p] [YTS] [YIFY]
+14:44:20 root INFO ------------------NEW TORRENT------------------
+14:44:20 root INFO Parsed args - type: Show, name: PEN15, link: https://www.1337x.to/torrent/4622121/PEN15-S01-COMPLETE-720p-HULU-WEBRip-x264-GalaxyTV/
+14:44:20 root INFO QB object: <qbittorrent.client.Client object at 0x7f01819c1650>
+14:44:20 root INFO Using user-agent: {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'}
+14:44:20 root INFO PLEX server entity: <PlexServer:http://192.168.0.101>
+14:44:20 root INFO Env thinks the user is alex, effective user is alex
+14:44:20 root INFO Starting new torrent
+14:44:20 root INFO Magnet converter - https://www.1337x.to/torrent/4622121/PEN
+14:44:20 root INFO Made soup
+14:44:20 root INFO Returning [magnet:?xt=urn:btih:1B6076381C7005E40332C29D7D58984AB324BB76&dn=PEN15.S01.COMPLETE.720p.HULU.WEBRip.x264-GalaxyTV+%E2%AD%90&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.iamhansen.xyz%3A2000%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.moeking.me%3A6969%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce]
+14:44:20 root INFO Detected type: other/show
+14:44:20 root INFO Beginning download to /other/temp/
+14:44:20 root INFO QB response: Ok.
+14:44:25 root INFO Found torrent name - PEN15.S01.COMPLETE.720p.HULU.WEBRip.x264-GalaxyTV ⭐
+14:56:08 root INFO Torrent download finished, returning...
+14:56:08 root INFO {'added_on': 1677336260, 'amount_left': 0, 'auto_tmm': False, 'availability': 3.999000072479248, 'category': '', 'completed': 1849617544, 'completion_on': 0, 'content_path': '/other/temp/PEN15.S01.COMPLETE.720p.HULU.WEBRip.x264-GalaxyTV[TGx]', 'dl_limit': 0, 'dlspeed': 893204, 'download_path': '', 'downloaded': 1849696178, 'downloaded_session': 1849699464, 'eta': 0, 'f_l_piece_prio': False, 'force_start': False, 'hash': '1b6076381c7005e40332c29d7d58984ab324bb76', 'infohash_v1': '1b6076381c7005e40332c29d7d58984ab324bb76', 'infohash_v2': '', 'last_activity': 1677336965, 'magnet_uri': 'magnet:?xt=urn:btih:1b6076381c7005e40332c29d7d58984ab324bb76&dn=PEN15.S01.COMPLETE.720p.HULU.WEBRip.x264-GalaxyTV%5bTGx%5d&tr=udp%3a%2f%2ftracker.coppersurfer.tk%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.leechers-paradise.org%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.cyberia.is%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.iamhansen.xyz%3a2000%2fannounce&tr=udp%3a%2f%2fp4p.arenabg.com%3a1337%2fannounce&tr=udp%3a%2f%2fexplodie.org%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce&tr=udp%3a%2f%2ftracker.tiny-vps.com%3a6969%2fannounce&tr=udp%3a%2f%2fexodus.desync.com%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.torrent.eu.org%3a451%2fannounce&tr=udp%3a%2f%2ftracker.moeking.me%3a6969%2fannounce&tr=udp%3a%2f%2fipv4.tracker.harry.lu%3a80%2fannounce&tr=udp%3a%2f%2fopen.stealth.si%3a80%2fannounce&tr=udp%3a%2f%2f9.rarbg.to%3a2710%2fannounce&tr=http%3a%2f%2ftracker.openbittorrent.com%3a80%2fannounce&tr=udp%3a%2f%2fopentracker.i2p.rocks%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.internetwarriors.net%3a1337%2fannounce&tr=udp%3a%2f%2fcoppersurfer.tk%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.zer0day.to%3a1337%2fannounce', 'max_ratio': 1, 'max_seeding_time': 300, 'name': 'PEN15.S01.COMPLETE.720p.HULU.WEBRip.x264-GalaxyTV ⭐', 'num_complete': 18, 'num_incomplete': 13, 'num_leechs': 0, 'num_seeds': 3, 'priority': 7, 'progress': 1, 'ratio': 0, 'ratio_limit': -2, 'save_path': '/other/temp', 'seeding_time': 0, 'seeding_time_limit': -2, 'seen_complete': 1677336966, 'seq_dl': False, 'size': 1849617544, 'state': 'downloading', 'super_seeding': False, 'tags': '', 'time_active': 706, 'total_size': 1849617544, 'tracker': 'udp://tracker.internetwarriors.net:1337/announce', 'trackers_count': 19, 'up_limit': 0, 'uploaded': 0, 'uploaded_session': 0, 'upspeed': 0}
+14:56:08 root INFO Generated - save_path: /home/alex/hdd1a/temp/PEN15.S01.COMPLETE.720p.HULU.WEBRip.x264-GalaxyTV[TGx], movie_file_name: PEN15.S01.COMPLETE.720p.HULU.WEBRip.x264-GalaxyTV[TGx], normalized_name: PEN15
+14:56:08 root INFO Checking for directory...
+14:56:08 root INFO Is directory = True
+14:56:08 root INFO Trying to rename - /home/alex/hdd1a/temp/PEN15.S01.COMPLETE.720p.HULU.WEBRip.x264-GalaxyTV[TGx] to /home/alex/hdd1a/PEN15
+14:56:08 root ERROR Callback: [Errno 13] Permission denied: '/home/alex/hdd1a/temp/PEN15.S01.COMPLETE.720p.HULU.WEBRip.x264-GalaxyTV[TGx]' -> '/home/alex/hdd1a/PEN15'
+17:03:18 root ERROR Error callback: HTTPConnectionPool(host='192.168.0.101', port=8090): Max retries exceeded with url: /api/v2/torrents/info (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f719f7878d0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+17:15:28 root INFO ------------------NEW TORRENT------------------
+17:15:28 root INFO Parsed args - type: Show, name: PEN15, link: https://1337x.to/torrent/4622092/PEN15-S02-COMPLETE-720p-HULU-WEBRip-x264-GalaxyTV/
+17:15:28 root INFO QB object: <qbittorrent.client.Client object at 0x7f4e73133a50>
+17:15:28 root INFO Using user-agent: {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'}
+17:15:28 root INFO PLEX server entity: <PlexServer:http://192.168.0.101>
+17:15:28 root INFO Env thinks the user is alex, effective user is alex
+17:15:28 root INFO Starting new torrent
+17:15:28 root INFO Magnet converter - https://1337x.to/torrent/4622092/PEN15-S
+17:15:28 root INFO Made soup
+17:15:28 root INFO Returning [magnet:?xt=urn:btih:112A2A2DE834BCF7408B8E58557E946CF7FDCFAB&dn=PEN15.S02.COMPLETE.720p.HULU.WEBRip.x264-GalaxyTV+%E2%AD%90&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.iamhansen.xyz%3A2000%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.moeking.me%3A6969%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce]
+17:15:28 root INFO Detected type: other/show
+17:15:28 root INFO Beginning download to /other/temp/
+17:15:28 root INFO QB response: Ok.
+17:15:33 root INFO Found torrent name - PEN15.S02.COMPLETE.720p.HULU.WEBRip.x264-GalaxyTV ⭐
+17:38:15 root INFO Torrent download finished, returning...
+17:38:15 root INFO {'added_on': 1677345328, 'amount_left': 0, 'auto_tmm': False, 'availability': -1, 'category': '', 'completed': 1489359304, 'completion_on': 1677346692, 'content_path': '/other/temp/PEN15.S02.COMPLETE.720p.HULU.WEBRip.x264-GalaxyTV[TGx]', 'dl_limit': 0, 'dlspeed': 4956807, 'download_path': '', 'downloaded': 1489415648, 'downloaded_session': 1489415648, 'eta': 17999, 'f_l_piece_prio': False, 'force_start': False, 'hash': '112a2a2de834bcf7408b8e58557e946cf7fdcfab', 'infohash_v1': '112a2a2de834bcf7408b8e58557e946cf7fdcfab', 'infohash_v2': '', 'last_activity': 1677346692, 'magnet_uri': 'magnet:?xt=urn:btih:112a2a2de834bcf7408b8e58557e946cf7fdcfab&dn=PEN15.S02.COMPLETE.720p.HULU.WEBRip.x264-GalaxyTV%5bTGx%5d&tr=udp%3a%2f%2ftracker.coppersurfer.tk%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.leechers-paradise.org%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.cyberia.is%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.iamhansen.xyz%3a2000%2fannounce&tr=udp%3a%2f%2fp4p.arenabg.com%3a1337%2fannounce&tr=udp%3a%2f%2fexplodie.org%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce&tr=udp%3a%2f%2ftracker.tiny-vps.com%3a6969%2fannounce&tr=udp%3a%2f%2fexodus.desync.com%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.torrent.eu.org%3a451%2fannounce&tr=udp%3a%2f%2ftracker.moeking.me%3a6969%2fannounce&tr=udp%3a%2f%2fipv4.tracker.harry.lu%3a80%2fannounce&tr=udp%3a%2f%2fopen.stealth.si%3a80%2fannounce&tr=udp%3a%2f%2f9.rarbg.to%3a2710%2fannounce&tr=http%3a%2f%2ftracker.openbittorrent.com%3a80%2fannounce&tr=udp%3a%2f%2fopentracker.i2p.rocks%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.internetwarriors.net%3a1337%2fannounce&tr=udp%3a%2f%2fcoppersurfer.tk%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.zer0day.to%3a1337%2fannounce', 'max_ratio': 1, 'max_seeding_time': 300, 'name': 'PEN15.S02.COMPLETE.720p.HULU.WEBRip.x264-GalaxyTV ⭐', 'num_complete': 11, 'num_incomplete': 8, 'num_leechs': 0, 'num_seeds': 0, 'priority': 0, 'progress': 1, 'ratio': 0, 'ratio_limit': -2, 'save_path': '/other/temp', 'seeding_time': 1, 'seeding_time_limit': -2, 'seen_complete': 1677346692, 'seq_dl': False, 'size': 1489359304, 'state': 'stalledUP', 'super_seeding': False, 'tags': '', 'time_active': 1364, 'total_size': 1489359304, 'tracker': 'udp://opentracker.i2p.rocks:6969/announce', 'trackers_count': 19, 'up_limit': 0, 'uploaded': 0, 'uploaded_session': 0, 'upspeed': 0}
+17:38:15 root INFO Generated - save_path: /home/alex/hdd1a/temp/PEN15.S02.COMPLETE.720p.HULU.WEBRip.x264-GalaxyTV[TGx], movie_file_name: PEN15.S02.COMPLETE.720p.HULU.WEBRip.x264-GalaxyTV[TGx], normalized_name: PEN15
+17:38:15 root INFO Checking for directory...
+17:38:15 root INFO Is directory = True
+17:38:15 root INFO Trying to rename - /home/alex/hdd1a/temp/PEN15.S02.COMPLETE.720p.HULU.WEBRip.x264-GalaxyTV[TGx] to /home/alex/hdd1a/PEN15
+17:38:15 root ERROR Callback: [Errno 39] Directory not empty: '/home/alex/hdd1a/temp/PEN15.S02.COMPLETE.720p.HULU.WEBRip.x264-GalaxyTV[TGx]' -> '/home/alex/hdd1a/PEN15'
+17:41:56 root INFO ------------------NEW TORRENT------------------
+17:41:56 root INFO Parsed args - type: Other, name: autodl, link: "magnet:?xt=urn:btih:HLL7NBEYXU47RPF3RBNIJT6VHOSRTX6A&dn=%5BSubsPlease%5D%20Buddy%20Daddies%20-%2008%20%281080p%29%20%5B6DDD016B%5D.mkv&xl=1466389563&tr=http%3A%2F%2Fnyaa.tracker.wf%3A7777%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2710%2Fannounce&tr=udp%3A%2F%2F9.rarbg.me%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker3.itzmx.com%3A6961%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker.lanta-net.ru%3A2710%2Fannounce&tr=http%3A%2F%2Fopen.acgnxtracker.com%3A80%2Fannounce&tr=wss%3A%2F%2Ftracker.openwebtorrent.com"
+17:41:56 root INFO QB object: <qbittorrent.client.Client object at 0x7fe762b858d0>
+17:41:56 root INFO Using user-agent: {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'}
+17:41:56 root INFO PLEX server entity: <PlexServer:http://192.168.0.101>
+17:41:56 root INFO Env thinks the user is alex, effective user is alex
+17:41:56 root INFO Starting new torrent
+17:41:56 root INFO Magnet converter - "magnet:?xt=urn:btih:HLL7NBEYXU47RPF3RBN
+17:41:56 root ERROR Callback: object of type 'NoneType' has no len()
+17:43:44 root INFO ------------------NEW TORRENT------------------
+17:43:44 root INFO ------------------NEW TORRENT------------------
+17:43:44 root INFO Parsed args - type: Other, name: autodl, link: magnet:?xt=urn:btih:XRIRT4P52XF3UIAJXML6YHAG2P5QVL42&dn=%5BSubsPlease%5D%20NieR%20Automata%20Ver1.1a%20-%2005%20%281080p%29%20%5B4E849591%5D.mkv&xl=1447235927&tr=http%3A%2F%2Fnyaa.tracker.wf%3A7777%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2710%2Fannounce&tr=udp%3A%2F%2F9.rarbg.me%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker3.itzmx.com%3A6961%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker.lanta-net.ru%3A2710%2Fannounce&tr=http%3A%2F%2Fopen.acgnxtracker.com%3A80%2Fannounce&tr=wss%3A%2F%2Ftracker.openwebtorrent.com
+17:43:44 root INFO Parsed args - type: Other, name: autodl, link: magnet:?xt=urn:btih:HLL7NBEYXU47RPF3RBNIJT6VHOSRTX6A&dn=%5BSubsPlease%5D%20Buddy%20Daddies%20-%2008%20%281080p%29%20%5B6DDD016B%5D.mkv&xl=1466389563&tr=http%3A%2F%2Fnyaa.tracker.wf%3A7777%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2710%2Fannounce&tr=udp%3A%2F%2F9.rarbg.me%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker3.itzmx.com%3A6961%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker.lanta-net.ru%3A2710%2Fannounce&tr=http%3A%2F%2Fopen.acgnxtracker.com%3A80%2Fannounce&tr=wss%3A%2F%2Ftracker.openwebtorrent.com
+17:43:44 root INFO QB object: <qbittorrent.client.Client object at 0x7f17906b8f50>
+17:43:44 root INFO Using user-agent: {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'}
+17:43:44 root INFO QB object: <qbittorrent.client.Client object at 0x7f79be974e10>
+17:43:44 root INFO Using user-agent: {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'}
+17:43:44 root INFO PLEX server entity: <PlexServer:http://192.168.0.101>
+17:43:44 root INFO Env thinks the user is alex, effective user is alex
+17:43:44 root INFO Starting new torrent
+17:43:44 root INFO Magnet converter - magnet:?xt=urn:btih:XRIRT4P52XF3UIAJXML6
+17:43:44 root INFO PLEX server entity: <PlexServer:http://192.168.0.101>
+17:43:44 root INFO Link already is a magnet, returning...
+17:43:44 root INFO Detected type: other/show
+17:43:44 root INFO Beginning download to /other/temp/
+17:43:44 root INFO Env thinks the user is alex, effective user is alex
+17:43:44 root INFO Starting new torrent
+17:43:44 root INFO Magnet converter - magnet:?xt=urn:btih:HLL7NBEYXU47RPF3RBNI
+17:43:44 root INFO Link already is a magnet, returning...
+17:43:44 root INFO Detected type: other/show
+17:43:44 root INFO Beginning download to /other/temp/
+17:43:44 root INFO QB response: Ok.
+17:43:44 root INFO QB response: Ok.
+17:43:49 root INFO Found torrent name - [SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv
+17:43:49 root INFO Found torrent name - [SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv
+17:46:47 root INFO ------------------NEW TORRENT------------------
+17:46:47 root INFO Parsed args - type: Other, name: autodl, link: magnet:?xt=urn:btih:HLL7NBEYXU47RPF3RBNIJT6VHOSRTX6A&dn=%5BSubsPlease%5D%20Buddy%20Daddies%20-%2008%20%281080p%29%20%5B6DDD016B%5D.mkv&xl=1466389563&tr=http%3A%2F%2Fnyaa.tracker.wf%3A7777%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2710%2Fannounce&tr=udp%3A%2F%2F9.rarbg.me%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker3.itzmx.com%3A6961%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker.lanta-net.ru%3A2710%2Fannounce&tr=http%3A%2F%2Fopen.acgnxtracker.com%3A80%2Fannounce&tr=wss%3A%2F%2Ftracker.openwebtorrent.com
+17:46:47 root INFO QB object: <qbittorrent.client.Client object at 0x7f74998bae90>
+17:46:47 root INFO Using user-agent: {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'}
+17:46:47 root INFO PLEX server entity: <PlexServer:http://192.168.0.101>
+17:46:47 root INFO Env thinks the user is alex, effective user is alex
+17:46:47 root INFO Starting new torrent
+17:46:47 root INFO Magnet converter - magnet:?xt=urn:btih:HLL7NBEYXU47RPF3RBNI
+17:46:47 root INFO Link already is a magnet, returning...
+17:46:47 root INFO Detected type: other/show
+17:46:47 root INFO Beginning download to /other/temp/
+17:46:47 root INFO QB response: Ok.
+17:46:48 root INFO Torrent download finished, returning...
+17:46:48 root INFO {'added_on': 1677347207, 'amount_left': 0, 'auto_tmm': False, 'availability': 0, 'category': '', 'completed': 0, 'completion_on': 0, 'content_path': '', 'dl_limit': 0, 'dlspeed': 0, 'download_path': '', 'downloaded': 0, 'downloaded_session': 0, 'eta': 8640000, 'f_l_piece_prio': False, 'force_start': False, 'hash': '3ad7f68498bd39f8bcbb885a84cfd53ba519dfc0', 'infohash_v1': '3ad7f68498bd39f8bcbb885a84cfd53ba519dfc0', 'infohash_v2': '', 'last_activity': 1677347207, 'magnet_uri': 'magnet:?xt=urn:btih:3ad7f68498bd39f8bcbb885a84cfd53ba519dfc0&dn=%5bSubsPlease%5d%20Buddy%20Daddies%20-%2008%20(1080p)%20%5b6DDD016B%5d.mkv&tr=http%3a%2f%2fnyaa.tracker.wf%3a7777%2fannounce&tr=udp%3a%2f%2ftracker.coppersurfer.tk%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce&tr=udp%3a%2f%2f9.rarbg.to%3a2710%2fannounce&tr=udp%3a%2f%2f9.rarbg.me%3a2710%2fannounce&tr=udp%3a%2f%2ftracker.leechers-paradise.org%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.internetwarriors.net%3a1337%2fannounce&tr=udp%3a%2f%2ftracker.cyberia.is%3a6969%2fannounce&tr=udp%3a%2f%2fexodus.desync.com%3a6969%2fannounce&tr=udp%3a%2f%2ftracker3.itzmx.com%3a6961%2fannounce&tr=udp%3a%2f%2ftracker.torrent.eu.org%3a451%2fannounce&tr=udp%3a%2f%2ftracker.tiny-vps.com%3a6969%2fannounce&tr=udp%3a%2f%2fretracker.lanta-net.ru%3a2710%2fannounce&tr=http%3a%2f%2fopen.acgnxtracker.com%3a80%2fannounce&tr=wss%3a%2f%2ftracker.openwebtorrent.com', 'max_ratio': 1, 'max_seeding_time': 300, 'name': '[SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv', 'num_complete': 0, 'num_incomplete': 0, 'num_leechs': 0, 'num_seeds': 0, 'priority': 8, 'progress': 0, 'ratio': 0, 'ratio_limit': -2, 'save_path': '/other/temp', 'seeding_time': 0, 'seeding_time_limit': -2, 'seen_complete': 0, 'seq_dl': False, 'size': 0, 'state': 'metaDL', 'super_seeding': False, 'tags': '', 'time_active': 0, 'total_size': -1, 'tracker': '', 'trackers_count': 15, 'up_limit': 0, 'uploaded': 0, 'uploaded_session': 0, 'upspeed': 0}
+17:46:48 root INFO Torrent download finished, returning...
+17:46:48 root INFO {'added_on': 1677347207, 'amount_left': 0, 'auto_tmm': False, 'availability': 0, 'category': '', 'completed': 0, 'completion_on': 0, 'content_path': '', 'dl_limit': 0, 'dlspeed': 0, 'download_path': '', 'downloaded': 0, 'downloaded_session': 0, 'eta': 8640000, 'f_l_piece_prio': False, 'force_start': False, 'hash': '3ad7f68498bd39f8bcbb885a84cfd53ba519dfc0', 'infohash_v1': '3ad7f68498bd39f8bcbb885a84cfd53ba519dfc0', 'infohash_v2': '', 'last_activity': 1677347207, 'magnet_uri': 'magnet:?xt=urn:btih:3ad7f68498bd39f8bcbb885a84cfd53ba519dfc0&dn=%5bSubsPlease%5d%20Buddy%20Daddies%20-%2008%20(1080p)%20%5b6DDD016B%5d.mkv&tr=http%3a%2f%2fnyaa.tracker.wf%3a7777%2fannounce&tr=udp%3a%2f%2ftracker.coppersurfer.tk%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce&tr=udp%3a%2f%2f9.rarbg.to%3a2710%2fannounce&tr=udp%3a%2f%2f9.rarbg.me%3a2710%2fannounce&tr=udp%3a%2f%2ftracker.leechers-paradise.org%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.internetwarriors.net%3a1337%2fannounce&tr=udp%3a%2f%2ftracker.cyberia.is%3a6969%2fannounce&tr=udp%3a%2f%2fexodus.desync.com%3a6969%2fannounce&tr=udp%3a%2f%2ftracker3.itzmx.com%3a6961%2fannounce&tr=udp%3a%2f%2ftracker.torrent.eu.org%3a451%2fannounce&tr=udp%3a%2f%2ftracker.tiny-vps.com%3a6969%2fannounce&tr=udp%3a%2f%2fretracker.lanta-net.ru%3a2710%2fannounce&tr=http%3a%2f%2fopen.acgnxtracker.com%3a80%2fannounce&tr=wss%3a%2f%2ftracker.openwebtorrent.com', 'max_ratio': 1, 'max_seeding_time': 300, 'name': '[SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv', 'num_complete': 0, 'num_incomplete': 0, 'num_leechs': 0, 'num_seeds': 0, 'priority': 8, 'progress': 0, 'ratio': 0, 'ratio_limit': -2, 'save_path': '/other/temp', 'seeding_time': 0, 'seeding_time_limit': -2, 'seen_complete': 0, 'seq_dl': False, 'size': 0, 'state': 'metaDL', 'super_seeding': False, 'tags': '', 'time_active': 0, 'total_size': -1, 'tracker': '', 'trackers_count': 15, 'up_limit': 0, 'uploaded': 0, 'uploaded_session': 0, 'upspeed': 0}
+17:46:52 root INFO Found torrent name - [SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv
+17:47:50 root INFO ------------------NEW TORRENT------------------
+17:47:50 root INFO Parsed args - type: Other, name: autodl, link: magnet:?xt=urn:btih:HLL7NBEYXU47RPF3RBNIJT6VHOSRTX6A&dn=%5BSubsPlease%5D%20Buddy%20Daddies%20-%2008%20%281080p%29%20%5B6DDD016B%5D.mkv&xl=1466389563&tr=http%3A%2F%2Fnyaa.tracker.wf%3A7777%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2710%2Fannounce&tr=udp%3A%2F%2F9.rarbg.me%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker3.itzmx.com%3A6961%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker.lanta-net.ru%3A2710%2Fannounce&tr=http%3A%2F%2Fopen.acgnxtracker.com%3A80%2Fannounce&tr=wss%3A%2F%2Ftracker.openwebtorrent.com
+17:47:50 root INFO QB object: <qbittorrent.client.Client object at 0x7fed40e7b190>
+17:47:50 root INFO Using user-agent: {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'}
+17:47:50 root INFO PLEX server entity: <PlexServer:http://192.168.0.101>
+17:47:50 root INFO Env thinks the user is alex, effective user is alex
+17:47:50 root INFO Starting new torrent
+17:47:50 root INFO Magnet converter - magnet:?xt=urn:btih:HLL7NBEYXU47RPF3RBNI
+17:47:50 root INFO Link already is a magnet, returning...
+17:47:50 root INFO Detected type: other/show
+17:47:50 root INFO Beginning download to /other/temp/
+17:47:50 root INFO QB response: Ok.
+17:47:51 root INFO Torrent download finished, returning...
+17:47:51 root INFO {'added_on': 1677347270, 'amount_left': 0, 'auto_tmm': False, 'availability': 0, 'category': '', 'completed': 0, 'completion_on': 0, 'content_path': '', 'dl_limit': 0, 'dlspeed': 0, 'download_path': '', 'downloaded': 0, 'downloaded_session': 0, 'eta': 8640000, 'f_l_piece_prio': False, 'force_start': False, 'hash': '3ad7f68498bd39f8bcbb885a84cfd53ba519dfc0', 'infohash_v1': '3ad7f68498bd39f8bcbb885a84cfd53ba519dfc0', 'infohash_v2': '', 'last_activity': 1677347270, 'magnet_uri': 'magnet:?xt=urn:btih:3ad7f68498bd39f8bcbb885a84cfd53ba519dfc0&dn=%5bSubsPlease%5d%20Buddy%20Daddies%20-%2008%20(1080p)%20%5b6DDD016B%5d.mkv&tr=http%3a%2f%2fnyaa.tracker.wf%3a7777%2fannounce&tr=udp%3a%2f%2ftracker.coppersurfer.tk%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce&tr=udp%3a%2f%2f9.rarbg.to%3a2710%2fannounce&tr=udp%3a%2f%2f9.rarbg.me%3a2710%2fannounce&tr=udp%3a%2f%2ftracker.leechers-paradise.org%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.internetwarriors.net%3a1337%2fannounce&tr=udp%3a%2f%2ftracker.cyberia.is%3a6969%2fannounce&tr=udp%3a%2f%2fexodus.desync.com%3a6969%2fannounce&tr=udp%3a%2f%2ftracker3.itzmx.com%3a6961%2fannounce&tr=udp%3a%2f%2ftracker.torrent.eu.org%3a451%2fannounce&tr=udp%3a%2f%2ftracker.tiny-vps.com%3a6969%2fannounce&tr=udp%3a%2f%2fretracker.lanta-net.ru%3a2710%2fannounce&tr=http%3a%2f%2fopen.acgnxtracker.com%3a80%2fannounce&tr=wss%3a%2f%2ftracker.openwebtorrent.com', 'max_ratio': 1, 'max_seeding_time': 300, 'name': '[SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv', 'num_complete': 0, 'num_incomplete': 0, 'num_leechs': 0, 'num_seeds': 0, 'priority': 8, 'progress': 0, 'ratio': 0, 'ratio_limit': -2, 'save_path': '/other/temp', 'seeding_time': 0, 'seeding_time_limit': -2, 'seen_complete': 0, 'seq_dl': False, 'size': 0, 'state': 'metaDL', 'super_seeding': False, 'tags': '', 'time_active': 0, 'total_size': -1, 'tracker': '', 'trackers_count': 15, 'up_limit': 0, 'uploaded': 0, 'uploaded_session': 0, 'upspeed': 0}
+17:47:55 root INFO Found torrent name - [SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv
+17:48:10 root INFO ------------------NEW TORRENT------------------
+17:48:10 root INFO Parsed args - type: Other, name: autodl, link: magnet:?xt=urn:btih:XRIRT4P52XF3UIAJXML6YHAG2P5QVL42&dn=%5BSubsPlease%5D%20NieR%20Automata%20Ver1.1a%20-%2005%20%281080p%29%20%5B4E849591%5D.mkv&xl=1447235927&tr=http%3A%2F%2Fnyaa.tracker.wf%3A7777%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2710%2Fannounce&tr=udp%3A%2F%2F9.rarbg.me%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker3.itzmx.com%3A6961%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker.lanta-net.ru%3A2710%2Fannounce&tr=http%3A%2F%2Fopen.acgnxtracker.com%3A80%2Fannounce&tr=wss%3A%2F%2Ftracker.openwebtorrent.com
+17:48:10 root INFO QB object: <qbittorrent.client.Client object at 0x7f34ebcbf190>
+17:48:10 root INFO Using user-agent: {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'}
+17:48:10 root INFO PLEX server entity: <PlexServer:http://192.168.0.101>
+17:48:10 root INFO Env thinks the user is alex, effective user is alex
+17:48:10 root INFO Starting new torrent
+17:48:10 root INFO Magnet converter - magnet:?xt=urn:btih:XRIRT4P52XF3UIAJXML6
+17:48:10 root INFO Link already is a magnet, returning...
+17:48:10 root INFO Detected type: other/show
+17:48:10 root INFO Beginning download to /other/temp/
+17:48:10 root INFO QB response: Ok.
+17:48:15 root INFO Found torrent name - [SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv
+17:51:03 root INFO Torrent download finished, returning...
+17:51:03 root INFO {'added_on': 1677347270, 'amount_left': 0, 'auto_tmm': False, 'availability': -1, 'category': '', 'completed': 1466389563, 'completion_on': 1677347462, 'content_path': '/other/temp/[SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv', 'dl_limit': 0, 'dlspeed': 3771099, 'download_path': '', 'downloaded': 1484132388, 'downloaded_session': 1485807469, 'eta': 18000, 'f_l_piece_prio': False, 'force_start': False, 'hash': '3ad7f68498bd39f8bcbb885a84cfd53ba519dfc0', 'infohash_v1': '3ad7f68498bd39f8bcbb885a84cfd53ba519dfc0', 'infohash_v2': '', 'last_activity': 1677347462, 'magnet_uri': 'magnet:?xt=urn:btih:3ad7f68498bd39f8bcbb885a84cfd53ba519dfc0&dn=%5bSubsPlease%5d%20Buddy%20Daddies%20-%2008%20(1080p)%20%5b6DDD016B%5d.mkv&tr=http%3a%2f%2fnyaa.tracker.wf%3a7777%2fannounce&tr=udp%3a%2f%2ftracker.coppersurfer.tk%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce&tr=udp%3a%2f%2f9.rarbg.to%3a2710%2fannounce&tr=udp%3a%2f%2f9.rarbg.me%3a2710%2fannounce&tr=udp%3a%2f%2ftracker.leechers-paradise.org%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.internetwarriors.net%3a1337%2fannounce&tr=udp%3a%2f%2ftracker.cyberia.is%3a6969%2fannounce&tr=udp%3a%2f%2fexodus.desync.com%3a6969%2fannounce&tr=udp%3a%2f%2ftracker3.itzmx.com%3a6961%2fannounce&tr=udp%3a%2f%2ftracker.torrent.eu.org%3a451%2fannounce&tr=udp%3a%2f%2ftracker.tiny-vps.com%3a6969%2fannounce&tr=udp%3a%2f%2fretracker.lanta-net.ru%3a2710%2fannounce&tr=http%3a%2f%2fopen.acgnxtracker.com%3a80%2fannounce&tr=wss%3a%2f%2ftracker.openwebtorrent.com', 'max_ratio': 1, 'max_seeding_time': 300, 'name': '[SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv', 'num_complete': 752, 'num_incomplete': 59, 'num_leechs': 0, 'num_seeds': 0, 'priority': 0, 'progress': 1, 'ratio': 2.7521129739000077e-05, 'ratio_limit': -2, 'save_path': '/other/temp', 'seeding_time': 0, 'seeding_time_limit': -2, 'seen_complete': 1677347461, 'seq_dl': False, 'size': 1466389563, 'state': 'stalledUP', 'super_seeding': False, 'tags': '', 'time_active': 192, 'total_size': 1466389563, 'tracker': 'http://open.acgnxtracker.com:80/announce', 'trackers_count': 15, 'up_limit': 0, 'uploaded': 40845, 'uploaded_session': 40845, 'upspeed': 0}
+17:51:03 root INFO Generated - save_path: /home/alex/hdd1a/temp/[SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv, movie_file_name: [SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv, normalized_name: autodl
+17:51:03 root INFO Checking for directory...
+17:51:03 root INFO Checking for SubsPlease in [SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv
+17:51:03 root INFO SubsPlease found
+17:51:03 root INFO Generated - show_name: Buddy Daddies, normalized_name = buddy_daddies
+17:51:03 root INFO Checking for if folder /home/alex/hdd1a/buddy_daddies exists
+17:51:03 root INFO Trying to rename /home/alex/hdd1a/temp/[SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv to /home/alex/hdd1a/buddy_daddies/[SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv
+17:51:03 root INFO Successfully renamed
+17:51:03 root INFO Download of [SubsPlease] Buddy Daddies - 08 (1080p) [6DDD016B].mkv completed
+17:51:03 root INFO Updated plex library
+17:59:49 root INFO Torrent download finished, returning...
+17:59:49 root INFO {'added_on': 1677347290, 'amount_left': 0, 'auto_tmm': False, 'availability': -1, 'category': '', 'completed': 1447235927, 'completion_on': 1677347987, 'content_path': '/other/temp/[SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv', 'dl_limit': 0, 'dlspeed': 1576414, 'download_path': '', 'downloaded': 1451934194, 'downloaded_session': 1452304049, 'eta': 1391, 'f_l_piece_prio': False, 'force_start': False, 'hash': 'bc5119f1fdd5cbba2009bb17ec1c06d3fb0aaf9a', 'infohash_v1': 'bc5119f1fdd5cbba2009bb17ec1c06d3fb0aaf9a', 'infohash_v2': '', 'last_activity': 1677347987, 'magnet_uri': 'magnet:?xt=urn:btih:bc5119f1fdd5cbba2009bb17ec1c06d3fb0aaf9a&dn=%5bSubsPlease%5d%20NieR%20Automata%20Ver1.1a%20-%2005%20(1080p)%20%5b4E849591%5d.mkv&tr=http%3a%2f%2fnyaa.tracker.wf%3a7777%2fannounce&tr=udp%3a%2f%2ftracker.coppersurfer.tk%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce&tr=udp%3a%2f%2f9.rarbg.to%3a2710%2fannounce&tr=udp%3a%2f%2f9.rarbg.me%3a2710%2fannounce&tr=udp%3a%2f%2ftracker.leechers-paradise.org%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.internetwarriors.net%3a1337%2fannounce&tr=udp%3a%2f%2ftracker.cyberia.is%3a6969%2fannounce&tr=udp%3a%2f%2fexodus.desync.com%3a6969%2fannounce&tr=udp%3a%2f%2ftracker3.itzmx.com%3a6961%2fannounce&tr=udp%3a%2f%2ftracker.torrent.eu.org%3a451%2fannounce&tr=udp%3a%2f%2ftracker.tiny-vps.com%3a6969%2fannounce&tr=udp%3a%2f%2fretracker.lanta-net.ru%3a2710%2fannounce&tr=http%3a%2f%2fopen.acgnxtracker.com%3a80%2fannounce&tr=wss%3a%2f%2ftracker.openwebtorrent.com', 'max_ratio': 1, 'max_seeding_time': 300, 'name': '[SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv', 'num_complete': 1079, 'num_incomplete': 1379, 'num_leechs': 10, 'num_seeds': 0, 'priority': 0, 'progress': 1, 'ratio': 0.22384851003791428, 'ratio_limit': -2, 'save_path': '/other/temp', 'seeding_time': 0, 'seeding_time_limit': -2, 'seen_complete': 1677347987, 'seq_dl': False, 'size': 1447235927, 'state': 'uploading', 'super_seeding': False, 'tags': '', 'time_active': 697, 'total_size': 1447235927, 'tracker': 'udp://retracker.lanta-net.ru:2710/announce', 'trackers_count': 15, 'up_limit': 0, 'uploaded': 325013306, 'uploaded_session': 330287019, 'upspeed': 4073260}
+17:59:49 root INFO Generated - save_path: /home/alex/hdd1a/temp/[SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv, movie_file_name: [SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv, normalized_name: autodl
+17:59:49 root INFO Checking for directory...
+17:59:49 root INFO Checking for SubsPlease in [SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv
+17:59:49 root INFO SubsPlease found
+17:59:49 root INFO Generated - show_name: NieR Automata Ver1.1a, normalized_name = nier_automata_ver1.1a
+17:59:49 root INFO Checking for if folder /home/alex/hdd1a/nier_automata_ver1.1a exists
+17:59:49 root INFO Trying to rename /home/alex/hdd1a/temp/[SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv to /home/alex/hdd1a/nier_automata_ver1.1a/[SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv
+17:59:49 root INFO Successfully renamed
+17:59:50 root INFO Download of [SubsPlease] NieR Automata Ver1.1a - 05 (1080p) [4E849591].mkv completed
+17:59:50 root INFO Updated plex library
+  File "/home/alex/daisy/daisy.py", line 127
+    if os.path.exists({path}{normalized_name}) == True:
+                      ^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+  File "/home/alex/daisy/daisy.py", line 130
+    files_within = os.listdir({path_temp}{movie_file_name})
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+18:09:55 root INFO ------------------NEW TORRENT------------------
+18:09:55 root INFO Parsed args - type: Show, name: PEN15, link: https://1337x.to/torrent/4622092/PEN15-S02-COMPLETE-720p-HULU-WEBRip-x264-GalaxyTV/
+18:09:55 root INFO QB object: <qbittorrent.client.Client object at 0x7ff782989ad0>
+18:09:55 root INFO Using user-agent: {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'}
+18:09:55 root INFO PLEX server entity: <PlexServer:http://192.168.0.101>
+18:09:55 root INFO Env thinks the user is alex, effective user is alex
+18:09:55 root INFO Starting new torrent
+18:09:55 root INFO Magnet converter - https://1337x.to/torrent/4622092/PEN15-S
+18:09:56 root INFO Made soup
+18:09:56 root INFO Returning [magnet:?xt=urn:btih:112A2A2DE834BCF7408B8E58557E946CF7FDCFAB&dn=PEN15.S02.COMPLETE.720p.HULU.WEBRip.x264-GalaxyTV+%E2%AD%90&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.iamhansen.xyz%3A2000%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.moeking.me%3A6969%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce]
+18:09:56 root INFO Detected type: other/show
+18:09:56 root INFO Beginning download to /other/temp/
+18:09:56 root INFO QB response: Fails.
+18:09:56 root ERROR Failed to start download DCFAB&dn=PEN15.S02.COMPLETE.720p.HULU.WEBRip.
+18:10:32 root INFO ------------------NEW TORRENT------------------
+18:10:32 root INFO Parsed args - type: Show, name: PEN15, link: https://1337x.to/torrent/4622092/PEN15-S02-COMPLETE-720p-HULU-WEBRip-x264-GalaxyTV/
+18:10:32 root INFO QB object: <qbittorrent.client.Client object at 0x7f2a514a12d0>
+18:10:32 root INFO Using user-agent: {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'}
+18:10:32 root INFO PLEX server entity: <PlexServer:http://192.168.0.101>
+18:10:32 root INFO Env thinks the user is alex, effective user is alex
+18:10:32 root INFO Starting new torrent
+18:10:32 root INFO Magnet converter - https://1337x.to/torrent/4622092/PEN15-S
+18:10:33 root INFO Made soup
+18:10:33 root INFO Returning [magnet:?xt=urn:btih:112A2A2DE834BCF7408B8E58557E946CF7FDCFAB&dn=PEN15.S02.COMPLETE.720p.HULU.WEBRip.x264-GalaxyTV+%E2%AD%90&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.iamhansen.xyz%3A2000%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.moeking.me%3A6969%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=http%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce]
+18:10:33 root INFO Detected type: other/show
+18:10:33 root INFO Beginning download to /other/temp/
+18:10:33 root INFO QB response: Ok.
+18:10:38 root INFO Found torrent name - PEN15.S02.COMPLETE.720p.HULU.WEBRip.x264-GalaxyTV ⭐
+18:24:05 root INFO Torrent download finished, returning...
+18:24:05 root INFO {'added_on': 1677348633, 'amount_left': 0, 'auto_tmm': False, 'availability': -1, 'category': '', 'completed': 1489359304, 'completion_on': 1677349443, 'content_path': '/other/temp/PEN15.S02.COMPLETE.720p.HULU.WEBRip.x264-GalaxyTV[TGx]', 'dl_limit': 0, 'dlspeed': 4976981, 'download_path': '', 'downloaded': 1489064821, 'downloaded_session': 1489369890, 'eta': 16145, 'f_l_piece_prio': False, 'force_start': False, 'hash': '112a2a2de834bcf7408b8e58557e946cf7fdcfab', 'infohash_v1': '112a2a2de834bcf7408b8e58557e946cf7fdcfab', 'infohash_v2': '', 'last_activity': 1677349444, 'magnet_uri': 'magnet:?xt=urn:btih:112a2a2de834bcf7408b8e58557e946cf7fdcfab&dn=PEN15.S02.COMPLETE.720p.HULU.WEBRip.x264-GalaxyTV%5bTGx%5d&tr=udp%3a%2f%2ftracker.coppersurfer.tk%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.leechers-paradise.org%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.cyberia.is%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.iamhansen.xyz%3a2000%2fannounce&tr=udp%3a%2f%2fp4p.arenabg.com%3a1337%2fannounce&tr=udp%3a%2f%2fexplodie.org%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce&tr=udp%3a%2f%2ftracker.tiny-vps.com%3a6969%2fannounce&tr=udp%3a%2f%2fexodus.desync.com%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.torrent.eu.org%3a451%2fannounce&tr=udp%3a%2f%2ftracker.moeking.me%3a6969%2fannounce&tr=udp%3a%2f%2fipv4.tracker.harry.lu%3a80%2fannounce&tr=udp%3a%2f%2fopen.stealth.si%3a80%2fannounce&tr=udp%3a%2f%2f9.rarbg.to%3a2710%2fannounce&tr=http%3a%2f%2ftracker.openbittorrent.com%3a80%2fannounce&tr=udp%3a%2f%2fopentracker.i2p.rocks%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.internetwarriors.net%3a1337%2fannounce&tr=udp%3a%2f%2fcoppersurfer.tk%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.zer0day.to%3a1337%2fannounce', 'max_ratio': 1, 'max_seeding_time': 300, 'name': 'PEN15.S02.COMPLETE.720p.HULU.WEBRip.x264-GalaxyTV ⭐', 'num_complete': 10, 'num_incomplete': 6, 'num_leechs': 1, 'num_seeds': 0, 'priority': 0, 'progress': 1, 'ratio': 0.003966748738334474, 'ratio_limit': -2, 'save_path': '/other/temp', 'seeding_time': 1, 'seeding_time_limit': -2, 'seen_complete': 1677349443, 'seq_dl': False, 'size': 1489359304, 'state': 'uploading', 'super_seeding': False, 'tags': '', 'time_active': 810, 'total_size': 1489359304, 'tracker': 'udp://explodie.org:6969/announce', 'trackers_count': 19, 'up_limit': 0, 'uploaded': 5906746, 'uploaded_session': 6271162, 'upspeed': 530891}
+18:24:05 root INFO Generated - save_path: /home/alex/hdd1a/temp/PEN15.S02.COMPLETE.720p.HULU.WEBRip.x264-GalaxyTV[TGx], movie_file_name: PEN15.S02.COMPLETE.720p.HULU.WEBRip.x264-GalaxyTV[TGx], normalized_name: PEN15
+18:24:05 root INFO Checking for directory...
+18:24:05 root INFO Is directory = True
+18:24:05 root INFO Normalized directory already exists - /home/alex/hdd1a/PEN15
+18:24:05 root INFO Trying to rename - /home/alex/hdd1a/temp/PEN15.S02.COMPLETE.720p.HULU.WEBRip.x264-GalaxyTV[TGx]/PEN15.S02E07.720p.HULU.WEBRip.x264-GalaxyTV.mkv to /home/alex/hdd1a/PEN15/PEN15.S02E07.720p.HULU.WEBRip.x264-GalaxyTV.mkv
+18:24:05 root INFO Trying to rename - /home/alex/hdd1a/temp/PEN15.S02.COMPLETE.720p.HULU.WEBRip.x264-GalaxyTV[TGx]/PEN15.S02E02.720p.HULU.WEBRip.x264-GalaxyTV.mkv to /home/alex/hdd1a/PEN15/PEN15.S02E02.720p.HULU.WEBRip.x264-GalaxyTV.mkv
+18:24:05 root INFO Trying to rename - /home/alex/hdd1a/temp/PEN15.S02.COMPLETE.720p.HULU.WEBRip.x264-GalaxyTV[TGx]/[TGx]Downloaded from torrentgalaxy.to .txt to /home/alex/hdd1a/PEN15/[TGx]Downloaded from torrentgalaxy.to .txt
+18:24:05 root INFO Trying to rename - /home/alex/hdd1a/temp/PEN15.S02.COMPLETE.720p.HULU.WEBRip.x264-GalaxyTV[TGx]/PEN15.S02E04.720p.HULU.WEBRip.x264-GalaxyTV.mkv to /home/alex/hdd1a/PEN15/PEN15.S02E04.720p.HULU.WEBRip.x264-GalaxyTV.mkv
+18:24:05 root INFO Trying to rename - /home/alex/hdd1a/temp/PEN15.S02.COMPLETE.720p.HULU.WEBRip.x264-GalaxyTV[TGx]/PEN15.S02E01.720p.HULU.WEBRip.x264-GalaxyTV.mkv to /home/alex/hdd1a/PEN15/PEN15.S02E01.720p.HULU.WEBRip.x264-GalaxyTV.mkv
+18:24:05 root INFO Trying to rename - /home/alex/hdd1a/temp/PEN15.S02.COMPLETE.720p.HULU.WEBRip.x264-GalaxyTV[TGx]/PEN15.S02E06.720p.HULU.WEBRip.x264-GalaxyTV.mkv to /home/alex/hdd1a/PEN15/PEN15.S02E06.720p.HULU.WEBRip.x264-GalaxyTV.mkv
+18:24:05 root INFO Trying to rename - /home/alex/hdd1a/temp/PEN15.S02.COMPLETE.720p.HULU.WEBRip.x264-GalaxyTV[TGx]/PEN15.S02E05.720p.HULU.WEBRip.x264-GalaxyTV.mkv to /home/alex/hdd1a/PEN15/PEN15.S02E05.720p.HULU.WEBRip.x264-GalaxyTV.mkv
+18:24:05 root INFO Trying to rename - /home/alex/hdd1a/temp/PEN15.S02.COMPLETE.720p.HULU.WEBRip.x264-GalaxyTV[TGx]/PEN15.S02E03.720p.HULU.WEBRip.x264-GalaxyTV.mkv to /home/alex/hdd1a/PEN15/PEN15.S02E03.720p.HULU.WEBRip.x264-GalaxyTV.mkv
+18:24:05 root INFO Failed to post to plex, post request status code: 201, reason: Created
+18:24:05 root INFO Download of PEN15.S02.COMPLETE.720p.HULU.WEBRip.x264-GalaxyTV ⭐ completed
+18:24:05 root INFO Updated plex library
+18:24:37 root INFO ------------------NEW TORRENT------------------
+18:24:37 root INFO Parsed args - type: Other, name: nier, link: magnet:?xt=urn:btih:JOTSGMXUWFBRPKY6UYJSQELD4WUIMV5U
+18:24:37 root INFO QB object: <qbittorrent.client.Client object at 0x7efdb25970d0>
+18:24:37 root INFO Using user-agent: {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'}
+18:24:37 root INFO PLEX server entity: <PlexServer:http://192.168.0.101>
+18:24:37 root INFO Env thinks the user is alex, effective user is alex
+18:24:37 root INFO Starting new torrent
+18:24:37 root INFO Magnet converter - magnet:?xt=urn:btih:JOTSGMXUWFBRPKY6UYJS
+18:24:37 root INFO Link already is a magnet, returning...
+18:24:37 root INFO Detected type: other/show
+18:24:37 root INFO Beginning download to /other/temp/
+18:24:37 root INFO QB response: Ok.
+18:24:42 root INFO Found torrent name - [SubsPlease] NieR Automata Ver1.1a - 04 (1080p) [AD032B45].mkv
+18:27:03 root INFO Torrent download finished, returning...
+18:27:03 root INFO {'added_on': 1677349477, 'amount_left': 0, 'auto_tmm': False, 'availability': -1, 'category': '', 'completed': 1446634958, 'completion_on': 1677349620, 'content_path': '/other/temp/[SubsPlease] NieR Automata Ver1.1a - 04 (1080p) [AD032B45].mkv', 'dl_limit': 0, 'dlspeed': 4489572, 'download_path': '', 'downloaded': 1454193643, 'downloaded_session': 1454193643, 'eta': 17999, 'f_l_piece_prio': False, 'force_start': False, 'hash': '4ba72332f4b14317ab1ea613281163e5a88657b4', 'infohash_v1': '4ba72332f4b14317ab1ea613281163e5a88657b4', 'infohash_v2': '', 'last_activity': 1677349620, 'magnet_uri': 'magnet:?xt=urn:btih:4ba72332f4b14317ab1ea613281163e5a88657b4&dn=%5bSubsPlease%5d%20NieR%20Automata%20Ver1.1a%20-%2004%20(1080p)%20%5bAD032B45%5d.mkv', 'max_ratio': 1, 'max_seeding_time': 300, 'name': '[SubsPlease] NieR Automata Ver1.1a - 04 (1080p) [AD032B45].mkv', 'num_complete': 54, 'num_incomplete': 152, 'num_leechs': 1, 'num_seeds': 0, 'priority': 0, 'progress': 1, 'ratio': 0, 'ratio_limit': -2, 'save_path': '/other/temp', 'seeding_time': 1, 'seeding_time_limit': -2, 'seen_complete': 1677349620, 'seq_dl': False, 'size': 1446634958, 'state': 'stalledUP', 'super_seeding': False, 'tags': '', 'time_active': 143, 'total_size': 1446634958, 'tracker': '', 'trackers_count': 0, 'up_limit': 0, 'uploaded': 0, 'uploaded_session': 0, 'upspeed': 0}
+18:27:03 root INFO Generated - save_path: /home/alex/hdd1a/temp/[SubsPlease] NieR Automata Ver1.1a - 04 (1080p) [AD032B45].mkv, movie_file_name: [SubsPlease] NieR Automata Ver1.1a - 04 (1080p) [AD032B45].mkv, normalized_name: nier
+18:27:03 root INFO Checking for directory...
+18:27:03 root INFO Checking for SubsPlease in [SubsPlease] NieR Automata Ver1.1a - 04 (1080p) [AD032B45].mkv
+18:27:03 root INFO SubsPlease found
+18:27:03 root INFO Generated - show_name: NieR Automata Ver1.1a, normalized_name = nier_automata_ver1.1a
+18:27:03 root INFO Checking for if folder /home/alex/hdd1a/nier_automata_ver1.1a exists
+18:27:03 root INFO Trying to rename /home/alex/hdd1a/temp/[SubsPlease] NieR Automata Ver1.1a - 04 (1080p) [AD032B45].mkv to /home/alex/hdd1a/nier_automata_ver1.1a/[SubsPlease] NieR Automata Ver1.1a - 04 (1080p) [AD032B45].mkv
+18:27:03 root INFO Successfully renamed
+18:27:03 root INFO Download of [SubsPlease] NieR Automata Ver1.1a - 04 (1080p) [AD032B45].mkv completed
+18:27:03 root INFO Updated plex library
+18:39:20 root INFO ------------------NEW TORRENT------------------
+18:39:20 root INFO Parsed args - type: Other, name: Steins Gate, link: https://nyaa.si/view/1443096
+18:39:20 root INFO QB object: <qbittorrent.client.Client object at 0x7ff3e5681e10>
+18:39:20 root INFO Using user-agent: {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'}
+18:39:20 root INFO PLEX server entity: <PlexServer:http://192.168.0.101>
+18:39:20 root INFO Env thinks the user is alex, effective user is alex
+18:39:20 root INFO Starting new torrent
+18:39:20 root INFO Magnet converter - https://nyaa.si/view/1443096
+18:39:20 root INFO Made soup
+18:39:20 root INFO Returning [magnet:?xt=urn:btih:3b5c25176a706a14affd27905e9fb9591c0ce681&dn=%5BJudas%5D%20Steins%3BGate%20%28Season%201%20%2B%20OVA%20%2B%20Movie%29%20%5BBD%201080p%5D%5BHEVC%20x265%2010bit%5D%5BDual-Audio%5D%5BMulti-Subs%5D%20%28Batch%29&tr=http%3A%2F%2Fnyaa.tracker.wf%3A7777%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce]
+18:39:20 root INFO Detected type: other/show
+18:39:20 root INFO Beginning download to /other/temp/
+18:39:20 root INFO QB response: Ok.
+18:39:25 root INFO Found torrent name - [Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs] (Batch)
+18:53:35 root INFO Torrent download finished, returning...
+18:53:35 root INFO {'added_on': 1677350360, 'amount_left': 0, 'auto_tmm': False, 'availability': -1, 'category': '', 'completed': 10526305707, 'completion_on': 1677351212, 'content_path': '/other/temp/[Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs]', 'dl_limit': 0, 'dlspeed': 4121234, 'download_path': '', 'downloaded': 10537519233, 'downloaded_session': 10537519878, 'eta': 17998, 'f_l_piece_prio': False, 'force_start': False, 'hash': '3b5c25176a706a14affd27905e9fb9591c0ce681', 'infohash_v1': '3b5c25176a706a14affd27905e9fb9591c0ce681', 'infohash_v2': '', 'last_activity': 1677351213, 'magnet_uri': 'magnet:?xt=urn:btih:3b5c25176a706a14affd27905e9fb9591c0ce681&dn=%5bJudas%5d%20Steins%3bGate%20(Season%201%20%2b%20OVA%20%2b%20Movie)%20%5bBD%201080p%5d%5bHEVC%20x265%2010bit%5d%5bDual-Audio%5d%5bMulti-Subs%5d&tr=http%3a%2f%2fnyaa.tracker.wf%3a7777%2fannounce&tr=udp%3a%2f%2fopen.stealth.si%3a80%2fannounce&tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce&tr=udp%3a%2f%2fexodus.desync.com%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.torrent.eu.org%3a451%2fannounce', 'max_ratio': 1, 'max_seeding_time': 300, 'name': '[Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs] (Batch)', 'num_complete': 180, 'num_incomplete': 61, 'num_leechs': 1, 'num_seeds': 0, 'priority': 0, 'progress': 1, 'ratio': 0.0013449237611465055, 'ratio_limit': -2, 'save_path': '/other/temp', 'seeding_time': 2, 'seeding_time_limit': -2, 'seen_complete': 1677351212, 'seq_dl': False, 'size': 10526305707, 'state': 'uploading', 'super_seeding': False, 'tags': '', 'time_active': 853, 'total_size': 10526305707, 'tracker': 'udp://exodus.desync.com:6969/announce', 'trackers_count': 5, 'up_limit': 0, 'uploaded': 14172160, 'uploaded_session': 14172160, 'upspeed': 53043}
+18:53:35 root INFO Generated - save_path: /home/alex/hdd1a/temp/[Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs], movie_file_name: [Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs], normalized_name: Steins_Gate
+18:53:35 root INFO Checking for directory...
+18:53:35 root INFO Is directory = True
+18:53:35 root INFO Normalized directory doesnt exist yet - /home/alex/hdd1a/Steins_Gate
+18:53:35 root INFO Trying to rename - /home/alex/hdd1a/temp/[Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs] to /home/alex/hdd1a/Steins_Gate
+18:53:35 root ERROR Callback: [Errno 1] Operation not permitted: '/home/alex/hdd1a/Steins_Gate'
+19:16:47 root INFO ------------------NEW TORRENT------------------
+19:16:47 root INFO Parsed args - type: Other, name: autodl, link: magnet:?xt=urn:btih:GNV6S7NTFAXBMHDD4D5XQ2KN4D32HCYI&dn=%5BSubsPlease%5D%20Blue%20Lock%20-%2020%20%281080p%29%20%5B96A5140C%5D.mkv&xl=1446855182&tr=http%3A%2F%2Fnyaa.tracker.wf%3A7777%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2710%2Fannounce&tr=udp%3A%2F%2F9.rarbg.me%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker3.itzmx.com%3A6961%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fretracker.lanta-net.ru%3A2710%2Fannounce&tr=http%3A%2F%2Fopen.acgnxtracker.com%3A80%2Fannounce&tr=wss%3A%2F%2Ftracker.openwebtorrent.com
+19:16:47 root INFO QB object: <qbittorrent.client.Client object at 0x7fec401da410>
+19:16:47 root INFO Using user-agent: {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'}
+19:16:47 root INFO PLEX server entity: <PlexServer:http://192.168.0.101>
+19:16:47 root INFO Env thinks the user is alex, effective user is alex
+19:16:47 root INFO Starting new torrent
+19:16:47 root INFO Magnet converter - magnet:?xt=urn:btih:GNV6S7NTFAXBMHDD4D5X
+19:16:47 root INFO Link already is a magnet, returning...
+19:16:47 root INFO Detected type: other/show
+19:16:47 root INFO Beginning download to /other/temp/
+19:16:47 root INFO QB response: Ok.
+19:16:52 root INFO Found torrent name - [SubsPlease] Blue Lock - 20 (1080p) [96A5140C].mkv
+19:22:22 root INFO ------------------NEW TORRENT------------------
+19:22:22 root INFO Parsed args - type: Other, name: Steins Gate, link: https://nyaa.si/view/1443096
+19:22:22 root INFO QB object: <qbittorrent.client.Client object at 0x7f8d91d99350>
+19:22:22 root INFO Using user-agent: {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'}
+19:22:22 root INFO PLEX server entity: <PlexServer:http://192.168.0.101>
+19:22:22 root INFO Env thinks the user is alex, effective user is alex
+19:22:22 root INFO Starting new torrent
+19:22:22 root INFO Magnet converter - https://nyaa.si/view/1443096
+19:22:22 root INFO Made soup
+19:22:22 root INFO Returning [magnet:?xt=urn:btih:3b5c25176a706a14affd27905e9fb9591c0ce681&dn=%5BJudas%5D%20Steins%3BGate%20%28Season%201%20%2B%20OVA%20%2B%20Movie%29%20%5BBD%201080p%5D%5BHEVC%20x265%2010bit%5D%5BDual-Audio%5D%5BMulti-Subs%5D%20%28Batch%29&tr=http%3A%2F%2Fnyaa.tracker.wf%3A7777%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce]
+19:22:22 root INFO Detected type: other/show
+19:22:22 root INFO Beginning download to /other/temp/
+19:22:22 root INFO QB response: Ok.
+19:22:27 root INFO Found torrent name - [Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs] (Batch)
+19:25:55 root INFO Torrent download finished, returning...
+19:25:55 root INFO {'added_on': 1677352607, 'amount_left': 0, 'auto_tmm': False, 'availability': -1, 'category': '', 'completed': 1446855182, 'completion_on': 1677353152, 'content_path': '/other/temp/[SubsPlease] Blue Lock - 20 (1080p) [96A5140C].mkv', 'dl_limit': 0, 'dlspeed': 1412485, 'download_path': '', 'downloaded': 1454154217, 'downloaded_session': 1454170601, 'eta': 2369, 'f_l_piece_prio': False, 'force_start': False, 'hash': '336be97db3282e161c63e0fb78694de0f7a38b08', 'infohash_v1': '336be97db3282e161c63e0fb78694de0f7a38b08', 'infohash_v2': '', 'last_activity': 1677353153, 'magnet_uri': 'magnet:?xt=urn:btih:336be97db3282e161c63e0fb78694de0f7a38b08&dn=%5bSubsPlease%5d%20Blue%20Lock%20-%2020%20(1080p)%20%5b96A5140C%5d.mkv&tr=http%3a%2f%2fnyaa.tracker.wf%3a7777%2fannounce&tr=udp%3a%2f%2ftracker.coppersurfer.tk%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce&tr=udp%3a%2f%2f9.rarbg.to%3a2710%2fannounce&tr=udp%3a%2f%2f9.rarbg.me%3a2710%2fannounce&tr=udp%3a%2f%2ftracker.leechers-paradise.org%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.internetwarriors.net%3a1337%2fannounce&tr=udp%3a%2f%2ftracker.cyberia.is%3a6969%2fannounce&tr=udp%3a%2f%2fexodus.desync.com%3a6969%2fannounce&tr=udp%3a%2f%2ftracker3.itzmx.com%3a6961%2fannounce&tr=udp%3a%2f%2ftracker.torrent.eu.org%3a451%2fannounce&tr=udp%3a%2f%2ftracker.tiny-vps.com%3a6969%2fannounce&tr=udp%3a%2f%2fretracker.lanta-net.ru%3a2710%2fannounce&tr=http%3a%2f%2fopen.acgnxtracker.com%3a80%2fannounce&tr=wss%3a%2f%2ftracker.openwebtorrent.com', 'max_ratio': 1, 'max_seeding_time': 300, 'name': '[SubsPlease] Blue Lock - 20 (1080p) [96A5140C].mkv', 'num_complete': 1147, 'num_incomplete': 1162, 'num_leechs': 7, 'num_seeds': 0, 'priority': 0, 'progress': 1, 'ratio': 0.22844777473832406, 'ratio_limit': -2, 'save_path': '/other/temp', 'seeding_time': 1, 'seeding_time_limit': -2, 'seen_complete': 1677353152, 'seq_dl': False, 'size': 1446855182, 'state': 'uploading', 'super_seeding': False, 'tags': '', 'time_active': 546, 'total_size': 1446855182, 'tracker': 'udp://exodus.desync.com:6969/announce', 'trackers_count': 15, 'up_limit': 0, 'uploaded': 332198295, 'uploaded_session': 332919953, 'upspeed': 823840}
+19:25:55 root INFO Generated - save_path: /home/alex/hdd1a/temp/[SubsPlease] Blue Lock - 20 (1080p) [96A5140C].mkv, movie_file_name: [SubsPlease] Blue Lock - 20 (1080p) [96A5140C].mkv, normalized_name: autodl
+19:25:55 root INFO Checking for directory...
+19:25:55 root INFO Checking for SubsPlease in [SubsPlease] Blue Lock - 20 (1080p) [96A5140C].mkv
+19:25:55 root INFO SubsPlease found
+19:25:55 root INFO Generated - show_name: Blue Lock, normalized_name = blue_lock
+19:25:55 root INFO Checking for if folder /home/alex/hdd1a/blue_lock exists
+19:25:55 root INFO Trying to rename /home/alex/hdd1a/temp/[SubsPlease] Blue Lock - 20 (1080p) [96A5140C].mkv to /home/alex/hdd1a/blue_lock/[SubsPlease] Blue Lock - 20 (1080p) [96A5140C].mkv
+19:25:55 root INFO Successfully renamed
+19:25:57 root INFO Download of [SubsPlease] Blue Lock - 20 (1080p) [96A5140C].mkv completed
+19:25:57 root INFO Updated plex library
+19:34:13 root INFO Torrent download finished, returning...
+19:34:13 root INFO {'added_on': 1677352942, 'amount_left': 0, 'auto_tmm': False, 'availability': -1, 'category': '', 'completed': 10526305707, 'completion_on': 1677353651, 'content_path': '/other/temp/[Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs]', 'dl_limit': 0, 'dlspeed': 6258464, 'download_path': '', 'downloaded': 10539669532, 'downloaded_session': 10539669532, 'eta': 17999, 'f_l_piece_prio': False, 'force_start': False, 'hash': '3b5c25176a706a14affd27905e9fb9591c0ce681', 'infohash_v1': '3b5c25176a706a14affd27905e9fb9591c0ce681', 'infohash_v2': '', 'last_activity': 1677353651, 'magnet_uri': 'magnet:?xt=urn:btih:3b5c25176a706a14affd27905e9fb9591c0ce681&dn=%5bJudas%5d%20Steins%3bGate%20(Season%201%20%2b%20OVA%20%2b%20Movie)%20%5bBD%201080p%5d%5bHEVC%20x265%2010bit%5d%5bDual-Audio%5d%5bMulti-Subs%5d&tr=http%3a%2f%2fnyaa.tracker.wf%3a7777%2fannounce&tr=udp%3a%2f%2fopen.stealth.si%3a80%2fannounce&tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce&tr=udp%3a%2f%2fexodus.desync.com%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.torrent.eu.org%3a451%2fannounce', 'max_ratio': 1, 'max_seeding_time': 300, 'name': '[Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs] (Batch)', 'num_complete': 174, 'num_incomplete': 61, 'num_leechs': 0, 'num_seeds': 0, 'priority': 0, 'progress': 1, 'ratio': 0.00011552126907805974, 'ratio_limit': -2, 'save_path': '/other/temp', 'seeding_time': 1, 'seeding_time_limit': -2, 'seen_complete': 1677353651, 'seq_dl': False, 'size': 10526305707, 'state': 'uploading', 'super_seeding': False, 'tags': '', 'time_active': 710, 'total_size': 10526305707, 'tracker': 'udp://exodus.desync.com:6969/announce', 'trackers_count': 5, 'up_limit': 0, 'uploaded': 1217556, 'uploaded_session': 1217556, 'upspeed': 596}
+19:34:13 root INFO Generated - save_path: /home/alex/hdd1a/temp/[Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs], movie_file_name: [Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs], normalized_name: Steins_Gate
+19:34:13 root INFO Checking for directory...
+19:34:13 root INFO Is directory = True
+19:34:13 root INFO Normalized directory doesnt exist yet - /home/alex/hdd1a/Steins_Gate
+19:34:13 root INFO Trying to rename - /home/alex/hdd1a/temp/[Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs] to /home/alex/hdd1a/Steins_Gate
+19:34:13 root ERROR Callback: [Errno 1] Operation not permitted: '/home/alex/hdd1a/Steins_Gate'
+20:06:21 root INFO ------------------NEW TORRENT------------------
+20:06:21 root INFO Parsed args - type: Other, name: Steins Gate, link: https://nyaa.si/view/1443096
+20:06:21 root INFO QB object: <qbittorrent.client.Client object at 0x7f566a899350>
+20:06:21 root INFO Using user-agent: {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'}
+20:06:21 root INFO PLEX server entity: <PlexServer:http://192.168.0.101>
+20:06:21 root INFO Env thinks the user is alex, effective user is alex
+20:06:21 root INFO Starting new torrent
+20:06:21 root INFO Magnet converter - https://nyaa.si/view/1443096
+20:06:22 root INFO Made soup
+20:06:22 root INFO Returning [magnet:?xt=urn:btih:3b5c25176a706a14affd27905e9fb9591c0ce681&dn=%5BJudas%5D%20Steins%3BGate%20%28Season%201%20%2B%20OVA%20%2B%20Movie%29%20%5BBD%201080p%5D%5BHEVC%20x265%2010bit%5D%5BDual-Audio%5D%5BMulti-Subs%5D%20%28Batch%29&tr=http%3A%2F%2Fnyaa.tracker.wf%3A7777%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce]
+20:06:22 root INFO Detected type: other/show
+20:06:22 root INFO Beginning download to /other/temp/
+20:06:22 root INFO QB response: Ok.
+20:06:27 root INFO Found torrent name - [Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs] (Batch)
+20:18:53 root INFO Torrent download finished, returning...
+20:18:53 root INFO {'added_on': 1677355582, 'amount_left': 0, 'auto_tmm': False, 'availability': -1, 'category': '', 'completed': 10526305707, 'completion_on': 1677356331, 'content_path': '/other/temp/[Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs]', 'dl_limit': 0, 'dlspeed': 5350114, 'download_path': '', 'downloaded': 10537446823, 'downloaded_session': 10537446823, 'eta': 17999, 'f_l_piece_prio': False, 'force_start': False, 'hash': '3b5c25176a706a14affd27905e9fb9591c0ce681', 'infohash_v1': '3b5c25176a706a14affd27905e9fb9591c0ce681', 'infohash_v2': '', 'last_activity': 1677356331, 'magnet_uri': 'magnet:?xt=urn:btih:3b5c25176a706a14affd27905e9fb9591c0ce681&dn=%5bJudas%5d%20Steins%3bGate%20(Season%201%20%2b%20OVA%20%2b%20Movie)%20%5bBD%201080p%5d%5bHEVC%20x265%2010bit%5d%5bDual-Audio%5d%5bMulti-Subs%5d&tr=http%3a%2f%2fnyaa.tracker.wf%3a7777%2fannounce&tr=udp%3a%2f%2fopen.stealth.si%3a80%2fannounce&tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce&tr=udp%3a%2f%2fexodus.desync.com%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.torrent.eu.org%3a451%2fannounce', 'max_ratio': 1, 'max_seeding_time': 300, 'name': '[Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs] (Batch)', 'num_complete': 182, 'num_incomplete': 60, 'num_leechs': 2, 'num_seeds': 0, 'priority': 0, 'progress': 1, 'ratio': 0, 'ratio_limit': -2, 'save_path': '/other/temp', 'seeding_time': 1, 'seeding_time_limit': -2, 'seen_complete': 1677356331, 'seq_dl': False, 'size': 10526305707, 'state': 'stalledUP', 'super_seeding': False, 'tags': '', 'time_active': 750, 'total_size': 10526305707, 'tracker': 'udp://exodus.desync.com:6969/announce', 'trackers_count': 5, 'up_limit': 0, 'uploaded': 0, 'uploaded_session': 0, 'upspeed': 0}
+20:18:53 root INFO Generated - save_path: /home/alex/hdd1a/temp/[Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs], movie_file_name: [Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs], normalized_name: Steins_Gate
+20:18:53 root INFO Checking for directory...
+20:18:53 root INFO Is directory = True
+20:18:53 root INFO Normalized directory doesnt exist yet - /home/alex/hdd1a/Steins_Gate
+20:18:53 root INFO Trying to rename - /home/alex/hdd1a/temp/[Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs] to /home/alex/hdd1a/Steins_Gate
+20:18:53 root ERROR Callback: [Errno 1] Operation not permitted: '/home/alex/hdd1a/Steins_Gate'
+20:40:55 root INFO ------------------NEW TORRENT------------------
+20:40:55 root INFO Parsed args - type: Other, name: Steins Gate, link: https://nyaa.si/view/1443096
+20:40:55 root INFO QB object: <qbittorrent.client.Client object at 0x7f8a0974de10>
+20:40:55 root INFO Using user-agent: {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'}
+20:40:55 root INFO PLEX server entity: <PlexServer:http://192.168.0.101>
+20:40:55 root INFO Env thinks the user is alex, effective user is alex
+20:40:55 root INFO Starting new torrent
+20:40:55 root INFO Magnet converter - https://nyaa.si/view/1443096
+20:40:56 root INFO Made soup
+20:40:56 root INFO Returning [magnet:?xt=urn:btih:3b5c25176a706a14affd27905e9fb9591c0ce681&dn=%5BJudas%5D%20Steins%3BGate%20%28Season%201%20%2B%20OVA%20%2B%20Movie%29%20%5BBD%201080p%5D%5BHEVC%20x265%2010bit%5D%5BDual-Audio%5D%5BMulti-Subs%5D%20%28Batch%29&tr=http%3A%2F%2Fnyaa.tracker.wf%3A7777%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce]
+20:40:56 root INFO Detected type: other/show
+20:40:56 root INFO Beginning download to /other/temp/
+20:40:56 root INFO QB response: Ok.
+20:41:01 root INFO Found torrent name - [Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs] (Batch)
+20:53:18 root INFO Torrent download finished, returning...
+20:53:18 root INFO {'added_on': 1677357656, 'amount_left': 0, 'auto_tmm': False, 'availability': -1, 'category': '', 'completed': 10526305707, 'completion_on': 1677358395, 'content_path': '/other/temp/[Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs]', 'dl_limit': 0, 'dlspeed': 4670044, 'download_path': '', 'downloaded': 10537970362, 'downloaded_session': 10537970362, 'eta': 17999, 'f_l_piece_prio': False, 'force_start': False, 'hash': '3b5c25176a706a14affd27905e9fb9591c0ce681', 'infohash_v1': '3b5c25176a706a14affd27905e9fb9591c0ce681', 'infohash_v2': '', 'last_activity': 1677358395, 'magnet_uri': 'magnet:?xt=urn:btih:3b5c25176a706a14affd27905e9fb9591c0ce681&dn=%5bJudas%5d%20Steins%3bGate%20(Season%201%20%2b%20OVA%20%2b%20Movie)%20%5bBD%201080p%5d%5bHEVC%20x265%2010bit%5d%5bDual-Audio%5d%5bMulti-Subs%5d&tr=http%3a%2f%2fnyaa.tracker.wf%3a7777%2fannounce&tr=udp%3a%2f%2fopen.stealth.si%3a80%2fannounce&tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce&tr=udp%3a%2f%2fexodus.desync.com%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.torrent.eu.org%3a451%2fannounce', 'max_ratio': 1, 'max_seeding_time': 300, 'name': '[Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs] (Batch)', 'num_complete': 179, 'num_incomplete': 65, 'num_leechs': 3, 'num_seeds': 1, 'priority': 0, 'progress': 1, 'ratio': 0, 'ratio_limit': -2, 'save_path': '/other/temp', 'seeding_time': 1, 'seeding_time_limit': -2, 'seen_complete': 1677358395, 'seq_dl': False, 'size': 10526305707, 'state': 'stalledUP', 'super_seeding': False, 'tags': '', 'time_active': 739, 'total_size': 10526305707, 'tracker': 'udp://exodus.desync.com:6969/announce', 'trackers_count': 5, 'up_limit': 0, 'uploaded': 0, 'uploaded_session': 0, 'upspeed': 0}
+20:53:18 root INFO Generated - save_path: /home/alex/hdd1a/temp/[Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs], movie_file_name: [Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs], normalized_name: Steins_Gate
+20:53:18 root INFO Checking for directory...
+20:53:18 root INFO Is directory = True
+20:53:18 root INFO Normalized directory doesnt exist yet - /home/alex/hdd1a/Steins_Gate
+20:53:18 root INFO Trying to rename - /home/alex/hdd1a/temp/[Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs] to /home/alex/hdd1a/Steins_Gate
+20:53:18 root ERROR Callback: [Errno 13] Permission denied: '/home/alex/hdd1a/temp/[Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs]' -> '/home/alex/hdd1a/Steins_Gate'
+21:19:20 root INFO ------------------NEW TORRENT------------------
+21:19:20 root INFO Parsed args - type: Other, name: Steins Gate, link: https://nyaa.si/view/1443096
+21:19:20 root INFO QB object: <qbittorrent.client.Client object at 0x7f67635843d0>
+21:19:20 root INFO Using user-agent: {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'}
+21:19:20 root INFO PLEX server entity: <PlexServer:http://192.168.0.101>
+21:19:20 root INFO Env thinks the user is alex, effective user is alex
+21:19:20 root INFO Starting new torrent
+21:19:20 root INFO Magnet converter - https://nyaa.si/view/1443096
+21:19:20 root INFO Made soup
+21:19:20 root INFO Returning [magnet:?xt=urn:btih:3b5c25176a706a14affd27905e9fb9591c0ce681&dn=%5BJudas%5D%20Steins%3BGate%20%28Season%201%20%2B%20OVA%20%2B%20Movie%29%20%5BBD%201080p%5D%5BHEVC%20x265%2010bit%5D%5BDual-Audio%5D%5BMulti-Subs%5D%20%28Batch%29&tr=http%3A%2F%2Fnyaa.tracker.wf%3A7777%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce]
+21:19:20 root INFO Detected type: other/show
+21:19:20 root INFO Beginning download to /other/temp/
+21:19:20 root INFO QB response: Fails.
+21:19:20 root ERROR Failed to start download ce681&dn=%5BJudas%5D%20Steins%3BGate%20%28Sea
+21:19:56 root INFO ------------------NEW TORRENT------------------
+21:19:56 root INFO Parsed args - type: Other, name: Steins Gate, link: https://nyaa.si/view/1443096
+21:19:56 root INFO QB object: <qbittorrent.client.Client object at 0x7feb1fcd5b50>
+21:19:56 root INFO Using user-agent: {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'}
+21:19:56 root INFO PLEX server entity: <PlexServer:http://192.168.0.101>
+21:19:56 root INFO Env thinks the user is alex, effective user is alex
+21:19:56 root INFO Starting new torrent
+21:19:56 root INFO Magnet converter - https://nyaa.si/view/1443096
+21:19:56 root INFO Made soup
+21:19:56 root INFO Returning [magnet:?xt=urn:btih:3b5c25176a706a14affd27905e9fb9591c0ce681&dn=%5BJudas%5D%20Steins%3BGate%20%28Season%201%20%2B%20OVA%20%2B%20Movie%29%20%5BBD%201080p%5D%5BHEVC%20x265%2010bit%5D%5BDual-Audio%5D%5BMulti-Subs%5D%20%28Batch%29&tr=http%3A%2F%2Fnyaa.tracker.wf%3A7777%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce]
+21:19:56 root INFO Detected type: other/show
+21:19:56 root INFO Beginning download to /other/temp/
+21:19:56 root INFO QB response: Ok.
+21:20:01 root INFO Found torrent name - [Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs] (Batch)
+21:32:26 root INFO Torrent download finished, returning...
+21:32:26 root INFO {'added_on': 1677359996, 'amount_left': 0, 'auto_tmm': False, 'availability': -1, 'category': '', 'completed': 10526305707, 'completion_on': 1677360744, 'content_path': '/other/temp/[Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs]', 'dl_limit': 0, 'dlspeed': 7389050, 'download_path': '', 'downloaded': 10541223535, 'downloaded_session': 10541223535, 'eta': 17999, 'f_l_piece_prio': False, 'force_start': False, 'hash': '3b5c25176a706a14affd27905e9fb9591c0ce681', 'infohash_v1': '3b5c25176a706a14affd27905e9fb9591c0ce681', 'infohash_v2': '', 'last_activity': 1677360744, 'magnet_uri': 'magnet:?xt=urn:btih:3b5c25176a706a14affd27905e9fb9591c0ce681&dn=%5bJudas%5d%20Steins%3bGate%20(Season%201%20%2b%20OVA%20%2b%20Movie)%20%5bBD%201080p%5d%5bHEVC%20x265%2010bit%5d%5bDual-Audio%5d%5bMulti-Subs%5d&tr=http%3a%2f%2fnyaa.tracker.wf%3a7777%2fannounce&tr=udp%3a%2f%2fopen.stealth.si%3a80%2fannounce&tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce&tr=udp%3a%2f%2fexodus.desync.com%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.torrent.eu.org%3a451%2fannounce', 'max_ratio': 1, 'max_seeding_time': 300, 'name': '[Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs] (Batch)', 'num_complete': 169, 'num_incomplete': 63, 'num_leechs': 1, 'num_seeds': 0, 'priority': 0, 'progress': 1, 'ratio': 0.0005193781330812087, 'ratio_limit': -2, 'save_path': '/other/temp', 'seeding_time': 1, 'seeding_time_limit': -2, 'seen_complete': 1677360744, 'seq_dl': False, 'size': 10526305707, 'state': 'uploading', 'super_seeding': False, 'tags': '', 'time_active': 749, 'total_size': 10526305707, 'tracker': 'udp://exodus.desync.com:6969/announce', 'trackers_count': 5, 'up_limit': 0, 'uploaded': 5474881, 'uploaded_session': 5474881, 'upspeed': 573}
+21:32:26 root INFO Generated - save_path: /home/alex/hdd1a/temp/[Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs], movie_file_name: [Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs], normalized_name: Steins_Gate
+21:32:26 root INFO Checking for directory...
+21:32:26 root INFO Is directory = True
+21:32:26 root INFO Normalized directory doesnt exist yet - /home/alex/hdd1a/Steins_Gate
+21:32:26 root INFO Calling subprocess chown to set ownership of temp dir
+21:32:26 root ERROR Callback: name 'subprocess' is not defined
+21:33:50 root INFO ------------------NEW TORRENT------------------
+21:33:50 root INFO Parsed args - type: Other, name: Steins Gate, link: https://nyaa.si/view/1443096
+21:33:50 root INFO QB object: <qbittorrent.client.Client object at 0x7f1a4bf7c3d0>
+21:33:50 root INFO Using user-agent: {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'}
+21:33:50 root INFO PLEX server entity: <PlexServer:http://192.168.0.101>
+21:33:50 root INFO Env thinks the user is alex, effective user is alex
+21:33:50 root INFO Starting new torrent
+21:33:50 root INFO Magnet converter - https://nyaa.si/view/1443096
+21:33:50 root INFO Made soup
+21:33:50 root INFO Returning [magnet:?xt=urn:btih:3b5c25176a706a14affd27905e9fb9591c0ce681&dn=%5BJudas%5D%20Steins%3BGate%20%28Season%201%20%2B%20OVA%20%2B%20Movie%29%20%5BBD%201080p%5D%5BHEVC%20x265%2010bit%5D%5BDual-Audio%5D%5BMulti-Subs%5D%20%28Batch%29&tr=http%3A%2F%2Fnyaa.tracker.wf%3A7777%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce]
+21:33:50 root INFO Detected type: other/show
+21:33:50 root INFO Beginning download to /other/temp/
+21:33:50 root INFO QB response: Ok.
+21:33:55 root INFO Found torrent name - [Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs] (Batch)
+21:45:31 root INFO Torrent download finished, returning...
+21:45:31 root INFO {'added_on': 1677360830, 'amount_left': 0, 'auto_tmm': False, 'availability': -1, 'category': '', 'completed': 10526305707, 'completion_on': 1677361529, 'content_path': '/other/temp/[Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs]', 'dl_limit': 0, 'dlspeed': 5876531, 'download_path': '', 'downloaded': 10546448500, 'downloaded_session': 10546448500, 'eta': 17999, 'f_l_piece_prio': False, 'force_start': False, 'hash': '3b5c25176a706a14affd27905e9fb9591c0ce681', 'infohash_v1': '3b5c25176a706a14affd27905e9fb9591c0ce681', 'infohash_v2': '', 'last_activity': 1677361530, 'magnet_uri': 'magnet:?xt=urn:btih:3b5c25176a706a14affd27905e9fb9591c0ce681&dn=%5bJudas%5d%20Steins%3bGate%20(Season%201%20%2b%20OVA%20%2b%20Movie)%20%5bBD%201080p%5d%5bHEVC%20x265%2010bit%5d%5bDual-Audio%5d%5bMulti-Subs%5d&tr=http%3a%2f%2fnyaa.tracker.wf%3a7777%2fannounce&tr=udp%3a%2f%2fopen.stealth.si%3a80%2fannounce&tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce&tr=udp%3a%2f%2fexodus.desync.com%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.torrent.eu.org%3a451%2fannounce', 'max_ratio': 1, 'max_seeding_time': 300, 'name': '[Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs] (Batch)', 'num_complete': 167, 'num_incomplete': 63, 'num_leechs': 1, 'num_seeds': 0, 'priority': 0, 'progress': 1, 'ratio': 0.0028008985204829853, 'ratio_limit': -2, 'save_path': '/other/temp', 'seeding_time': 1, 'seeding_time_limit': -2, 'seen_complete': 1677361529, 'seq_dl': False, 'size': 10526305707, 'state': 'uploading', 'super_seeding': False, 'tags': '', 'time_active': 700, 'total_size': 10526305707, 'tracker': 'udp://exodus.desync.com:6969/announce', 'trackers_count': 5, 'up_limit': 0, 'uploaded': 29539532, 'uploaded_session': 29578821, 'upspeed': 69094}
+21:45:31 root INFO Generated - save_path: /home/alex/hdd1a/temp/[Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs], movie_file_name: [Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs], normalized_name: Steins_Gate
+21:45:31 root INFO Checking for directory...
+21:45:31 root INFO Is directory = True
+21:45:31 root INFO Normalized directory doesnt exist yet - /home/alex/hdd1a/Steins_Gate
+21:45:31 root INFO Calling subprocess chown to set ownership of temp dir
+21:45:31 root INFO Trying to rename - /home/alex/hdd1a/temp/[Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs] to /home/alex/hdd1a/Steins_Gate
+21:45:31 root INFO Changed mod to 777
+21:45:31 root INFO Failed to post to plex, post request status code: 201, reason: Created
+21:45:31 root INFO Download of [Judas] Steins;Gate (Season 1 + OVA + Movie) [BD 1080p][HEVC x265 10bit][Dual-Audio][Multi-Subs] (Batch) completed
+21:45:31 root INFO Updated plex library
