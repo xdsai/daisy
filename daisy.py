@@ -298,7 +298,7 @@ def dl(magnet, save_path):
             logging.info(f"Found torrent name - {torrent_info['name']}")
             requests.post(daisy_webhook_link, json = {'embeds':[{'title':f'Download of {torrent_name} started', 'color':65436}]})
             meta_DL_counter = 0
-            while torrent_info['amount_left'] != 0:
+            while torrent_info['amount_left'] != 0 or torrent_info['state'] == 'metaDL':
                 for torrent in qb.torrents():
                     if torrent['name'] == torrent_name:
                         torrent_info = torrent
