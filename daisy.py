@@ -154,13 +154,16 @@ def process(torrent_type, show_name, link):
                             logging.info("Changed mod to 777")
 
                             if torrent_type == 'show':
-                                posty = requests.post(f"http://192.168.0.101:32400/library/sections?name={show_name}&type=show&agent=com.plexapp.agents.none&scanner=Plex Video Files Scanner&language=xn&importFromiTunes=&enableAutoPhotoTags=&downloadMedia=&location={plex_path}{normalized_name}&X-Plex-Product=Plex Web&X-Plex-Version=4.76.1&X-Plex-Client-Identifier=9fqw27x73r6ygz9hstlg47kq&X-Plex-Platform=Firefox&X-Plex-Platform-Version=99.0&X-Plex-Sync-Version=2&X-Plex-Features=external-media,indirect-media&X-Plex-Model=bundled&X-Plex-Device=Linux&X-Plex-Device-Name=Firefox&X-Plex-Device-Screen-Resolution=1920x921,1920x1080&X-Plex-Token=KMUHALDo6oHH-dLamrAP&X-Plex-Language=en")
+                                request_body = f"http://192.168.0.101:32400/library/sections?name={show_name}&type=show&agent=tv.plex.agents.series&scanner=Plex TV Series&language=en-US&importFromiTunes=&enableAutoPhotoTags=&downloadMedia=&location={plex_path}{normalized_name}&X-Plex-Product=Plex Web&X-Plex-Version=4.76.1&X-Plex-Client-Identifier=9fqw27x73r6ygz9hstlg47kq&X-Plex-Platform=Firefox&X-Plex-Platform-Version=99.0&X-Plex-Sync-Version=2&X-Plex-Features=external-media,indirect-media&X-Plex-Model=bundled&X-Plex-Device=Linux&X-Plex-Device-Name=Firefox&X-Plex-Device-Screen-Resolution=1920x921,1920x1080&X-Plex-Token=KMUHALDo6oHH-dLamrAP&X-Plex-Language=en"
+                                posty = requests.post(request_body)
                             else:
-                                posty = requests.post(f"http://192.168.0.101:32400/library/sections?name={show_name}&type=movie&agent=com.plexapp.agents.none&scanner=Plex Video Files Scanner&language=xn&importFromiTunes=&enableAutoPhotoTags=&downloadMedia=&location={plex_path}{normalized_name}&X-Plex-Product=Plex Web&X-Plex-Version=4.76.1&X-Plex-Client-Identifier=9fqw27x73r6ygz9hstlg47kq&X-Plex-Platform=Firefox&X-Plex-Platform-Version=99.0&X-Plex-Sync-Version=2&X-Plex-Features=external-media,indirect-media&X-Plex-Model=bundled&X-Plex-Device=Linux&X-Plex-Device-Name=Firefox&X-Plex-Device-Screen-Resolution=1920x921,1920x1080&X-Plex-Token=KMUHALDo6oHH-dLamrAP&X-Plex-Language=en")
+                                request_body = f"http://192.168.0.101:32400/library/sections?name={show_name}&type=movie&agent=com.plexapp.agents.none&scanner=Plex Video Files Scanner&language=xn&importFromiTunes=&enableAutoPhotoTags=&downloadMedia=&location={plex_path}{normalized_name}&X-Plex-Product=Plex Web&X-Plex-Version=4.76.1&X-Plex-Client-Identifier=9fqw27x73r6ygz9hstlg47kq&X-Plex-Platform=Firefox&X-Plex-Platform-Version=99.0&X-Plex-Sync-Version=2&X-Plex-Features=external-media,indirect-media&X-Plex-Model=bundled&X-Plex-Device=Linux&X-Plex-Device-Name=Firefox&X-Plex-Device-Screen-Resolution=1920x921,1920x1080&X-Plex-Token=KMUHALDo6oHH-dLamrAP&X-Plex-Language=en"
+                                posty = requests.post(request_body)
                             if posty.status_code == 201:
                                 logging.info("Successfully posted to plex")
                             else:
                                 logging.info(f"Failed to post to plex, post request status code: {posty.status_code}, reason: {posty.reason}")
+                                logging.info(f"Plex request body: {request_body}")
                         
                     else:
                         logging.info(f"Checking for SubsPlease in {movie_file_name}")
@@ -203,15 +206,19 @@ def process(torrent_type, show_name, link):
                                 os.mkdir(f"{path}{normalized_name}")
                                 os.chmod(f'{path}{normalized_name}', 0o777)
                                 logging.info(f"Created {path}{normalized_name} and set mod to 777")
+
                                 if torrent_type == 'show':
-                                    posty = requests.post(f"http://192.168.0.101:32400/library/sections?name={show_name}&type=show&agent=com.plexapp.agents.none&scanner=Plex Video Files Scanner&language=xn&importFromiTunes=&enableAutoPhotoTags=&downloadMedia=&location={plex_path}{normalized_name}&X-Plex-Product=Plex Web&X-Plex-Version=4.76.1&X-Plex-Client-Identifier=9fqw27x73r6ygz9hstlg47kq&X-Plex-Platform=Firefox&X-Plex-Platform-Version=99.0&X-Plex-Sync-Version=2&X-Plex-Features=external-media,indirect-media&X-Plex-Model=bundled&X-Plex-Device=Linux&X-Plex-Device-Name=Firefox&X-Plex-Device-Screen-Resolution=1920x921,1920x1080&X-Plex-Token=KMUHALDo6oHH-dLamrAP&X-Plex-Language=en")
+                                    request_body = f"http://192.168.0.101:32400/library/sections?name={show_name}&type=show&agent=tv.plex.agents.series&scanner=Plex TV Series&language=en-US&importFromiTunes=&enableAutoPhotoTags=&downloadMedia=&location={plex_path}{normalized_name}&X-Plex-Product=Plex Web&X-Plex-Version=4.76.1&X-Plex-Client-Identifier=9fqw27x73r6ygz9hstlg47kq&X-Plex-Platform=Firefox&X-Plex-Platform-Version=99.0&X-Plex-Sync-Version=2&X-Plex-Features=external-media,indirect-media&X-Plex-Model=bundled&X-Plex-Device=Linux&X-Plex-Device-Name=Firefox&X-Plex-Device-Screen-Resolution=1920x921,1920x1080&X-Plex-Token=KMUHALDo6oHH-dLamrAP&X-Plex-Language=en"
+                                    posty = requests.post(request_body)
                                 else:
-                                    posty = requests.post(f"http://192.168.0.101:32400/library/sections?name={show_name}&type=movie&agent=com.plexapp.agents.none&scanner=Plex Video Files Scanner&language=xn&importFromiTunes=&enableAutoPhotoTags=&downloadMedia=&location={plex_path}{normalized_name}&X-Plex-Product=Plex Web&X-Plex-Version=4.76.1&X-Plex-Client-Identifier=9fqw27x73r6ygz9hstlg47kq&X-Plex-Platform=Firefox&X-Plex-Platform-Version=99.0&X-Plex-Sync-Version=2&X-Plex-Features=external-media,indirect-media&X-Plex-Model=bundled&X-Plex-Device=Linux&X-Plex-Device-Name=Firefox&X-Plex-Device-Screen-Resolution=1920x921,1920x1080&X-Plex-Token=KMUHALDo6oHH-dLamrAP&X-Plex-Language=en")
+                                    request_body = f"http://192.168.0.101:32400/library/sections?name={show_name}&type=movie&agent=com.plexapp.agents.none&scanner=Plex Video Files Scanner&language=xn&importFromiTunes=&enableAutoPhotoTags=&downloadMedia=&location={plex_path}{normalized_name}&X-Plex-Product=Plex Web&X-Plex-Version=4.76.1&X-Plex-Client-Identifier=9fqw27x73r6ygz9hstlg47kq&X-Plex-Platform=Firefox&X-Plex-Platform-Version=99.0&X-Plex-Sync-Version=2&X-Plex-Features=external-media,indirect-media&X-Plex-Model=bundled&X-Plex-Device=Linux&X-Plex-Device-Name=Firefox&X-Plex-Device-Screen-Resolution=1920x921,1920x1080&X-Plex-Token=KMUHALDo6oHH-dLamrAP&X-Plex-Language=en"
+                                    posty = requests.post(request_body)
                                 if posty.status_code == 201:
                                     logging.info("Successfully posted to plex")
                                 else:
                                     logging.info(f"Failed to post to plex, post request status code: {posty.status_code}, reason: {posty.reason}")
-
+                                    logging.info(f"Plex request body: {request_body}")
+                                    
                             logging.info(f"Calling subprocess chown to set ownership of temp dir")
                             subprocess.call(["sudo", "chown", "alex:alex", f"{path_temp}{movie_file_name}"])
 
