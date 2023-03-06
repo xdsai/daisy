@@ -36,8 +36,12 @@ link = args.m
 
 session = HTMLSession()
 qb = Client("http://192.168.0.101:8080/")
-qb.login("xdsai","admins")
-logging.info(f"QB object: {qb}")
+login_ret = qb.login("xdsai","admins")
+if login_ret == 'Fails':
+    logging.info(f"Failed login to QB, terminating")
+    sys.exit(1)
+else:
+    logging.info(f"Logged in to QB")
 
 useragent = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"}
 logging.info(f"Using user-agent: {useragent}")
