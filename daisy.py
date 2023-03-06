@@ -98,8 +98,8 @@ def process(torrent_type, show_name, link):
                                 movie_extensionless = movie_file_name[:len(movie_file_name)-4]
                                 logging.info(f"Extensionless - {movie_extensionless}")
 
-                                logging.info(f"Trying to rename - {save_path}/{movie_file_name} to {path}/{movie_file_name}")
-                                os.rename(f"{save_path}/{movie_file_name}", f"{path}/{movie_file_name}")
+                                logging.info(f"Trying to rename - {save_path}/{movie_file_name} to {path}{movie_file_name}")
+                                os.rename(f"{save_path}/{movie_file_name}", f"{path}{movie_file_name}")
                                 break
                                 
                         for file in files_within:
@@ -108,7 +108,7 @@ def process(torrent_type, show_name, link):
                                 logging.info(f"Trying to rename - {save_path}/{file} to {path}/{movie_extensionless}.srt")
                                 os.rename(f"{save_path}/{file}", f"{path}/{movie_extensionless}.srt")
                         logging.info(f"Trying to remove - {path_temp}{movie_file_name}")
-                        shutil.rmtree(f"{path_temp}{movie_file_name}")
+                        shutil.rmtree(f"{save_path}")
                         
                     else:
                         logging.info(f"Trying to rename - {save_path} to {path}{movie_file_name}")
