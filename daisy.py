@@ -35,7 +35,7 @@ name = args.n
 link = args.m
 
 session = HTMLSession()
-qb = Client("http://192.168.0.101:8090/")
+qb = Client("http://192.168.0.101:8080/")
 qb.login("xdsai","admins")
 logging.info(f"QB object: {qb}")
 
