@@ -23,6 +23,7 @@ def fetch_shows():
 logging.info(f"Starting loop...")
 
 while True:
+    logging.info("--------------NEW ITERATION---------------")
     with open('autodl_queries.json', 'r') as ir:
         autodl_queries = json.load(ir)
         logging.info(f"autodl_queries.json loaded")
