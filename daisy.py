@@ -91,7 +91,7 @@ def process(torrent_type, show_name, link):
                         logging.info(f"Files within - {files_within}")
 
                         for file in files_within:
-                            if file.endswith('.mkv') or file.endswith('.mp4'):
+                            if file.endswith('.mkv') or file.endswith('.mp4') or file.endswith('.avi'):
                                 
                                 movie_file_name = file
                                 logging.info(f"Found movie - {movie_file_name}")
@@ -117,6 +117,8 @@ def process(torrent_type, show_name, link):
                     logging.info(f"Download of {torrent_info['name']} completed")
                     plex.library.update()
                     logging.info("Updated plex library")   
+                    for drive in drives:
+                        drive['free'] = round(shutil.disk_usage(drive['path']).free/1000000000)
         else:
             logging.info("Detected type: other/show")
             path = '/home/alex/hdd1a/'
@@ -232,8 +234,8 @@ def process(torrent_type, show_name, link):
                     logging.info(f"Download of {torrent_info['name']} completed")
                     plex.library.update()
                     logging.info("Updated plex library")
-        for drive in drives:
-            drive['free'] = round(shutil.disk_usage(drive['path']).free/1000000000)
+                    for drive in drives:
+                        drive['free'] = round(shutil.disk_usage(drive['path']).free/1000000000)
 
         requests.post("https://discord.com/api/webhooks/1079119240986107976/d6GsHCrHSHTVqLIWT71pISSUQHHxmzt6nFXHo4Kz5zQZVg-mVo3uI3j7raCjtb9leJpi", json = {'embeds':[{'title':f"Free space:\nhdd1a - {drives[1]['free']}/931\nhdd5a - {drives[0]['free']}/465", 'color':65436}]})
 
