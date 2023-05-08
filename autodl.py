@@ -38,7 +38,7 @@ while True:
     for query in autodl_queries:
         logging.info(f"Checking query: {query}")
         for show in releases:
-            if query in show['name'].lower():
+            if query.lower() in show['name'].lower():
                 logging.info(f"Query matched! - {show['name']}")
                 logging.info(f"Checking for if match is not in downloaded - {show['title']}")
                 if show['title'] not in dld:
