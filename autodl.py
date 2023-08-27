@@ -2,7 +2,7 @@ import logging
 logging.basicConfig(filename='alog',
     filemode='a',
     format='%(asctime)s %(name)s %(levelname)s %(message)s',
-    datefmt='%H:%M:%S',
+    datefmt='%YYYY-%MM-%DD-%H:%M:%S',
     level=logging.INFO)
 
 import requests, json, time, re, feedparser, subprocess
@@ -27,7 +27,6 @@ while True:
     with open('autodl_queries.json', 'r') as ir:
         autodl_queries = json.load(ir)
         logging.info(f"autodl_queries.json loaded")
-        logging.info(f"{autodl_queries}")
     with open('downloaded.json', 'r') as dld:
         dld = json.load(dld)
 
