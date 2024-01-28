@@ -246,7 +246,7 @@ def process(torrent_type, show_name, link):
 
 def magnet_converter(link) -> str:
     logging.info(f"Magnet converter - {link[:40]}")
-    if '1337x.to' in link or 'nyaa.si' in link:
+    if '1337x.to' in link or 'nyaa.si' in link or "ext.to":
         init = requests.get(link)
         soup = BeautifulSoup(init.text, 'html.parser')
         logging.info(f"Made soup")
