@@ -245,8 +245,11 @@ def process(torrent_type, show_name, link):
 
 
 def magnet_converter(link) -> str:
+    if link.startswith('magnet:?xt='):
+        logging.info(f"Link already is a magnet, returning...")
+        return [link]
     logging.info(f"Magnet converter - {link[:40]}")
-    if '1337x.to' in link or 'nyaa.si' in link or "ext.to":
+    if '1337x.to' in link or 'nyaa.si' in link or "ext.to" in link:
         init = requests.get(link)
         soup = BeautifulSoup(init.text, 'html.parser')
         logging.info(f"Made soup")
@@ -277,10 +280,6 @@ def magnet_converter(link) -> str:
                 break
         logging.info(f"Returning {len(magnets)} magnets")
         return magnets
-    
-    elif link.startswith('magnet:?xt='):
-        logging.info(f"Link already is a magnet, returning...")
-        return [link]
     
 def dl(magnet, save_path):
     logging.info(f"Beginning download to {save_path}")
