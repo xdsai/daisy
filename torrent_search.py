@@ -29,9 +29,9 @@ class TorrentResult:
     uploader: str = "Unknown"
     quality: str = ""
 
-    def to_dict(self) -> dict:
+    def to_dict(self, index: int = None) -> dict:
         """Convert to dictionary for JSON serialization."""
-        return {
+        result = {
             'title': self.title,
             'magnet': self.magnet,
             'size': self.size,
@@ -42,6 +42,17 @@ class TorrentResult:
             'quality': self.quality,
             'score': self.calculate_score()
         }
+
+        # Add index if provided (for iOS Shortcuts)
+        if index is not None:
+            result['index'] = index
+            # Add display_text for easy list display
+            result['display_text'] = (
+                f"#{index} {self.title}\n"
+                f"👥 {self.seeders} seeders | 💾 {self.size} | ⭐ {result['score']:.0f}"
+            )
+
+        return result
 
     def calculate_score(self) -> float:
         """
@@ -312,6 +323,12 @@ class TorrentSearcher:
 
             data = response.json()
 
+            # TPB category IDs to exclude (adult content)
+            excluded_categories = [
+                '500', '501', '502', '503', '504', '505', '506',  # Porn categories
+                '599'  # Other XXX
+            ]
+
             # apibay returns list of torrent objects
             for item in data:
                 try:
@@ -319,8 +336,20 @@ class TorrentSearcher:
                     if item.get('name') == 'No results returned':
                         continue
 
+                    # Filter out adult content by category
+                    category = str(item.get('category', ''))
+                    if category in excluded_categories:
+                        logger.debug(f"Skipping adult content: {item.get('name', '')[:50]}")
+                        continue
+
                     # Extract data
                     title = item.get('name', '')
+
+                    # Additional keyword filtering for adult content
+                    if self._is_adult_content(title):
+                        logger.debug(f"Skipping adult keywords: {title[:50]}")
+                        continue
+
                     info_hash = item.get('info_hash', '')
                     seeders = int(item.get('seeders', 0))
                     leechers = int(item.get('leechers', 0))
@@ -374,6 +403,16 @@ class TorrentSearcher:
 
         return results
 
+    def _is_adult_content(self, title: str) -> bool:
+        """Check if title contains adult content keywords."""
+        adult_keywords = [
+            'xxx', 'porn', 'sex', 'adult', 'hentai', 'nsfw',
+            'nude', 'naked', 'erotic', '18+', 'milf', 'lesbian',
+            'anal', 'blowjob', 'cumshot', 'gangbang', 'orgy'
+        ]
+        title_lower = title.lower()
+        return any(keyword in title_lower for keyword in adult_keywords)
+
     def _format_size(self, size_bytes: int) -> str:
         """Convert bytes to human-readable size."""
         for unit in ['B', 'KiB', 'MiB', 'GiB', 'TiB']:
@@ -412,8 +451,8 @@ def search_torrents(query: str, media_type: str = 'auto', limit: int = 20) -> Li
         limit: Max results
 
     Returns:
-        List of torrent dicts
+        List of torrent dicts with indexes for iOS Shortcuts
     """
     searcher = TorrentSearcher()
     results = searcher.search(query, media_type, limit)
-    return [r.to_dict() for r in results]
+    return [r.to_dict(index=i) for i, r in enumerate(results)]
