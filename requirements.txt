@@ -5,3 +5,5 @@ python_qbittorrent==0.4.3
 qbittorrent==0.1.6
 requests==2.25.1
 requests_html==0.10.0
+Flask==2.3.0
+flask-cors==4.0.0

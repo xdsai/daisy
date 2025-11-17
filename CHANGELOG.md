@@ -1,5 +1,43 @@
 # Changelog
 
+## [API & Search Update] - 2025
+
+### Added - Major Features
+- **🔍 Torrent Search Engine** (`torrent_search.py`)
+  - Search multiple torrent indexes (nyaa.si, 1337x.to)
+  - Smart ranking by seeders, quality, and trusted uploaders
+  - Auto-detect anime vs general media
+  - Extract metadata: seeders, leechers, file size, quality, uploader
+  - Score-based result ranking (seeders × 10 + quality bonuses)
+
+- **📱 HTTP API Server** (`api_server.py`)
+  - RESTful API for remote control
+  - iOS Shortcuts support
+  - API key authentication
+  - Endpoints:
+    - `GET/POST /search` - Search torrents with filters
+    - `POST /download` - Download specific torrent
+    - `POST /quick-download` - Auto-download best match
+    - `GET /status` - Monitor active downloads
+    - `GET /health` - Service health check
+  - CORS enabled for web/mobile access
+
+- **📖 iOS Shortcut Guide** (`iOS_SHORTCUT_GUIDE.md`)
+  - Complete setup instructions for iOS Shortcuts
+  - Interactive search & select workflow
+  - Quick download shortcut
+  - Siri integration examples
+  - API reference documentation
+
+### Dependencies
+- Added `Flask==2.3.0` - Web framework
+- Added `flask-cors==4.0.0` - CORS support
+
+### User Experience Improvements
+- **Before**: Manual torrent site search → copy magnet → SSH → paste
+- **After**: Type query in iOS Shortcut → pick from ranked list → done
+- Massive UX improvement for mobile downloads
+
 ## [Refactor 2025] - Modernization & Bug Fixes
 
 ### Added

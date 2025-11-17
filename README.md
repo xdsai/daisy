@@ -4,17 +4,18 @@ Automated torrent download and media management system that integrates with qBit
 
 ## Features
 
-- **Automated Downloads**: Monitor SubsPlease RSS feed for new anime releases
-- **Manual Downloads**: Trigger downloads via SSH from Windows clients
-- **Multi-Site Support**: Convert URLs to magnet links from:
+- **🔍 Torrent Search**: Search multiple torrent indexes (nyaa.si, 1337x.to) and auto-rank by seeders/quality
+- **📱 iOS Shortcuts Support**: HTTP API for searching and downloading from your phone
+- **🤖 Automated Downloads**: Monitor SubsPlease RSS feed for new anime releases
+- **🔗 Multi-Site Support**: Convert URLs to magnet links from:
   - 1337x.to
   - nyaa.si
   - ext.to (with JavaScript rendering support)
   - subsplease.org
-- **Smart Organization**: Automatically organize movies and TV shows
-- **Plex Integration**: Auto-update libraries and create new sections
-- **Discord Notifications**: Real-time status updates via webhooks
-- **Storage Monitoring**: Track free space across multiple drives
+- **📁 Smart Organization**: Automatically organize movies and TV shows
+- **🎬 Plex Integration**: Auto-update libraries and create new sections
+- **💬 Discord Notifications**: Real-time status updates via webhooks
+- **💾 Storage Monitoring**: Track free space across multiple drives
 
 ## Architecture
 
@@ -24,13 +25,15 @@ The codebase has been refactored into modular components:
 daisy/
 ├── config.py              # Configuration management
 ├── magnet_converters.py   # URL to magnet link conversion
+├── torrent_search.py      # Multi-index torrent search
 ├── download_manager.py    # qBittorrent operations
 ├── file_operations.py     # File organization and management
 ├── plex_manager.py        # Plex Media Server integration
 ├── notifications.py       # Discord webhook notifications
 ├── media_processor.py     # Main orchestration logic
-├── daisy.py              # Main entry point
-└── autodl.py             # Automated download daemon
+├── daisy.py              # Main entry point (CLI)
+├── autodl.py             # Automated download daemon
+└── api_server.py         # HTTP API server (for iOS Shortcuts)
 ```
 
 ## Configuration
@@ -69,7 +72,41 @@ If no `config.json` exists, the system uses hardcoded defaults from the original
 
 ## Usage
 
-### Manual Download
+### API Server (Recommended for iOS/Mobile)
+
+Start the HTTP API server for easy access from iOS Shortcuts or other devices:
+
+```bash
+# Set your API key
+export DAISY_API_KEY="your-secret-key-here"
+
+# Start the server
+python3 api_server.py
+```
+
+The server provides these endpoints:
+
+- **GET /search** - Search for torrents across multiple indexes
+- **POST /download** - Download a specific torrent
+- **POST /quick-download** - Search and download best match in one step
+- **GET /status** - Get download status and storage info
+
+**Example: Search from command line**
+```bash
+curl "http://192.168.0.101:5000/search?q=Chainsaw+Man&api_key=your-key"
+```
+
+**Example: Quick download**
+```bash
+curl -X POST http://192.168.0.101:5000/quick-download \
+  -H "X-API-Key: your-key" \
+  -H "Content-Type: application/json" \
+  -d '{"query": "Chainsaw Man 05", "type": "auto"}'
+```
+
+📱 **For iOS Shortcuts setup**, see [iOS_SHORTCUT_GUIDE.md](iOS_SHORTCUT_GUIDE.md)
+
+### Manual Download (CLI)
 
 ```bash
 python3 daisy.py -t <type> -n <name> -m <magnet_or_url>
