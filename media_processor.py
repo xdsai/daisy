@@ -92,14 +92,13 @@ class MediaProcessor:
         for magnet in magnets:
             torrent_info = self.download_manager.download(
                 magnet,
-                storage.movies_docker_path
+                storage.movies_docker_path,
+                on_started_callback=self.notifier.notify_download_started
             )
 
             if not torrent_info or torrent_info.get('content_path') == '':
                 logger.error("Download failed")
                 continue
-
-            self.notifier.notify_download_started(torrent_info['name'])
 
             # Get the actual file system path (remove docker prefix)
             content_path = torrent_info['content_path']
@@ -194,14 +193,13 @@ class MediaProcessor:
         for magnet in magnets:
             torrent_info = self.download_manager.download(
                 magnet,
-                storage.other_docker_path
+                storage.other_docker_path,
+                on_started_callback=self.notifier.notify_download_started
             )
 
             if not torrent_info or torrent_info.get('content_path') == '':
                 logger.error("Download failed")
                 continue
-
-            self.notifier.notify_download_started(torrent_info['name'])
 
             # Get actual file system path
             content_path = torrent_info['content_path']

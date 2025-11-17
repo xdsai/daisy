@@ -53,7 +53,8 @@ class DownloadManager:
         self,
         magnet: str,
         save_path: str,
-        timeout: int = 120
+        timeout: int = 120,
+        on_started_callback = None
     ) -> Optional[Dict[str, Any]]:
         """
         Download a torrent and wait for completion.
@@ -123,6 +124,13 @@ class DownloadManager:
 
             torrent_name = torrent_info['name']
             logger.info(f"Found torrent: {torrent_name}")
+
+            # Call started callback immediately (before waiting for download)
+            if on_started_callback:
+                try:
+                    on_started_callback(torrent_name)
+                except Exception as e:
+                    logger.warning(f"Callback error: {e}")
 
             # Monitor download progress
             return self._monitor_download(torrent_info, torrent_name, timeout)
