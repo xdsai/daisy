@@ -137,27 +137,35 @@ def download():
     """
     try:
         data = request.get_json()
+        logger.info(f"Received download request - raw data: {data}")
 
         if not data:
+            logger.error("Missing JSON body in download request")
             return jsonify({'error': 'Missing JSON body'}), 400
 
         magnet = data.get('magnet')
         name = data.get('name')
         media_type = data.get('type', 'other')
 
+        logger.info(f"Parsed params - magnet: {magnet[:50] if magnet else None}..., name: {name}, type: {media_type}")
+
         if not magnet:
+            logger.error("Missing magnet parameter")
             return jsonify({'error': 'Missing magnet parameter'}), 400
 
         if not name:
+            logger.error("Missing name parameter")
             return jsonify({'error': 'Missing name parameter'}), 400
 
         # Normalize type to lowercase
         media_type = media_type.lower() if media_type else 'other'
+        logger.info(f"Normalized type to: {media_type}")
 
         if media_type not in ['movie', 'show', 'other']:
+            logger.error(f"Invalid type received: '{media_type}'")
             return jsonify({'error': f'Invalid type "{media_type}" (must be movie, show, or other)'}), 400
 
-        logger.info(f"Download request: name={name}, type={media_type}")
+        logger.info(f"Download request validated - name={name}, type={media_type}")
 
         # Initialize processor if needed
         global media_processor
