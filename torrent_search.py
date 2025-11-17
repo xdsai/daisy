@@ -126,11 +126,44 @@ class TorrentSearcher:
 
         logger.info(f"Total results before filtering: {len(results)}")
 
+        # Filter by relevance (match query terms)
+        filtered_results = self._filter_by_relevance(results, query)
+        logger.info(f"Results after relevance filtering: {len(filtered_results)}")
+
         # Sort by score (best first)
-        results.sort(key=lambda x: x.calculate_score(), reverse=True)
+        filtered_results.sort(key=lambda x: x.calculate_score(), reverse=True)
 
         # Return top results
-        return results[:limit]
+        return filtered_results[:limit]
+
+    def _filter_by_relevance(self, results: List[TorrentResult], query: str) -> List[TorrentResult]:
+        """
+        Filter results to only include those that match the query reasonably well.
+        For multi-word queries, ensure all important words are present.
+        """
+        query_lower = query.lower()
+        query_words = query_lower.split()
+
+        # Skip filtering for single-word queries
+        if len(query_words) <= 1:
+            return results
+
+        # Filter: title must contain most of the query words
+        filtered = []
+        for result in results:
+            title_lower = result.title.lower()
+
+            # Count how many query words appear in the title
+            matches = sum(1 for word in query_words if word in title_lower)
+
+            # Require at least 70% of query words to be present
+            # (e.g., "perfect blue" requires both words)
+            if matches >= len(query_words) * 0.7:
+                filtered.append(result)
+            else:
+                logger.debug(f"Filtered out: {result.title[:50]} (only {matches}/{len(query_words)} words matched)")
+
+        return filtered
 
     def _looks_like_anime(self, query: str) -> bool:
         """Heuristic to detect if query is for anime."""

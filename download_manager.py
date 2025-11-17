@@ -3,6 +3,7 @@ Download manager module for qBittorrent operations.
 """
 
 import time
+import re
 import logging
 from typing import Optional, Dict, Any
 
@@ -71,20 +72,28 @@ class DownloadManager:
 
         logger.info(f"Starting download to: {save_path}")
 
+        # Extract infohash from magnet for tracking
+        infohash = None
+        try:
+            match = re.search(r'btih:([a-fA-F0-9]{40}|[a-zA-Z2-7]{32})', magnet)
+            if match:
+                infohash = match.group(1).upper()
+                logger.info(f"Extracted infohash: {infohash}")
+        except Exception as e:
+            logger.warning(f"Could not extract infohash: {e}")
+
         try:
             # Start the download
+            # NOTE: qBittorrent API sometimes returns "Fails." even when it works
+            # So we don't trust the response - we check if torrent actually appears
             response = self.client.download_from_link(magnet, save_path=save_path)
             logger.info(f"qBittorrent response: {response}")
-
-            if response.lower() == 'fails.':
-                logger.error(f"Failed to start download: {magnet[:100]}")
-                return None
 
         except Exception as e:
             logger.error(f"Exception starting download: {e}")
             return None
 
-        # Wait for torrent info to be available
+        # Wait for torrent to appear in the queue
         time.sleep(5)
 
         try:
@@ -95,6 +104,23 @@ class DownloadManager:
                 return None
 
             torrent_info = torrents[0]
+
+            # Verify this is actually our torrent
+            if infohash:
+                torrent_hash = torrent_info.get('infohash_v1', '').upper()
+                if torrent_hash != infohash:
+                    logger.warning(f"Most recent torrent hash mismatch: {torrent_hash} != {infohash}")
+                    # Try to find our torrent in the full list
+                    all_torrents = self.client.torrents()
+                    for t in all_torrents:
+                        if t.get('infohash_v1', '').upper() == infohash:
+                            torrent_info = t
+                            logger.info(f"Found our torrent by infohash: {t['name']}")
+                            break
+                    else:
+                        logger.error("Could not find torrent with matching infohash")
+                        return None
+
             torrent_name = torrent_info['name']
             logger.info(f"Found torrent: {torrent_name}")
 
