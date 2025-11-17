@@ -1,4 +1,31 @@
-alog
-autodl_queries.json
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
 dlog
+alog
+
+# Config files
+autodl_queries.json
 downloaded.json
+
+# OS
+.DS_Store
+Thumbs.db
