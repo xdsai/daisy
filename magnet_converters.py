@@ -91,6 +91,14 @@ class MagnetConverter:
     def _convert_nyaa(self, link: str) -> List[str]:
         """Convert nyaa.si URLs to magnet links."""
         try:
+            # Handle .torrent download URLs by converting to view page
+            if '/download/' in link and link.endswith('.torrent'):
+                # Extract ID from: https://nyaa.si/download/965131.torrent
+                torrent_id = link.split('/download/')[1].replace('.torrent', '')
+                view_url = f"https://nyaa.si/view/{torrent_id}"
+                logger.info(f"Converted .torrent download URL to view page: {view_url}")
+                link = view_url
+
             response = requests.get(link, headers=USER_AGENT, timeout=30)
             response.raise_for_status()
             soup = BeautifulSoup(response.text, 'html.parser')
