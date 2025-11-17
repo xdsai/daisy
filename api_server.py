@@ -96,6 +96,9 @@ def search():
         if not query:
             return jsonify({'error': 'Missing query parameter'}), 400
 
+        # Normalize type to lowercase
+        media_type = media_type.lower() if media_type else 'auto'
+
         logger.info(f"Search request: query={query}, type={media_type}, limit={limit}")
 
         # Perform search
@@ -148,8 +151,11 @@ def download():
         if not name:
             return jsonify({'error': 'Missing name parameter'}), 400
 
+        # Normalize type to lowercase
+        media_type = media_type.lower() if media_type else 'other'
+
         if media_type not in ['movie', 'show', 'other']:
-            return jsonify({'error': 'Invalid type (must be movie, show, or other)'}), 400
+            return jsonify({'error': f'Invalid type "{media_type}" (must be movie, show, or other)'}), 400
 
         logger.info(f"Download request: name={name}, type={media_type}")
 
@@ -220,7 +226,10 @@ def quick_download():
         if not query:
             return jsonify({'error': 'Missing query parameter'}), 400
 
-        logger.info(f"Quick download: query={query}, index={index}")
+        # Normalize type to lowercase
+        media_type = media_type.lower() if media_type else 'auto'
+
+        logger.info(f"Quick download: query={query}, type={media_type}, index={index}")
 
         # Search for torrents
         results = search_torrents(query, media_type, limit=10)
