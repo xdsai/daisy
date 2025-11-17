@@ -40,7 +40,8 @@ class TorrentResult:
             'source': self.source,
             'uploader': self.uploader,
             'quality': self.quality,
-            'score': self.calculate_score()
+            'score': self.calculate_score(),
+            'suggested_type': self.suggest_type()
         }
 
         # Add index if provided (for iOS Shortcuts)
@@ -49,10 +50,43 @@ class TorrentResult:
             # Add display_text for easy list display
             result['display_text'] = (
                 f"#{index} {self.title}\n"
-                f"👥 {self.seeders} seeders | 💾 {self.size} | ⭐ {result['score']:.0f}"
+                f"📍 {self.source} | 👥 {self.seeders} | 💾 {self.size} | ⭐ {result['score']:.0f}"
             )
 
         return result
+
+    def suggest_type(self) -> str:
+        """
+        Suggest media type based on title patterns.
+        Returns: 'movie' or 'other'
+        """
+        title_lower = self.title.lower()
+
+        # Anime/series indicators - suggest 'other' for its own folder
+        series_indicators = [
+            'season', 's01', 's02', 's03', 'episode', 'ep', 'e01',
+            'batch', 'complete', 'series', 'subsplease', 'erai-raws'
+        ]
+
+        if any(indicator in title_lower for indicator in series_indicators):
+            return 'other'
+
+        # Movie indicators - suggest 'movie' for movies folder
+        movie_indicators = [
+            'bluray', 'brrip', 'webrip', 'dvdrip', 'hdtv',
+            '1080p', '720p', '2160p', '4k'
+        ]
+
+        # Single year in parentheses often indicates a movie
+        import re
+        if re.search(r'\(\d{4}\)', self.title):
+            return 'movie'
+
+        if any(indicator in title_lower for indicator in movie_indicators):
+            return 'movie'
+
+        # Default to 'other' (safer - creates dedicated folder)
+        return 'other'
 
     def calculate_score(self) -> float:
         """

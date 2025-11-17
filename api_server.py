@@ -243,13 +243,10 @@ def quick_download():
 
         # Determine media type if auto
         if media_type == 'auto':
-            # Simple heuristic
-            if 'movie' in query.lower():
-                media_type = 'movie'
-            else:
-                media_type = 'other'
+            # Use the suggested type from search result
+            media_type = selected.get('suggested_type', 'other')
 
-        logger.info(f"Selected torrent: {selected['title']}")
+        logger.info(f"Selected torrent: {selected['title']} (type: {media_type})")
 
         # Initialize processor if needed
         global media_processor
