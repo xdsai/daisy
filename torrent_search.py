@@ -111,9 +111,9 @@ class TorrentSearcher:
         results = []
 
         # Search multiple sources in parallel
-        if media_type == 'anime' or self._looks_like_anime(query):
-            logger.info("Searching anime sources")
-            results.extend(self._search_nyaa(query))
+        # Always search nyaa.si - it's good for movies and anime
+        logger.info("Searching nyaa.si")
+        results.extend(self._search_nyaa(query))
 
         # Always search TPB as fallback
         logger.info("Searching The Pirate Bay")
