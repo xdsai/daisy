@@ -99,13 +99,21 @@ class TorrentSearcher:
         """
         results = []
 
-        # Determine which sources to search
+        # Search multiple sources in parallel
         if media_type == 'anime' or self._looks_like_anime(query):
             logger.info("Searching anime sources")
             results.extend(self._search_nyaa(query))
-        else:
-            logger.info("Searching general sources")
+
+        # Always search TPB as fallback
+        logger.info("Searching The Pirate Bay")
+        results.extend(self._search_tpb(query))
+
+        # Try 1337x if we don't have many results yet
+        if len(results) < 5:
+            logger.info("Searching 1337x for additional results")
             results.extend(self._search_1337x(query))
+
+        logger.info(f"Total results before filtering: {len(results)}")
 
         # Sort by score (best first)
         results.sort(key=lambda x: x.calculate_score(), reverse=True)
@@ -199,9 +207,10 @@ class TorrentSearcher:
 
         return results
 
-    def _search_1337x(self, query: str) -> List[TorrentResult]:
+    def _search_1337x(self, query: str, max_results: int = 5) -> List[TorrentResult]:
         """
         Search 1337x.to for general torrents.
+        Limited to avoid slow detail page fetches.
         """
         results = []
 
@@ -218,7 +227,12 @@ class TorrentSearcher:
             # Find all torrent rows
             rows = soup.find_all('tr')
 
+            fetched = 0
             for row in rows:
+                # Limit detail page fetches to avoid slowness
+                if fetched >= max_results:
+                    logger.info(f"Reached max_results limit ({max_results}) for 1337x")
+                    break
                 try:
                     # Find title and link
                     name_cell = row.find('td', class_='name')
@@ -268,6 +282,7 @@ class TorrentSearcher:
                         )
 
                         results.append(result)
+                        fetched += 1
 
                 except Exception as e:
                     logger.warning(f"Failed to parse 1337x row: {e}")
@@ -279,6 +294,93 @@ class TorrentSearcher:
             logger.error(f"Failed to search 1337x.to: {e}")
 
         return results
+
+    def _search_tpb(self, query: str) -> List[TorrentResult]:
+        """
+        Search The Pirate Bay using apibay.org API.
+        This is a public API mirror that doesn't require scraping.
+        """
+        results = []
+
+        try:
+            # Use apibay.org - official TPB API
+            search_url = f"https://apibay.org/q.php?q={requests.utils.quote(query)}"
+            logger.info(f"Searching TPB via API: {search_url}")
+
+            response = self.session.get(search_url, timeout=15)
+            response.raise_for_status()
+
+            data = response.json()
+
+            # apibay returns list of torrent objects
+            for item in data:
+                try:
+                    # Skip if no results marker
+                    if item.get('name') == 'No results returned':
+                        continue
+
+                    # Extract data
+                    title = item.get('name', '')
+                    info_hash = item.get('info_hash', '')
+                    seeders = int(item.get('seeders', 0))
+                    leechers = int(item.get('leechers', 0))
+                    size_bytes = int(item.get('size', 0))
+                    uploader = item.get('username', 'Anonymous')
+
+                    # Convert size to human readable
+                    size = self._format_size(size_bytes)
+
+                    # Extract quality from title
+                    quality = ""
+                    quality_match = re.search(r'(1080p|720p|480p|2160p|4K)', title, re.I)
+                    if quality_match:
+                        quality = quality_match.group(1)
+
+                    # Build magnet link
+                    magnet = f"magnet:?xt=urn:btih:{info_hash}&dn={requests.utils.quote(title)}"
+
+                    # Add trackers for better connectivity
+                    trackers = [
+                        'udp://tracker.coppersurfer.tk:6969/announce',
+                        'udp://tracker.openbittorrent.com:6969/announce',
+                        'udp://9.rarbg.to:2710/announce',
+                        'udp://tracker.opentrackr.org:1337',
+                        'udp://tracker.leechers-paradise.org:6969/announce'
+                    ]
+                    for tracker in trackers:
+                        magnet += f"&tr={requests.utils.quote(tracker)}"
+
+                    result = TorrentResult(
+                        title=title,
+                        magnet=magnet,
+                        size=size,
+                        seeders=seeders,
+                        leechers=leechers,
+                        source='ThePirateBay',
+                        uploader=uploader,
+                        quality=quality
+                    )
+
+                    results.append(result)
+
+                except (KeyError, ValueError) as e:
+                    logger.warning(f"Failed to parse TPB entry: {e}")
+                    continue
+
+            logger.info(f"Found {len(results)} results from TPB")
+
+        except Exception as e:
+            logger.error(f"Failed to search TPB: {e}")
+
+        return results
+
+    def _format_size(self, size_bytes: int) -> str:
+        """Convert bytes to human-readable size."""
+        for unit in ['B', 'KiB', 'MiB', 'GiB', 'TiB']:
+            if size_bytes < 1024.0:
+                return f"{size_bytes:.1f} {unit}"
+            size_bytes /= 1024.0
+        return f"{size_bytes:.1f} PiB"
 
     def _get_magnet_from_1337x(self, detail_url: str) -> Optional[str]:
         """Get magnet link from 1337x detail page."""
