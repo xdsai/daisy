@@ -140,6 +140,7 @@ class TorrentSearcher:
         """
         Filter results to only include those that match the query reasonably well.
         For multi-word queries, ensure all important words are present.
+        Handles both space-separated and dot-separated titles.
         """
         query_lower = query.lower()
         query_words = query_lower.split()
@@ -149,15 +150,17 @@ class TorrentSearcher:
             return results
 
         # Filter: title must contain most of the query words
+        # Handle both space and dot separators in torrent titles
         filtered = []
         for result in results:
-            title_lower = result.title.lower()
+            # Normalize title: replace dots with spaces for matching
+            title_normalized = result.title.lower().replace('.', ' ')
 
             # Count how many query words appear in the title
-            matches = sum(1 for word in query_words if word in title_lower)
+            matches = sum(1 for word in query_words if word in title_normalized)
 
             # Require at least 70% of query words to be present
-            # (e.g., "perfect blue" requires both words)
+            # (e.g., "perfect blue" requires both "perfect" AND "blue")
             if matches >= len(query_words) * 0.7:
                 filtered.append(result)
             else:

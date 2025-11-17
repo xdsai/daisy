@@ -6,6 +6,7 @@ Provides HTTP endpoints for searching and downloading torrents.
 import logging
 import os
 import secrets
+import threading
 from typing import Optional
 from flask import Flask, request, jsonify
 from flask_cors import CORS
@@ -129,7 +130,7 @@ def download():
     - type: Media type (movie, show, other) - default: other
 
     Returns:
-    - Download status
+    - Download status (responds immediately, doesn't wait for completion)
     """
     try:
         data = request.get_json()
@@ -163,24 +164,24 @@ def download():
                     'error': 'Failed to connect to qBittorrent'
                 }), 500
 
-        # Start download in background
-        # For now we'll do it synchronously, but could use Celery/threading later
-        success = media_processor.process(media_type, name, magnet)
+        # Start download in background thread - respond immediately
+        thread = threading.Thread(
+            target=media_processor.process,
+            args=(media_type, name, magnet),
+            daemon=True
+        )
+        thread.start()
 
-        if success:
-            logger.info(f"Download started successfully: {name}")
-            return jsonify({
-                'success': True,
-                'message': f'Download started: {name}',
-                'name': name,
-                'type': media_type
-            })
-        else:
-            logger.error(f"Download failed: {name}")
-            return jsonify({
-                'success': False,
-                'error': 'Download failed - check logs for details'
-            }), 500
+        logger.info(f"Download thread started for: {name}")
+
+        # Respond immediately - don't wait for download to finish
+        return jsonify({
+            'success': True,
+            'message': f'Download started: {name}',
+            'name': name,
+            'type': media_type,
+            'note': 'Download running in background - check Discord for completion'
+        })
 
     except Exception as e:
         logger.error(f"Download error: {e}", exc_info=True)
@@ -260,22 +261,24 @@ def quick_download():
                     'error': 'Failed to connect to qBittorrent'
                 }), 500
 
-        # Start download
-        success = media_processor.process(media_type, name, magnet)
+        # Start download in background thread - respond immediately
+        thread = threading.Thread(
+            target=media_processor.process,
+            args=(media_type, name, magnet),
+            daemon=True
+        )
+        thread.start()
 
-        if success:
-            return jsonify({
-                'success': True,
-                'message': f'Download started',
-                'selected_torrent': selected,
-                'name': name,
-                'type': media_type
-            })
-        else:
-            return jsonify({
-                'success': False,
-                'error': 'Download failed - check logs'
-            }), 500
+        logger.info(f"Download thread started for: {name}")
+
+        return jsonify({
+            'success': True,
+            'message': f'Download started',
+            'selected_torrent': selected,
+            'name': name,
+            'type': media_type,
+            'note': 'Download running in background - check Discord for completion'
+        })
 
     except Exception as e:
         logger.error(f"Quick download error: {e}", exc_info=True)
