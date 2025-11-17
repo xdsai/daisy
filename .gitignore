@@ -26,6 +26,10 @@ alog
 autodl_queries.json
 downloaded.json
 
+# Logs
+alog
+dlog
+
 # OS
 .DS_Store
 Thumbs.db
