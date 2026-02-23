@@ -1,0 +1,28 @@
+{
+  "qbittorrent": {
+    "host": "127.0.0.1",
+    "port": 8080,
+    "username": "admin",
+    "password": "your-qbittorrent-password"
+  },
+  "jellyfin": {
+    "host": "127.0.0.1",
+    "port": 8096,
+    "api_key": "your-jellyfin-api-key"
+  },
+  "discord": {
+    "daisy_webhook": "https://discord.com/api/webhooks/your-webhook-url",
+    "storage_webhook": "https://discord.com/api/webhooks/your-storage-webhook-url"
+  },
+  "storage": {
+    "movies_path": "/path/to/movies",
+    "movies_temp_path": "/path/to/movies/temp/",
+    "movies_docker_path": "/movies/temp/",
+    "movies_capacity_gb": 500,
+    "other_path": "/path/to/shows",
+    "other_temp_path": "/path/to/shows/temp/",
+    "other_docker_path": "/other/temp/",
+    "other_jellyfin_path": "/path/to/shows/",
+    "other_capacity_gb": 500
+  }
+}
