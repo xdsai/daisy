@@ -144,7 +144,10 @@ class TorrentSearcher:
         """
         results = []
 
-        # Search multiple sources in parallel
+        # YTS first — best source for movies (clean, well-seeded, small files)
+        logger.info("Searching YTS")
+        results.extend(self._search_yts(query))
+
         # Always search nyaa.si - it's good for movies and anime
         logger.info("Searching nyaa.si")
         results.extend(self._search_nyaa(query))
@@ -201,6 +204,91 @@ class TorrentSearcher:
                 logger.debug(f"Filtered out: {result.title[:50]} (only {matches}/{len(query_words)} words matched)")
 
         return filtered
+
+    def _search_yts(self, query: str) -> List[TorrentResult]:
+        """
+        Search YTS (yts.mx) for movie torrents via their JSON API.
+        Returns one TorrentResult per quality variant (720p, 1080p, 2160p).
+        """
+        results = []
+
+        try:
+            url = "https://movies-api.accel.li/api/v2/list_movies.json"
+            params = {
+                'query_term': query,
+                'limit': 20,
+                'sort_by': 'seeds',
+                'order_by': 'desc',
+            }
+            logger.info(f"Searching YTS: {url}?query_term={query}")
+
+            response = self.session.get(url, params=params, timeout=10)
+            response.raise_for_status()
+            data = response.json()
+
+            if data.get('status') != 'ok':
+                logger.warning(f"YTS API returned status: {data.get('status')}")
+                return results
+
+            movies = data.get('data', {}).get('movies') or []
+
+            trackers = [
+                'udp://open.demonii.com:1337/announce',
+                'udp://tracker.openbittorrent.com:80',
+                'udp://tracker.coppersurfer.tk:6969',
+                'udp://glotorrents.pw:6969/announce',
+                'udp://tracker.opentrackr.org:1337/announce',
+                'udp://torrent.gresille.org:80/announce',
+                'udp://p4p.arenabg.com:1337',
+                'udp://tracker.leechers-paradise.org:6969',
+            ]
+            tracker_params = ''.join(f'&tr={requests.utils.quote(t)}' for t in trackers)
+
+            for movie in movies:
+                title_base = movie.get('title_long') or movie.get('title', 'Unknown')
+
+                for torrent in movie.get('torrents', []):
+                    try:
+                        quality = torrent.get('quality', '')
+                        codec = torrent.get('video_codec', '')
+                        tor_type = torrent.get('type', '')
+                        hash_val = torrent.get('hash', '')
+                        seeds = int(torrent.get('seeds', 0))
+                        peers = int(torrent.get('peers', 0))
+                        size = torrent.get('size', 'Unknown')
+
+                        if not hash_val:
+                            continue
+
+                        # Build descriptive title: "Inception (2010) [1080p] [BluRay] [x264]"
+                        title = f"{title_base} [{quality}] [{tor_type}] [{codec}]"
+
+                        # Build magnet link from hash
+                        dn = requests.utils.quote(title)
+                        magnet = f"magnet:?xt=urn:btih:{hash_val}&dn={dn}{tracker_params}"
+
+                        result = TorrentResult(
+                            title=title,
+                            magnet=magnet,
+                            size=size,
+                            seeders=seeds,
+                            leechers=peers,
+                            source='YTS',
+                            uploader='YTS',
+                            quality=quality,
+                        )
+                        results.append(result)
+
+                    except Exception as e:
+                        logger.warning(f"Failed to parse YTS torrent: {e}")
+                        continue
+
+            logger.info(f"Found {len(results)} results from YTS")
+
+        except Exception as e:
+            logger.error(f"Failed to search YTS: {e}")
+
+        return results
 
     def _looks_like_anime(self, query: str) -> bool:
         """Heuristic to detect if query is for anime."""
