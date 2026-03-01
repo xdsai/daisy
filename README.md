@@ -4,12 +4,14 @@ Automated torrent downloader and media organizer. Searches multiple torrent inde
 
 ## Features
 
-- **Multi-site torrent search** — nyaa.si, 1337x.to, The Pirate Bay, with results ranked by seeders and quality
+- **Multi-site torrent search** — YTS, nyaa.si, 1337x.to, The Pirate Bay, with results ranked by seeders and quality
 - **Smart file organization** — automatically sorts movies and shows into the right folders, handles SubsPlease naming conventions, season detection
 - **Jellyfin integration** — triggers library refresh after every download, can create new libraries on the fly
 - **Subtitle auto-sync** — runs [ffsubsync](https://github.com/smacke/ffsubsync) on subtitle files after download to fix timing
+- **Automatic subtitle download** — downloads English subtitles for new movies via Jellyfin's SubBuZ plugin (podnapisi, subf2m, subdl, subscene, subsource, yify subs), picks the best match, and syncs timing automatically
 - **Discord notifications** — real-time updates for download started/completed/failed, plus storage status
 - **HTTP API** — Flask server with search, download, quick-download, and status endpoints
+- **Web dashboard** — browser-based UI with torrent search, live download monitoring, autodl management, and download history
 - **iOS Shortcuts support** — designed to work with Apple Shortcuts for phone-based downloading
 - **RSS auto-downloader** — monitors SubsPlease feed and automatically grabs new episodes of shows you're tracking
 - **Magnet conversion** — converts URLs from 1337x, nyaa.si, ext.to, and SubsPlease show pages into magnet links
@@ -29,6 +31,8 @@ daisy/
 ├── torrent_search.py      # Multi-site search engine
 ├── jellyfin_manager.py    # Jellyfin API integration
 ├── notifications.py       # Discord webhooks
+├── dashboard.py           # Web dashboard (port 8888)
+├── batch_subs.py          # Batch subtitle downloader for existing movies
 └── daisy_shell.sh         # Shell wrapper
 ```
 
@@ -132,13 +136,35 @@ The daemon checks SubsPlease RSS every 20 minutes and triggers downloads for new
 
 ## How It Works
 
-1. **Search/receive** a torrent link (via API, CLI, or RSS)
+1. **Search/receive** a torrent link (via API, CLI, dashboard, or RSS)
 2. **Convert** URL to magnet link if needed (supports 1337x, nyaa, SubsPlease, ext.to)
 3. **Download** via qBittorrent Web API, monitoring progress until completion
-4. **Organize** — movies go to the movies folder, shows get their own directories with season subfolders
+4. **Organize** — movies go to the movies folder, shows get their own directories
 5. **Sync subtitles** — if subtitle files are present, run ffsubsync to fix timing against the video
-6. **Update Jellyfin** — trigger a library refresh so new content appears immediately
-7. **Notify** — send Discord embeds for download status and storage usage
+6. **Download subtitles** — for movies, automatically fetch English subs from multiple sources and sync timing
+7. **Update Jellyfin** — trigger a library refresh so new content appears immediately
+8. **Notify** — send Discord embeds for download status and storage usage
+
+### Web Dashboard
+
+```bash
+python3 dashboard.py
+```
+
+Runs on `0.0.0.0:8888` with four tabs:
+
+- **Search** — torrent search across YTS, nyaa, TPB, 1337x with type filters
+- **Downloads** — live torrent progress with pause/resume/delete controls and storage meters
+- **AutoDL** — add/remove shows from the auto-download watch list
+- **History** — everything the autodl daemon has downloaded
+
+### Batch Subtitle Download
+
+```bash
+python3 batch_subs.py
+```
+
+Downloads English subtitles for all existing movies in Jellyfin that don't have them, then syncs timing with ffsubsync.
 
 ## License
 
