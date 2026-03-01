@@ -245,7 +245,8 @@ Fields: `title`, `magnet`, `size`, `seeders`, `leechers`, `source`, `uploader`, 
 
 | Method | Description |
 |---|---|
-| `search(query, media_type='auto', limit=20)` | Searches nyaa.si and TPB always; searches 1337x if fewer than 5 results. Filters by relevance, sorts by score descending, returns top `limit`. |
+| `search(query, media_type='auto', limit=20)` | Searches YTS first, then nyaa.si and TPB; searches 1337x if fewer than 5 results. Filters by relevance, sorts by score descending, returns top `limit`. |
+| `_search_yts(query)` | Searches YTS via JSON API (`movies-api.accel.li/api/v2/list_movies.json`). Returns one result per quality variant (720p/1080p/2160p) with codec info. Builds magnet links from torrent hashes with a standard tracker list. |
 | `_search_nyaa(query)` | Searches nyaa.si via RSS feed. Parses `nyaa_seeders`, `nyaa_leechers`, `nyaa_size` attributes from feed entries. Extracts uploader from `[brackets]` in title. |
 | `_search_tpb(query)` | Searches The Pirate Bay via `apibay.org` JSON API. Builds magnet links from info_hash, appends standard trackers. Filters out adult content by TPB category IDs (500-599) and keyword matching. |
 | `_search_1337x(query, max_results=5)` | Scrapes 1337x.to search results page. Fetches individual detail pages to extract magnet links (capped at `max_results` to avoid slow page fetches). |
@@ -320,7 +321,127 @@ Subtitle sync failures (timeouts, errors, missing video files) are logged as war
 
 ---
 
-### 2.10 `notifications.py` -- Discord Webhooks
+### 2.10 Automatic Subtitle Download (`_auto_subtitle` + `batch_subs.py`)
+
+After a movie finishes downloading and is organized, Daisy automatically downloads English subtitles from external sources via Jellyfin's SubBuZ plugin, then syncs the timing.
+
+#### How It Works
+
+1. After the movie file is organized and the Jellyfin library refresh triggers, `MediaProcessor._auto_subtitle(item_name)` searches Jellyfin for the movie by name.
+2. Once found, it calls `JellyfinManager.auto_download_subtitles(item_id)` which:
+   - Searches for English subtitles via Jellyfin's remote subtitle search endpoint (`/Items/{id}/RemoteSearch/Subtitles/{language}`)
+   - Scores results: prefers non-hearing-impaired, non-forced, `.srt` format, highest download count
+   - Downloads the best match through Jellyfin's API (`POST /Items/{id}/RemoteSearch/Subtitles/{subtitleId}`)
+3. Waits for Jellyfin to write the subtitle file to disk (next to the video)
+4. Runs `jf-subsync` to align the subtitle timing to the video's audio track
+
+#### Subtitle Sources (via SubBuZ Plugin)
+
+The following sources are enabled in the SubBuZ plugin configuration (no credentials required):
+
+- Podnapisi
+- Subf2m
+- SubDL
+- Subscene
+- SubSource
+- Yify Subs
+
+OpenSubtitles is disabled as it requires account credentials.
+
+#### Batch Processing (`batch_subs.py`)
+
+For existing movies in the library that are missing English subtitles, run:
+
+```bash
+python3 batch_subs.py
+```
+
+This script:
+1. Fetches all movies from Jellyfin with their media stream info
+2. Skips any movie that already has English subtitles (language code: `eng`, `en`, or `english`)
+3. For each movie without subs: downloads the best available subtitle, then runs `jf-subsync` on it
+
+#### When It Runs
+
+- **Automatic:** After every movie download, triggered by `_process_movie()` after the Jellyfin library refresh
+- **Manual:** Via `batch_subs.py` for backfilling existing library content
+
+#### Failure Handling
+
+Auto-subtitle failures are logged as warnings but **do not** block the download pipeline.
+
+---
+
+### 2.11 `dashboard.py` -- Web Dashboard
+
+A Flask-based web interface for managing all aspects of Daisy from a browser. Runs on port 8888 and is accessible on the local network.
+
+#### Features
+
+| Tab | Description |
+|---|---|
+| **Search** | Full torrent search across YTS, nyaa, TPB, and 1337x with type filters (All/Movies/Anime/Shows). Results displayed as cards with source badges, quality tags, seed counts, and scores. Click "Download" to open a modal for setting name and type before dispatching. |
+| **Downloads** | Live view of all qBittorrent torrents with progress bars, speeds, ETA, seeds/peers. Pause/resume/delete controls per torrent. Summary bar shows total count, download/upload speed, and active count. Storage meters for Movies and Shows drives. Updates every 2 seconds via polling. |
+| **AutoDL** | Manage the auto-download query list (`autodl_queries.json`). Add or remove show names. These are the shows the autodl daemon watches for on the SubsPlease RSS feed. |
+| **History** | List of everything the autodl daemon has automatically downloaded (`downloaded.json`), with a "Clear All" button. |
+
+#### Architecture
+
+- Single-file Flask app with an inline HTML template (`templates/dashboard.html`)
+- No authentication (intended for LAN-only access)
+- Shares config and modules with the API server (`torrent_search.py`, `media_processor.py`, `config.py`)
+- Uses the same `MediaProcessor` for dispatching downloads as the API server
+- Connects to qBittorrent via `python-qbittorrent` for live torrent data
+- Frontend is a single-page app with vanilla JavaScript — no build step, no dependencies
+
+#### API Endpoints
+
+| Endpoint | Method | Description |
+|---|---|---|
+| `/` | GET | Serves the dashboard HTML |
+| `/api/search` | GET | Search torrents (params: `q`, `type`, `limit`) |
+| `/api/download` | POST | Start a download (body: `magnet`, `name`, `type`) |
+| `/api/torrents` | GET | List all torrents with status/progress |
+| `/api/torrents/<hash>/pause` | POST | Pause a torrent |
+| `/api/torrents/<hash>/resume` | POST | Resume a torrent |
+| `/api/torrents/<hash>` | DELETE | Remove a torrent (query: `files=true` to delete data) |
+| `/api/autodl` | GET | List autodl queries |
+| `/api/autodl` | POST | Add an autodl query (body: `query`) |
+| `/api/autodl` | DELETE | Remove an autodl query (body: `query`) |
+| `/api/downloaded` | GET | List download history |
+| `/api/downloaded/clear` | POST | Clear download history |
+| `/api/storage` | GET | Get storage usage for Movies and Shows drives |
+
+#### Running
+
+```bash
+python3 dashboard.py
+```
+
+Runs on `0.0.0.0:8888`. Managed as a systemd user service (`daisy-dashboard.service`) alongside the API server and autodl daemon.
+
+#### Systemd Service
+
+```ini
+# ~/.config/systemd/user/daisy-dashboard.service
+[Unit]
+Description=Daisy Dashboard
+After=daisy-api.service
+
+[Service]
+Type=simple
+WorkingDirectory=/home/alex/repos/daisy
+ExecStart=/usr/bin/python3 dashboard.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
+```
+
+---
+
+### 2.12 `notifications.py` -- Discord Webhooks
 
 Sends embed-style messages to Discord channels via webhooks.
 
@@ -347,7 +468,7 @@ Sends embed-style messages to Discord channels via webhooks.
 
 ---
 
-### 2.11 `daisy_win.py` and `windl.py` -- Windows Remote Clients
+### 2.13 `daisy_win.py` and `windl.py` -- Windows Remote Clients
 
 Minimal interactive scripts that SSH into the server via `paramiko` and execute `daisy_shell.sh` remotely.
 
@@ -359,7 +480,7 @@ Both connect to `192.168.0.101` via SSH. Username and password fields are left e
 
 ---
 
-### 2.12 `daisy_shell.sh` -- Shell Wrapper (Legacy)
+### 2.14 `daisy_shell.sh` -- Shell Wrapper (Legacy)
 
 ```bash
 cd ~/daisy
@@ -871,6 +992,7 @@ qBittorrent runs natively (not in Docker), so `docker_path` and `temp_path` fiel
 
 | Site | Method | Used By |
 |---|---|---|
+| **YTS** | JSON API via `movies-api.accel.li` | `torrent_search.py` |
 | **nyaa.si** | RSS feed (search), HTML scraping (magnet extraction) | `torrent_search.py`, `magnet_converters.py` |
 | **1337x.to** | HTML scraping (search + detail pages) | `torrent_search.py`, `magnet_converters.py` |
 | **The Pirate Bay** | JSON API via `apibay.org` | `torrent_search.py` |
@@ -1034,12 +1156,13 @@ All log files are append-mode. They are listed in `.gitignore` and not tracked b
 
 ### Running All Components Together
 
-A typical deployment runs three systemd services:
+A typical deployment runs four systemd services:
 
 ```bash
 # systemd user services (auto-start on boot):
 systemctl --user status daisy-api        # API server (Flask on port 5000)
 systemctl --user status daisy-autodl     # AutoDL daemon (RSS monitor → calls API)
+systemctl --user status daisy-dashboard  # Web dashboard (Flask on port 8888)
 systemctl --user status qbittorrent-nox  # qBittorrent (headless on port 8080)
 
 # systemd system services:
