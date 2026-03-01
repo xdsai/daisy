@@ -127,8 +127,12 @@ class MediaProcessor:
                         if os.path.splitext(f)[0].startswith(os.path.basename(video_base)):
                             self._sync_subtitles(full)
 
-            # Update Plex and notify
+            # Update library, auto-download subtitles, and notify
             self.media_server.update_library()
+
+            if dest_video:
+                self._auto_subtitle(dest_video)
+
             self.notifier.notify_download_completed(torrent_info['name'])
             success_count += 1
 
@@ -326,6 +330,31 @@ class MediaProcessor:
         except Exception as e:
             logger.error(f"Failed to organize show file: {e}")
             return None
+
+    def _auto_subtitle(self, video_path: str):
+        """
+        Auto-download subtitles for a movie via Jellyfin, then sync timing.
+        Waits for Jellyfin to scan the file, searches for subs, downloads the best one,
+        and runs jf-subsync on it.
+        """
+        logger.info(f"Auto-subtitle: looking up {video_path} in Jellyfin")
+        item_id = self.media_server.find_item_by_path(video_path)
+        if not item_id:
+            logger.warning(f"Auto-subtitle: could not find item in Jellyfin, skipping")
+            return
+
+        if self.media_server.auto_download_subtitles(item_id):
+            # Give Jellyfin a moment to write the subtitle file
+            import time
+            time.sleep(3)
+            # Find and sync the new subtitle
+            video_dir = os.path.dirname(video_path)
+            video_base = os.path.splitext(os.path.basename(video_path))[0]
+            for f in os.listdir(video_dir):
+                if f.endswith(('.srt', '.ass', '.ssa', '.sub', '.vtt')) and not f.endswith('.bak'):
+                    self._sync_subtitles(os.path.join(video_dir, f))
+        else:
+            logger.info(f"Auto-subtitle: no subtitles downloaded for {video_path}")
 
     def _sync_subtitles(self, path: str):
         """
