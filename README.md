@@ -14,6 +14,7 @@ Automated torrent downloader and media organizer. Searches multiple torrent inde
 - **Web dashboard** — browser-based UI with torrent search, live download monitoring, autodl management, and download history
 - **iOS Shortcuts support** — designed to work with Apple Shortcuts for phone-based downloading
 - **RSS auto-downloader** — monitors SubsPlease feed and automatically grabs new episodes of shows you're tracking
+- **Letterboxd watchlist monitor** — watches your Letterboxd watchlist and auto-downloads new movies using LLM-based torrent selection (picks the best 1080p torrent by evaluating seeders, source, and file size)
 - **Magnet conversion** — converts URLs from 1337x, nyaa.si, ext.to, and SubsPlease show pages into magnet links
 
 ## Architecture
@@ -24,6 +25,7 @@ daisy/
 ├── api_server.py          # HTTP API server
 ├── daisy.py               # CLI entry point
 ├── autodl.py              # RSS auto-download daemon
+├── watchlist.py           # Letterboxd watchlist monitor daemon
 ├── media_processor.py     # Download + organization orchestration
 ├── download_manager.py    # qBittorrent client
 ├── file_operations.py     # File organization and management
@@ -133,6 +135,26 @@ Add shows to `autodl_queries.json`:
 ```
 
 The daemon checks SubsPlease RSS every 20 minutes and triggers downloads for new matching episodes. Already-downloaded episodes are tracked in `downloaded.json`.
+
+### Letterboxd Watchlist Monitor
+
+```bash
+python3 -m daisy.watchlist
+```
+
+Polls your Letterboxd watchlist every 2 minutes. When a new movie appears, it searches for torrents via the Daisy API and uses a local LLM to pick the best 1080p result (evaluating seeders, source quality, and file size). The selected torrent is sent to the API for download.
+
+Environment variables:
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `WATCHLIST_USER` | `alexsex` | Letterboxd username to monitor |
+| `DAISY_PORT` | `5000` | Daisy API server port |
+| `DAISY_API_KEY` | — | API key for authentication |
+| `LLM_BASE` | `http://127.0.0.1:3456` | LLM proxy base URL |
+| `LLM_MODEL` | `claude-sonnet-4-6` | Model for torrent selection |
+
+Already-processed movies are tracked in `watchlist_seen.json`.
 
 ## How It Works
 
