@@ -9,7 +9,7 @@ from typing import Optional
 from urllib.parse import quote
 import requests
 
-from config import JellyfinConfig
+from .config import JellyfinConfig
 
 
 logger = logging.getLogger(__name__)

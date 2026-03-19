@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daisy</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌼</text></svg>">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #08080d;
+  --surface: #0f0f18;
+  --surface-2: #161625;
+  --surface-3: #1e1e32;
+  --border: #252542;
+  --border-hover: #353560;
+  --primary: #7c3aed;
+  --primary-dim: #6d28d9;
+  --primary-glow: rgba(124, 58, 237, 0.15);
+  --green: #10b981;
+  --green-dim: rgba(16, 185, 129, 0.12);
+  --yellow: #f59e0b;
+  --yellow-dim: rgba(245, 158, 11, 0.12);
+  --red: #ef4444;
+  --red-dim: rgba(239, 68, 68, 0.12);
+  --blue: #3b82f6;
+  --blue-dim: rgba(59, 130, 246, 0.12);
+  --cyan: #06b6d4;
+  --text: #e2e8f0;
+  --text-2: #94a3b8;
+  --text-3: #64748b;
+  --radius: 10px;
+  --radius-sm: 6px;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  height: 56px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo span { color: var(--primary); }
+
+.nav { display: flex; gap: 2px; }
+
+.nav-btn {
+  background: none;
+  border: none;
+  color: var(--text-3);
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: all 0.15s;
+}
+
+.nav-btn:hover { color: var(--text-2); background: var(--surface-2); }
+.nav-btn.active { color: var(--text); background: var(--primary-glow); }
+
+.status-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 6px var(--green);
+}
+.status-dot.offline { background: var(--red); box-shadow: 0 0 6px var(--red); }
+
+/* Main */
+.main { width: 100%; padding: 24px; box-sizing: border-box; }
+
+.page { display: none; }
+.page.active { display: block; }
+
+/* Search */
+.search-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  flex: 1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.search-input:focus { border-color: var(--primary); }
+.search-input::placeholder { color: var(--text-3); }
+
+.search-filters {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.filter-chip {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 5px 14px;
+  color: var(--text-3);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.filter-chip:hover { border-color: var(--border-hover); color: var(--text-2); }
+.filter-chip.active { background: var(--primary-glow); border-color: var(--primary); color: var(--primary); }
+
+.btn {
+  background: var(--primary);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 10px 20px;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.btn:hover { background: var(--primary-dim); }
+.btn:active { transform: scale(0.97); }
+.btn.sm { padding: 6px 12px; font-size: 12px; }
+.btn.danger { background: var(--red); }
+.btn.danger:hover { background: #dc2626; }
+.btn.ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-2);
+}
+.btn.ghost:hover { border-color: var(--border-hover); color: var(--text); }
+
+/* Results Grid */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr));
+  gap: 12px;
+  width: 100%;
+}
+
+.result-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  transition: all 0.15s;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.result-card:hover { border-color: var(--border-hover); }
+
+.result-title {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.result-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+  align-items: center;
+}
+
+.badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.badge-source { background: var(--blue-dim); color: var(--blue); }
+.badge-quality { background: var(--primary-glow); color: var(--primary); }
+.badge-yts { background: var(--green-dim); color: var(--green); }
+.badge-nyaa { background: rgba(249, 115, 22, 0.12); color: #f97316; }
+.badge-tpb { background: var(--blue-dim); color: var(--blue); }
+
+.result-stats {
+  display: flex;
+  gap: 16px;
+  font-size: 12px;
+  color: var(--text-3);
+  margin-bottom: 12px;
+}
+
+.stat-seeds { color: var(--green); }
+.stat-leeches { color: var(--red); }
+
+.result-actions { display: flex; gap: 8px; justify-content: flex-end; }
+
+/* Downloads */
+.torrent-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 8px;
+  transition: all 0.15s;
+}
+
+.torrent-card:hover { border-color: var(--border-hover); }
+
+.torrent-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.torrent-name {
+  font-size: 13px;
+  font-weight: 600;
+  flex: 1;
+  margin-right: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.torrent-state {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.state-downloading { background: var(--blue-dim); color: var(--blue); }
+.state-seeding { background: var(--green-dim); color: var(--green); }
+.state-paused { background: var(--surface-3); color: var(--text-3); }
+.state-stalled { background: var(--yellow-dim); color: var(--yellow); }
+.state-error { background: var(--red-dim); color: var(--red); }
+.state-queued { background: var(--surface-3); color: var(--text-3); }
+.state-checking { background: var(--yellow-dim); color: var(--yellow); }
+.state-meta { background: var(--primary-glow); color: var(--primary); }
+
+.progress-bar {
+  height: 4px;
+  background: var(--surface-3);
+  border-radius: 2px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.5s ease;
+  background: var(--blue);
+}
+
+.progress-fill.complete { background: var(--green); }
+.progress-fill.stalled { background: var(--yellow); }
+
+.torrent-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--text-3);
+  margin-bottom: 10px;
+}
+
+.torrent-stats span { display: flex; align-items: center; gap: 4px; }
+
+.torrent-actions { display: flex; gap: 6px; justify-content: flex-end; }
+
+/* Section headers */
+.section-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* AutoDL */
+.autodl-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.autodl-form input {
+  flex: 1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  color: var(--text);
+  font-size: 14px;
+  outline: none;
+}
+
+.autodl-form input:focus { border-color: var(--primary); }
+
+.query-list { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.query-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 8px 12px 8px 16px;
+  font-size: 14px;
+}
+
+.query-remove {
+  background: var(--surface-3);
+  border: none;
+  color: var(--text-3);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.query-remove:hover { background: var(--red-dim); color: var(--red); }
+
+/* History */
+.history-item {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-2);
+}
+
+.history-item:last-child { border-bottom: none; }
+
+/* Storage */
+.storage-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr)); gap: 12px; margin-bottom: 24px; }
+
+.storage-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+
+.storage-label { font-size: 12px; color: var(--text-3); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+.storage-value { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+.storage-detail { font-size: 12px; color: var(--text-3); }
+
+.storage-bar {
+  height: 6px;
+  background: var(--surface-3);
+  border-radius: 3px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.storage-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: var(--primary);
+  transition: width 0.3s;
+}
+
+.storage-fill.warn { background: var(--yellow); }
+.storage-fill.crit { background: var(--red); }
+
+/* Toast */
+.toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.toast {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  font-size: 13px;
+  color: var(--text);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+  animation: toast-in 0.2s ease;
+  max-width: 360px;
+}
+
+.toast.success { border-left: 3px solid var(--green); }
+.toast.error { border-left: 3px solid var(--red); }
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Empty state */
+.empty {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--text-3);
+}
+
+.empty-icon { font-size: 36px; margin-bottom: 12px; }
+.empty-text { font-size: 14px; }
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fade-in 0.15s;
+}
+
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+.modal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  width: 420px;
+  max-width: 90vw;
+}
+
+.modal h3 { font-size: 16px; margin-bottom: 16px; }
+
+.modal-field { margin-bottom: 14px; }
+.modal-field label { display: block; font-size: 12px; color: var(--text-3); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+.modal-field input, .modal-field select {
+  width: 100%;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  color: var(--text);
+  font-size: 14px;
+  outline: none;
+}
+.modal-field input:focus, .modal-field select:focus { border-color: var(--primary); }
+
+.modal-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 20px; }
+
+/* Spinner */
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--surface-3);
+  border-top: 2px solid var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--surface-3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--border); }
+
+/* Responsive */
+@media (max-width: 640px) {
+  .results-grid { grid-template-columns: 1fr; }
+  .header { padding: 0 12px; }
+  .main { padding: 16px; }
+  .nav-btn { padding: 8px 10px; font-size: 12px; }
+}
+
+/* Summary bar */
+.summary-bar {
+  display: flex;
+  gap: 24px;
+  padding: 14px 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-3);
+}
+
+.summary-bar .val { color: var(--text); font-weight: 600; }
+
+/* Confirm dialog */
+.confirm-btns { display: flex; gap: 8px; margin-top: 12px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">🌼 <span>Daisy</span></div>
+  <div class="nav">
+    <button class="nav-btn active" onclick="showPage('search')">Search</button>
+    <button class="nav-btn" onclick="showPage('downloads')">Downloads</button>
+    <button class="nav-btn" onclick="showPage('autodl')">AutoDL</button>
+    <button class="nav-btn" onclick="showPage('history')">History</button>
+  </div>
+  <div class="status-dot" id="statusDot" title="qBittorrent connected"></div>
+</div>
+
+<div class="main">
+
+  <!-- SEARCH PAGE -->
+  <div class="page active" id="page-search">
+    <div class="search-bar">
+      <input class="search-input" id="searchInput" type="text" placeholder="Search for movies, anime, shows..." autofocus>
+      <button class="btn" onclick="doSearch()">Search</button>
+    </div>
+    <div class="search-filters">
+      <button class="filter-chip active" data-type="auto" onclick="setFilter(this)">All</button>
+      <button class="filter-chip" data-type="movie" onclick="setFilter(this)">Movies</button>
+      <button class="filter-chip" data-type="anime" onclick="setFilter(this)">Anime</button>
+      <button class="filter-chip" data-type="show" onclick="setFilter(this)">Shows</button>
+    </div>
+    <div id="searchResults">
+      <div class="empty">
+        <div class="empty-icon">🔍</div>
+        <div class="empty-text">Search for something to get started</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DOWNLOADS PAGE -->
+  <div class="page" id="page-downloads">
+    <div class="summary-bar" id="dlSummary"></div>
+    <div class="storage-cards" id="storageCards"></div>
+    <div class="section-title">Active</div>
+    <div id="activeTorrents"></div>
+    <div class="section-title" style="margin-top:24px">Completed / Seeding</div>
+    <div id="completedTorrents"></div>
+  </div>
+
+  <!-- AUTODL PAGE -->
+  <div class="page" id="page-autodl">
+    <div class="section-title">Auto-Download Queries</div>
+    <p style="font-size:13px;color:var(--text-3);margin-bottom:16px">
+      Shows matching these queries are automatically downloaded from SubsPlease RSS.
+    </p>
+    <div class="autodl-form">
+      <input id="autodlInput" type="text" placeholder="Add show name (e.g. jujutsu kaisen)">
+      <button class="btn" onclick="addAutodl()">Add</button>
+    </div>
+    <div class="query-list" id="autodlList"></div>
+  </div>
+
+  <!-- HISTORY PAGE -->
+  <div class="page" id="page-history">
+    <div class="section-title" style="display:flex;justify-content:space-between;align-items:center">
+      <span>Downloaded History</span>
+      <button class="btn sm ghost" onclick="clearHistory()">Clear All</button>
+    </div>
+    <div id="historyList"></div>
+  </div>
+
+</div>
+
+<!-- Download Modal -->
+<div class="modal-overlay" id="dlModal" style="display:none" onclick="if(event.target===this)closeDlModal()">
+  <div class="modal">
+    <h3>Download Torrent</h3>
+    <div class="modal-field">
+      <label>Name</label>
+      <input id="dlName" type="text">
+    </div>
+    <div class="modal-field">
+      <label>Type</label>
+      <select id="dlType">
+        <option value="movie">Movie</option>
+        <option value="show">Show</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <div class="modal-field">
+      <label>Source</label>
+      <div id="dlSource" style="font-size:13px;color:var(--text-3);padding:4px 0"></div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn ghost" onclick="closeDlModal()">Cancel</button>
+      <button class="btn" onclick="confirmDownload()">Download</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast-container" id="toasts"></div>
+
+<script>
+let currentFilter = 'auto';
+let pendingMagnet = null;
+let pollInterval = null;
+
+// --- Navigation ---
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  document.querySelector(`.nav-btn[onclick*="${name}"]`).classList.add('active');
+  if (name === 'downloads') { loadTorrents(); loadStorage(); startPoll(); }
+  else if (name === 'autodl') loadAutodl();
+  else if (name === 'history') loadHistory();
+  else stopPoll();
+}
+
+// --- Toast ---
+function toast(msg, type = 'success') {
+  const c = document.getElementById('toasts');
+  const t = document.createElement('div');
+  t.className = 'toast ' + type;
+  t.textContent = msg;
+  c.appendChild(t);
+  setTimeout(() => { t.style.opacity = '0'; setTimeout(() => t.remove(), 200); }, 3000);
+}
+
+// --- API helpers ---
+async function api(path, opts = {}) {
+  const res = await fetch(path, {
+    headers: { 'Content-Type': 'application/json' },
+    ...opts
+  });
+  return res.json();
+}
+
+// --- Search ---
+document.getElementById('searchInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter') doSearch();
+});
+
+function setFilter(el) {
+  document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  currentFilter = el.dataset.type;
+}
+
+async function doSearch() {
+  const q = document.getElementById('searchInput').value.trim();
+  if (!q) return;
+  const container = document.getElementById('searchResults');
+  container.innerHTML = '<div class="empty"><div class="spinner"></div><div class="empty-text" style="margin-top:12px">Searching...</div></div>';
+
+  try {
+    const data = await api(`/api/search?q=${encodeURIComponent(q)}&type=${currentFilter}&limit=30`);
+    if (!data.results || data.results.length === 0) {
+      container.innerHTML = '<div class="empty"><div class="empty-icon">😕</div><div class="empty-text">No results found</div></div>';
+      return;
+    }
+    container.innerHTML = '<div class="results-grid">' + data.results.map(r => renderResult(r)).join('') + '</div>';
+  } catch (e) {
+    container.innerHTML = `<div class="empty"><div class="empty-icon">⚠️</div><div class="empty-text">Search failed: ${e.message}</div></div>`;
+  }
+}
+
+function sourceBadgeClass(source) {
+  const s = source.toLowerCase();
+  if (s === 'yts') return 'badge-yts';
+  if (s.includes('nyaa')) return 'badge-nyaa';
+  if (s.includes('pirate') || s === 'thepiratebay') return 'badge-tpb';
+  return 'badge-source';
+}
+
+function renderResult(r) {
+  const magnet = r.magnet.replace(/'/g, '&#39;');
+  const title = r.title.replace(/</g, '&lt;');
+  const sugType = r.suggested_type || 'other';
+  return `<div class="result-card">
+    <div class="result-title" title="${title}">${title}</div>
+    <div class="result-meta">
+      <span class="badge ${sourceBadgeClass(r.source)}">${r.source}</span>
+      ${r.quality ? `<span class="badge badge-quality">${r.quality}</span>` : ''}
+      <span style="font-size:12px;color:var(--text-3)">${r.size}</span>
+    </div>
+    <div class="result-stats">
+      <span class="stat-seeds">▲ ${r.seeders} seeds</span>
+      <span class="stat-leeches">▼ ${r.leechers} peers</span>
+      <span>★ ${Math.round(r.score)}</span>
+    </div>
+    <div class="result-actions">
+      <button class="btn sm" onclick="openDlModal('${magnet}', '${title.replace(/'/g, "\\'")}', '${sugType}', '${r.source}')">Download</button>
+    </div>
+  </div>`;
+}
+
+// --- Download Modal ---
+function openDlModal(magnet, title, type, source) {
+  pendingMagnet = magnet;
+  // Clean title for name field
+  let name = title.replace(/\[.*?\]/g, '').replace(/\(.*?\)/g, '').replace(/\.\w{2,4}$/, '').replace(/\./g, ' ').trim();
+  document.getElementById('dlName').value = name;
+  document.getElementById('dlType').value = type;
+  document.getElementById('dlSource').textContent = source;
+  document.getElementById('dlModal').style.display = 'flex';
+}
+
+function closeDlModal() {
+  document.getElementById('dlModal').style.display = 'none';
+  pendingMagnet = null;
+}
+
+async function confirmDownload() {
+  if (!pendingMagnet) return;
+  const magnet = pendingMagnet;
+  const name = document.getElementById('dlName').value.trim();
+  const type = document.getElementById('dlType').value;
+  if (!name) { toast('Name is required', 'error'); return; }
+  closeDlModal();
+  try {
+    const data = await api('/api/download', {
+      method: 'POST',
+      body: JSON.stringify({ magnet, name, type })
+    });
+    if (data.success) {
+      toast('Download started: ' + name);
+    } else {
+      toast(data.error || 'Download failed', 'error');
+    }
+  } catch (e) {
+    toast('Download failed: ' + e.message, 'error');
+  }
+}
+
+// --- Downloads ---
+function startPoll() {
+  stopPoll();
+  loadTorrents();
+  pollInterval = setInterval(loadTorrents, 2000);
+}
+
+function stopPoll() {
+  if (pollInterval) { clearInterval(pollInterval); pollInterval = null; }
+}
+
+async function loadTorrents() {
+  try {
+    const data = await api('/api/torrents');
+    document.getElementById('statusDot').className = 'status-dot';
+    document.getElementById('statusDot').title = 'qBittorrent connected';
+
+    if (data.error) {
+      document.getElementById('statusDot').className = 'status-dot offline';
+      document.getElementById('statusDot').title = 'qBittorrent disconnected';
+      return;
+    }
+
+    const torrents = data.torrents || [];
+    const dlStates = new Set(['downloading', 'stalledDL', 'metaDL', 'allocating', 'queuedDL', 'pausedDL', 'checkingDL']);
+    const active = torrents.filter(t => dlStates.has(t.state));
+    const completed = torrents.filter(t => !dlStates.has(t.state));
+
+    // Summary
+    const totalDl = torrents.reduce((a, t) => a + t.dl_speed_raw, 0);
+    const totalUp = torrents.reduce((a, t) => a + t.up_speed_raw, 0);
+    document.getElementById('dlSummary').innerHTML =
+      `<span><span class="val">${torrents.length}</span> torrents</span>` +
+      `<span>↓ <span class="val">${formatSpeed(totalDl)}</span></span>` +
+      `<span>↑ <span class="val">${formatSpeed(totalUp)}</span></span>` +
+      `<span><span class="val">${active.length}</span> active</span>`;
+
+    // Active
+    const ac = document.getElementById('activeTorrents');
+    if (active.length === 0) {
+      ac.innerHTML = '<div class="empty"><div class="empty-text">No active downloads</div></div>';
+    } else {
+      ac.innerHTML = active.map(renderTorrent).join('');
+    }
+
+    // Completed
+    const cc = document.getElementById('completedTorrents');
+    if (completed.length === 0) {
+      cc.innerHTML = '<div class="empty"><div class="empty-text">No completed torrents</div></div>';
+    } else {
+      cc.innerHTML = completed.map(renderTorrent).join('');
+    }
+  } catch (e) {
+    document.getElementById('statusDot').className = 'status-dot offline';
+  }
+}
+
+function stateInfo(state) {
+  const map = {
+    downloading: ['Downloading', 'state-downloading'],
+    stalledDL: ['Stalled', 'state-stalled'],
+    metaDL: ['Metadata', 'state-meta'],
+    allocating: ['Allocating', 'state-meta'],
+    queuedDL: ['Queued', 'state-queued'],
+    uploading: ['Seeding', 'state-seeding'],
+    stalledUP: ['Seeding', 'state-seeding'],
+    pausedDL: ['Paused', 'state-paused'],
+    pausedUP: ['Paused', 'state-paused'],
+    checkingDL: ['Checking', 'state-checking'],
+    checkingUP: ['Checking', 'state-checking'],
+    error: ['Error', 'state-error'],
+    missingFiles: ['Missing', 'state-error'],
+    unknown: ['Unknown', 'state-paused'],
+  };
+  return map[state] || [state, 'state-paused'];
+}
+
+function renderTorrent(t) {
+  const [stateLabel, stateClass] = stateInfo(t.state);
+  const isActive = ['downloading', 'stalledDL', 'metaDL', 'allocating', 'queuedDL'].includes(t.state);
+  const isPaused = t.state.startsWith('paused');
+  const progressClass = t.progress >= 100 ? 'complete' : (t.state === 'stalledDL' ? 'stalled' : '');
+
+  return `<div class="torrent-card">
+    <div class="torrent-header">
+      <div class="torrent-name" title="${t.name}">${t.name}</div>
+      <span class="torrent-state ${stateClass}">${stateLabel}</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill ${progressClass}" style="width:${t.progress}%"></div></div>
+    <div class="torrent-stats">
+      <span>${t.progress}%</span>
+      <span>${t.size}</span>
+      ${isActive ? `<span>↓ ${t.dl_speed}</span><span>ETA ${t.eta}</span>` : ''}
+      ${!isActive ? `<span>↑ ${t.up_speed}</span><span>Ratio ${t.ratio}</span>` : ''}
+      <span>Seeds ${t.seeds}</span>
+      <span>Peers ${t.peers}</span>
+    </div>
+    <div class="torrent-actions">
+      ${isPaused ? `<button class="btn sm ghost" onclick="resumeTorrent('${t.hash}')">Resume</button>` :
+        `<button class="btn sm ghost" onclick="pauseTorrent('${t.hash}')">Pause</button>`}
+      <button class="btn sm danger" onclick="deleteTorrent('${t.hash}', '${t.name.replace(/'/g, "\\'")}')">Remove</button>
+    </div>
+  </div>`;
+}
+
+async function pauseTorrent(hash) {
+  await api(`/api/torrents/${hash}/pause`, { method: 'POST' });
+  toast('Torrent paused');
+  loadTorrents();
+}
+
+async function resumeTorrent(hash) {
+  await api(`/api/torrents/${hash}/resume`, { method: 'POST' });
+  toast('Torrent resumed');
+  loadTorrents();
+}
+
+async function deleteTorrent(hash, name) {
+  if (!confirm(`Remove "${name}"?\n\nHold Shift+Click to also delete files.`)) return;
+  const withFiles = event.shiftKey;
+  await api(`/api/torrents/${hash}?files=${withFiles}`, { method: 'DELETE' });
+  toast(withFiles ? 'Torrent and files deleted' : 'Torrent removed');
+  loadTorrents();
+}
+
+// --- Storage ---
+async function loadStorage() {
+  try {
+    const data = await api('/api/storage');
+    const c = document.getElementById('storageCards');
+    c.innerHTML = Object.entries(data).map(([label, s]) => {
+      if (s.error) return `<div class="storage-card"><div class="storage-label">${label}</div><div style="color:var(--red);font-size:13px">${s.error}</div></div>`;
+      const fillClass = s.percent > 90 ? 'crit' : (s.percent > 75 ? 'warn' : '');
+      return `<div class="storage-card">
+        <div class="storage-label">${label}</div>
+        <div class="storage-value">${s.free} free</div>
+        <div class="storage-detail">${s.used} / ${s.total} (${s.percent}%)</div>
+        <div class="storage-bar"><div class="storage-fill ${fillClass}" style="width:${s.percent}%"></div></div>
+      </div>`;
+    }).join('');
+  } catch (e) {}
+}
+
+// --- AutoDL ---
+document.getElementById('autodlInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter') addAutodl();
+});
+
+async function loadAutodl() {
+  try {
+    const data = await api('/api/autodl');
+    const c = document.getElementById('autodlList');
+    const queries = data.queries || [];
+    if (queries.length === 0) {
+      c.innerHTML = '<div class="empty"><div class="empty-text">No auto-download queries configured</div></div>';
+    } else {
+      c.innerHTML = queries.map(q => `<div class="query-tag">
+        <span>${q}</span>
+        <button class="query-remove" onclick="removeAutodl('${q.replace(/'/g, "\\'")}')" title="Remove">×</button>
+      </div>`).join('');
+    }
+  } catch (e) {}
+}
+
+async function addAutodl() {
+  const input = document.getElementById('autodlInput');
+  const query = input.value.trim();
+  if (!query) return;
+  try {
+    const data = await api('/api/autodl', {
+      method: 'POST',
+      body: JSON.stringify({ query })
+    });
+    if (data.success) {
+      input.value = '';
+      toast('Query added: ' + query);
+      loadAutodl();
+    } else {
+      toast(data.error || 'Failed to add', 'error');
+    }
+  } catch (e) {
+    toast('Failed: ' + e.message, 'error');
+  }
+}
+
+async function removeAutodl(query) {
+  try {
+    const data = await api('/api/autodl', {
+      method: 'DELETE',
+      body: JSON.stringify({ query })
+    });
+    if (data.success) {
+      toast('Query removed: ' + query);
+      loadAutodl();
+    }
+  } catch (e) {
+    toast('Failed: ' + e.message, 'error');
+  }
+}
+
+// --- History ---
+async function loadHistory() {
+  try {
+    const data = await api('/api/downloaded');
+    const c = document.getElementById('historyList');
+    const items = data.items || [];
+    if (items.length === 0) {
+      c.innerHTML = '<div class="empty"><div class="empty-text">No download history</div></div>';
+    } else {
+      c.innerHTML = '<div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius)">' +
+        items.map(item => `<div class="history-item">${item}</div>`).join('') +
+        '</div>';
+    }
+  } catch (e) {}
+}
+
+async function clearHistory() {
+  if (!confirm('Clear all download history?')) return;
+  await api('/api/downloaded/clear', { method: 'POST' });
+  toast('History cleared');
+  loadHistory();
+}
+
+// --- Utilities ---
+function formatSpeed(bytes) {
+  if (bytes <= 0) return '0 B/s';
+  const units = ['B/s', 'KiB/s', 'MiB/s', 'GiB/s'];
+  for (const u of units) {
+    if (bytes < 1024) return bytes.toFixed(1) + ' ' + u;
+    bytes /= 1024;
+  }
+  return bytes.toFixed(1) + ' TiB/s';
+}
+
+// --- Init ---
+(async function init() {
+  // Check qBit connection
+  try {
+    await api('/api/torrents');
+    document.getElementById('statusDot').className = 'status-dot';
+  } catch {
+    document.getElementById('statusDot').className = 'status-dot offline';
+  }
+})();
+</script>
+</body>
+</html>

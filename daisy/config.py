@@ -67,7 +67,11 @@ class Config:
     storage: StorageConfig
 
     @classmethod
-    def load(cls, config_file: str = "config.json") -> "Config":
+    def load(cls, config_file: str = None) -> "Config":
+        if config_file is None:
+            config_file = os.path.join(
+                os.path.dirname(os.path.abspath(__file__)), '..', 'config.json'
+            )
         """Load configuration from file, or use defaults."""
         if os.path.exists(config_file):
             with open(config_file, 'r') as f:

@@ -11,7 +11,7 @@ import requests
 from bs4 import BeautifulSoup
 import feedparser
 
-from config import USER_AGENT
+from .config import USER_AGENT
 
 
 logger = logging.getLogger(__name__)

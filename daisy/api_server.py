@@ -13,14 +13,15 @@ from urllib.parse import unquote, urlparse
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
-from config import Config
-from torrent_search import search_torrents
-from media_processor import MediaProcessor
+from .config import Config
+from .torrent_search import search_torrents
+from .media_processor import MediaProcessor
 
+_REPO_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 
 # Setup logging
 logging.basicConfig(
-    filename='api.log',
+    filename=os.path.join(_REPO_ROOT, 'logs', 'api.log'),
     filemode='a',
     format='%(asctime)s %(name)s %(levelname)s %(message)s',
     datefmt='%Y-%m-%d %H:%M:%S',

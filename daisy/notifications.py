@@ -6,7 +6,7 @@ import logging
 from typing import Optional
 import requests
 
-from config import DiscordConfig
+from .config import DiscordConfig
 
 
 logger = logging.getLogger(__name__)

@@ -11,7 +11,7 @@ from typing import Optional, Dict, Any
 
 from qbittorrent import Client
 
-from config import QBittorrentConfig
+from .config import QBittorrentConfig
 
 
 logger = logging.getLogger(__name__)

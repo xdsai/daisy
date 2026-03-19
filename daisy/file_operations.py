@@ -9,7 +9,7 @@ import shutil
 import subprocess
 from typing import List, Optional, Tuple
 
-from config import StorageConfig
+from .config import StorageConfig
 
 
 logger = logging.getLogger(__name__)

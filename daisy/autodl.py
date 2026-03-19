@@ -11,11 +11,13 @@ import re
 import requests
 import feedparser
 
+_REPO_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
+
 
 def setup_logging():
     """Configure logging."""
     logging.basicConfig(
-        filename='alog',
+        filename=os.path.join(_REPO_ROOT, 'logs', 'alog'),
         filemode='a',
         format='%(asctime)s %(name)s %(levelname)s %(message)s',
         datefmt='%Y-%m-%d %H:%M:%S',  # Fixed date format
@@ -27,8 +29,8 @@ logger = logging.getLogger(__name__)
 
 
 SUBSPLEASE_RSS = 'https://subsplease.org/rss/?r=1080'
-QUERIES_FILE = 'autodl_queries.json'
-DOWNLOADED_FILE = 'downloaded.json'
+QUERIES_FILE = os.path.join(_REPO_ROOT, 'autodl_queries.json')
+DOWNLOADED_FILE = os.path.join(_REPO_ROOT, 'downloaded.json')
 CHECK_INTERVAL = 1200  # 20 minutes
 
 API_PORT = os.getenv('DAISY_PORT', '5000')

@@ -19,6 +19,8 @@ ENV/
 *~
 
 # Logs
+logs/
+!logs/.gitkeep
 *.log
 dlog
 alog

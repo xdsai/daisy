@@ -8,12 +8,12 @@ import logging
 import subprocess
 from typing import Optional
 
-from config import Config
-from magnet_converters import MagnetConverter
-from download_manager import DownloadManager
-from file_operations import FileOperations
-from jellyfin_manager import JellyfinManager
-from notifications import DiscordNotifier
+from .config import Config
+from .magnet_converters import MagnetConverter
+from .download_manager import DownloadManager
+from .file_operations import FileOperations
+from .jellyfin_manager import JellyfinManager
+from .notifications import DiscordNotifier
 
 
 logger = logging.getLogger(__name__)

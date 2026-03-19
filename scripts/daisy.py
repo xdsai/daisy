@@ -5,17 +5,22 @@ Integrates with qBittorrent, Plex Media Server, and Discord.
 """
 
 import logging
+import os
 import sys
 import argparse
 
-from config import Config
-from media_processor import MediaProcessor
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+
+from daisy.config import Config
+from daisy.media_processor import MediaProcessor
+
+_REPO_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 
 
 def setup_logging():
     """Configure logging."""
     logging.basicConfig(
-        filename='dlog',
+        filename=os.path.join(_REPO_ROOT, 'logs', 'dlog'),
         filemode='a',
         format='%(asctime)s %(name)s %(levelname)s %(message)s',
         datefmt='%H:%M:%S',
