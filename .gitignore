@@ -29,6 +29,7 @@ alog
 config.json
 autodl_queries.json
 downloaded.json
+watchlist_seen.json
 
 # OS
 .DS_Store
