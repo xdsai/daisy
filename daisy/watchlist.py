@@ -61,14 +61,55 @@ _UA = {
     )
 }
 
+# Track scrape failures across cycles so we only alert once per outage,
+# not every 2 minutes.
+_scrape_alert_sent = False
 
-def fetch_watchlist(username: str) -> list[dict]:
+
+def _alert_scrape_failure(reason: str):
     """
-    Scrape a Letterboxd watchlist.
+    Log loudly and send a Discord notification when scraping fails.
+    Deduplicated across cycles — only fires once until the next successful
+    scrape resets the flag.
+    """
+    global _scrape_alert_sent
+    logger.error(f"WATCHLIST SCRAPE FAILURE: {reason}")
+    if _scrape_alert_sent:
+        return
+    try:
+        from .config import Config
+        from .notifications import DiscordNotifier
+        config = Config.load()
+        DiscordNotifier(config.discord).send_embed(
+            f"⚠️ Daisy watchlist scrape broken: {reason}",
+            color=16711680,  # red
+        )
+        _scrape_alert_sent = True
+    except Exception as e:
+        logger.error(f"Failed to send scrape-failure notification: {e}")
 
-    Parses the current <li class="griditem"> structure with embedded
-    LazyPoster react components that expose data-item-name, data-item-slug,
-    and data-target-link attributes.
+
+def _parse_letterboxdpy_movie(movie: dict) -> dict:
+    """Normalize a letterboxdpy movie dict into our internal format."""
+    return {
+        'name': movie.get('name', ''),
+        'year': movie.get('year'),
+        'slug': movie.get('slug', ''),
+    }
+
+
+def _fetch_via_letterboxdpy(username: str) -> list[dict]:
+    from letterboxdpy.watchlist import Watchlist
+    import letterboxdpy
+    logger.debug(f"letterboxdpy version: {getattr(letterboxdpy, '__version__', 'unknown')}")
+    w = Watchlist(username)
+    return [_parse_letterboxdpy_movie(m) for m in w.movies.values()]
+
+
+def _fetch_via_scrape(username: str) -> list[dict]:
+    """
+    DIY scraper against the current li.griditem / LazyPoster HTML structure.
+    Kept as a fallback so letterboxdpy breaking doesn't fully take us down.
     """
     from bs4 import BeautifulSoup
     import re
@@ -90,7 +131,6 @@ def fetch_watchlist(username: str) -> list[dict]:
         for el in posters:
             slug = el.get('data-item-slug', '')
             full = el.get('data-item-full-display-name') or el.get('data-item-name', '')
-            # "Movie Name (YYYY)" → split out year
             m = re.match(r'^(.*?)\s*\((\d{4})\)\s*$', full)
             if m:
                 name, year = m.group(1), int(m.group(2))
@@ -102,6 +142,53 @@ def fetch_watchlist(username: str) -> list[dict]:
         if len(posters) < 28:
             break
         page += 1
+
+    return movies
+
+
+def fetch_watchlist(username: str) -> list[dict]:
+    """
+    Fetch a Letterboxd watchlist using letterboxdpy, with a DIY scrape fallback.
+
+    Both scrapers can return 0 movies silently when Letterboxd changes its HTML.
+    We treat "0 movies when we've seen movies before" as a failure signal and
+    log + notify loudly so outages don't go unnoticed for weeks.
+    """
+    global _scrape_alert_sent
+    seen = load_seen()
+
+    # primary: letterboxdpy
+    try:
+        movies = _fetch_via_letterboxdpy(username)
+    except Exception as e:
+        logger.warning(f"letterboxdpy raised exception: {e}")
+        movies = []
+
+    # fallback: DIY scrape — only if letterboxdpy returned nothing
+    if not movies:
+        logger.warning("letterboxdpy returned 0 movies; falling back to DIY scrape")
+        try:
+            movies = _fetch_via_scrape(username)
+            if movies:
+                logger.warning(
+                    f"DIY scrape recovered {len(movies)} movies — letterboxdpy "
+                    f"is likely broken, consider upgrading: "
+                    f"pip install --upgrade letterboxdpy"
+                )
+        except Exception as e:
+            logger.error(f"DIY scrape also failed: {e}")
+            movies = []
+
+    # loud alert if BOTH scrapers failed AND we've previously seen movies
+    # (empty seen list on a fresh install is a legitimate 0 result)
+    if not movies and seen:
+        _alert_scrape_failure(
+            f"both letterboxdpy and DIY scrape returned 0 movies for "
+            f"{username} (seen list has {len(seen)} prior entries)"
+        )
+    elif movies:
+        # reset alert flag on successful scrape
+        _scrape_alert_sent = False
 
     return movies
 

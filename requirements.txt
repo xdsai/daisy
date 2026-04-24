@@ -5,3 +5,4 @@ requests>=2.25
 requests_html>=0.10
 Flask>=2.3
 flask-cors>=4.0
+letterboxdpy>=6.5.1
