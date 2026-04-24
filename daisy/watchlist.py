@@ -14,14 +14,14 @@ _REPO_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 
 WATCHLIST_USER = os.getenv('WATCHLIST_USER', 'alexsex')
 SEEN_FILE = os.path.join(_REPO_ROOT, 'watchlist_seen.json')
-CHECK_INTERVAL = 1800  # 30 minutes
+CHECK_INTERVAL = 120  # 2 minutes
 
 API_PORT = os.getenv('DAISY_PORT', '5000')
 API_KEY = os.getenv('DAISY_API_KEY', '')
 API_BASE = f'http://127.0.0.1:{API_PORT}'
 
 LLM_BASE = os.getenv('LLM_BASE', 'http://127.0.0.1:3456')
-LLM_MODEL = os.getenv('LLM_MODEL', 'claude-haiku-4-5-20251001')
+LLM_MODEL = os.getenv('LLM_MODEL', 'claude-sonnet-4-6')
 
 
 def setup_logging():
@@ -54,46 +54,55 @@ def save_seen(seen: list[str]):
 
 # ---- letterboxd ----
 
+_UA = {
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+        "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    )
+}
+
+
 def fetch_watchlist(username: str) -> list[dict]:
-    """Fetch watchlist using letterboxdpy, with DIY scrape fallback."""
-    try:
-        from letterboxdpy.watchlist import Watchlist
-        w = Watchlist(username)
-        movies = []
-        for _, movie in w.movies.items():
-            movies.append({
-                'name': movie['name'],
-                'year': movie.get('year'),
-                'slug': movie.get('slug', ''),
-            })
-        return movies
-    except Exception as e:
-        logger.warning(f"letterboxdpy failed ({e}), trying DIY scrape")
-        return _scrape_watchlist(username)
+    """
+    Scrape a Letterboxd watchlist.
 
-
-def _scrape_watchlist(username: str) -> list[dict]:
-    """Fallback scraper using requests + BeautifulSoup."""
+    Parses the current <li class="griditem"> structure with embedded
+    LazyPoster react components that expose data-item-name, data-item-slug,
+    and data-target-link attributes.
+    """
     from bs4 import BeautifulSoup
+    import re
 
     movies = []
     page = 1
     while True:
         url = f"https://letterboxd.com/{username}/watchlist/page/{page}/"
-        resp = requests.get(url, timeout=30)
+        resp = requests.get(url, headers=_UA, timeout=30)
         if resp.status_code != 200:
+            logger.warning(f"Watchlist page {page} returned HTTP {resp.status_code}")
             break
+
         soup = BeautifulSoup(resp.text, 'html.parser')
-        posters = soup.select('li.poster-container div.really-lazy-load')
+        posters = soup.select('li.griditem div.react-component[data-component-class="LazyPoster"]')
         if not posters:
             break
+
         for el in posters:
-            name = el.img.get('alt', '') if el.img else ''
-            slug = el.get('data-film-slug', '')
-            movies.append({'name': name, 'year': None, 'slug': slug})
+            slug = el.get('data-item-slug', '')
+            full = el.get('data-item-full-display-name') or el.get('data-item-name', '')
+            # "Movie Name (YYYY)" → split out year
+            m = re.match(r'^(.*?)\s*\((\d{4})\)\s*$', full)
+            if m:
+                name, year = m.group(1), int(m.group(2))
+            else:
+                name, year = full, None
+            if slug:
+                movies.append({'name': name, 'year': year, 'slug': slug})
+
         if len(posters) < 28:
             break
         page += 1
+
     return movies
 
 
@@ -147,12 +156,14 @@ Here are the torrent search results:
 
 {options_text}
 
-Pick the single best option. Prefer:
-- 1080p quality (required — skip anything that isn't 1080p)
-- BluRay or WEB-DL over cam/hdtv
-- high seeder count
-- reputable sources (YTS, RARBG, etc.)
-- reasonable file size (1-5 GB ideal for 1080p)
+Pick the single best option. Rules (in priority order):
+1. MUST be 1080p — skip anything that isn't 1080p
+2. MUST have at least 10 seeders — low-seed torrents will never finish downloading
+3. For ALL non-English movies (Japanese, Korean, Cantonese, French, etc.) and anime: ALWAYS prefer nyaa.si or other sources that include original language audio over YTS. YTS often strips original audio and only has English dubs. We want original language audio with subtitles, NEVER dubs.
+4. Prefer BluRay or WEB-DL over cam/hdtv/screener
+5. Prefer reputable sources (nyaa.si for anime/Japanese, YTS for Western films, RARBG, etc.)
+6. Prefer reasonable file size (1-5 GB ideal for 1080p, up to 8 GB acceptable for better quality)
+7. When in doubt, pick the one with the MOST seeders
 
 Respond with ONLY the index number (e.g. "3"). Nothing else. If none of the results are a good 1080p match for this specific movie, respond with "SKIP"."""
 
