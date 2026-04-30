@@ -61,9 +61,16 @@ _UA = {
     )
 }
 
-# Track scrape failures across cycles so we only alert once per outage,
-# not every 2 minutes.
+# State across cycles so we don't spam logs/discord on transient blips.
 _scrape_alert_sent = False
+_consecutive_failures = 0
+# Threshold before pinging discord — 3 cycles = ~6 min at the default interval.
+# A single failed cycle is almost always a transient network/DNS blip.
+_FAILURE_THRESHOLD = 3
+# Whether letterboxdpy is currently in a known-broken state. Used to suppress
+# the per-cycle "letterboxdpy returned 0 movies" warning once we've already
+# logged it; only re-log when state transitions.
+_letterboxdpy_broken = False
 
 
 def _alert_scrape_failure(reason: str):
@@ -150,45 +157,67 @@ def fetch_watchlist(username: str) -> list[dict]:
     """
     Fetch a Letterboxd watchlist using letterboxdpy, with a DIY scrape fallback.
 
-    Both scrapers can return 0 movies silently when Letterboxd changes its HTML.
-    We treat "0 movies when we've seen movies before" as a failure signal and
-    log + notify loudly so outages don't go unnoticed for weeks.
+    Both scrapers can return 0 movies silently when Letterboxd changes its HTML
+    or starts blocking specific request signatures. We track consecutive
+    failures across cycles and only alert (log ERROR + Discord) once we've
+    seen N back-to-back failures, so transient DNS/network blips don't page.
     """
-    global _scrape_alert_sent
+    global _scrape_alert_sent, _consecutive_failures, _letterboxdpy_broken
     seen = load_seen()
 
     # primary: letterboxdpy
+    letterboxdpy_failed = False
     try:
         movies = _fetch_via_letterboxdpy(username)
     except Exception as e:
-        logger.warning(f"letterboxdpy raised exception: {e}")
+        letterboxdpy_failed = True
+        # Only log when state transitions from working → broken, so we don't
+        # spam every 2 minutes when letterboxd is persistently blocking us.
+        if not _letterboxdpy_broken:
+            logger.warning(f"letterboxdpy started failing: {e}")
+            _letterboxdpy_broken = True
         movies = []
+
+    if not movies and not letterboxdpy_failed:
+        # letterboxdpy returned 0 with no exception — likely an HTML change.
+        if not _letterboxdpy_broken:
+            logger.warning("letterboxdpy returned 0 movies (no exception)")
+            _letterboxdpy_broken = True
 
     # fallback: DIY scrape — only if letterboxdpy returned nothing
     if not movies:
-        logger.warning("letterboxdpy returned 0 movies; falling back to DIY scrape")
         try:
             movies = _fetch_via_scrape(username)
-            if movies:
-                logger.warning(
-                    f"DIY scrape recovered {len(movies)} movies — letterboxdpy "
-                    f"is likely broken, consider upgrading: "
-                    f"pip install --upgrade letterboxdpy"
-                )
         except Exception as e:
             logger.error(f"DIY scrape also failed: {e}")
             movies = []
 
-    # loud alert if BOTH scrapers failed AND we've previously seen movies
-    # (empty seen list on a fresh install is a legitimate 0 result)
-    if not movies and seen:
+    # State transitions
+    if movies:
+        # reset failure tracking on any successful scrape
+        if _consecutive_failures > 0 or _scrape_alert_sent:
+            logger.info(f"Watchlist scraping recovered ({len(movies)} movies)")
+        if _letterboxdpy_broken and not letterboxdpy_failed:
+            logger.info("letterboxdpy recovered")
+            _letterboxdpy_broken = False
+        _consecutive_failures = 0
+        _scrape_alert_sent = False
+        return movies
+
+    # Both scrapers failed — count it.
+    _consecutive_failures += 1
+    logger.warning(
+        f"Both scrapers returned 0 movies (failure {_consecutive_failures}/{_FAILURE_THRESHOLD})"
+    )
+
+    # Loud alert only after threshold AND if we have prior history
+    # (empty seen list on a fresh install is a legitimate 0 result).
+    if _consecutive_failures >= _FAILURE_THRESHOLD and seen:
         _alert_scrape_failure(
             f"both letterboxdpy and DIY scrape returned 0 movies for "
-            f"{username} (seen list has {len(seen)} prior entries)"
+            f"{username} for {_consecutive_failures} consecutive cycles "
+            f"(seen list has {len(seen)} prior entries)"
         )
-    elif movies:
-        # reset alert flag on successful scrape
-        _scrape_alert_sent = False
 
     return movies
 
