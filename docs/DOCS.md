@@ -84,7 +84,7 @@ Defines all configuration as typed dataclasses with hardcoded defaults. Supports
 |---|---|---|
 | `QBittorrentConfig` | qBittorrent WebUI connection | `host`, `port`, `username`, `password`; property `url` builds `http://host:port/` |
 | `JellyfinConfig` | Jellyfin server connection | `host`, `port`, `api_key`; property `url` builds `http://host:port` |
-| `DiscordConfig` | Discord webhook URLs | `daisy_webhook` (download events), `storage_webhook` (disk space reports) |
+| `DiscordConfig` | Discord webhook URLs | `daisy_webhook` (download events; storage info is bundled into the completed embed) |
 | `StorageConfig` | File system paths and capacities | `movies_path`, `movies_temp_path`, `movies_docker_path`, `movies_capacity_gb`, `other_path`, `other_temp_path`, `other_docker_path`, `other_jellyfin_path`, `other_capacity_gb`; property `movies_dir` returns `movies_path + "/movies/"` |
 | `Config` | Top-level container aggregating all sub-configs | `qbittorrent`, `jellyfin`, `discord`, `storage` |
 
@@ -454,7 +454,6 @@ Sends embed-style messages to Discord channels via webhooks.
 | `notify_download_completed(name)` | `daisy_webhook` | Green (65436) | `"Download of {name} completed"` |
 | `notify_download_failed(name, reason)` | `daisy_webhook` | Red (16711680) | `"Download failed: {name} - {reason}"` |
 | `notify_no_magnet_found(link)` | `daisy_webhook` | Red (16711680) | `"Could not find magnets for {link}"` |
-| `notify_storage_status(storage_report)` | `storage_webhook` | Green (65436) | Free space report for both drives. |
 
 **Payload format:** Discord embed JSON:
 ```json
@@ -535,10 +534,7 @@ User runs: python3 daisy.py -t show -n "My Show" -m "https://nyaa.si/view/12345"
    |   |
    |   |-- jellyfin.update_library()
    |   `-- notifier.notify_download_completed(name)
-   |       `-- Discord POST: "Download of {name} completed" (green)
-   |
-   |-- notifier.notify_storage_status(storage_report)
-       `-- Discord POST to storage webhook: free space on both drives
+   |       `-- Discord POST: "Download of {name} completed" + free-space fields (green)
 ```
 
 ### 3.2 API Server Path
@@ -892,8 +888,7 @@ Derived: `url` property returns `http://{host}:{port}`
 
 | Field | Type | Default | Description |
 |---|---|---|---|
-| `daisy_webhook` | str | `""` | Webhook URL for download event notifications |
-| `storage_webhook` | str | `""` | Webhook URL for storage status reports |
+| `daisy_webhook` | str | `""` | Webhook URL for download event notifications (storage info is bundled into the completion embed) |
 
 #### Storage (`StorageConfig`)
 
@@ -1061,8 +1056,7 @@ Optionally create `config.json` to override defaults:
     "api_key": "your-jellyfin-api-key"
   },
   "discord": {
-    "daisy_webhook": "https://discord.com/api/webhooks/...",
-    "storage_webhook": "https://discord.com/api/webhooks/..."
+    "daisy_webhook": "https://discord.com/api/webhooks/..."
   },
   "storage": {
     "movies_path": "/mnt/storage/movies",

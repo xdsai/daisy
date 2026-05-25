@@ -36,7 +36,6 @@ class JellyfinConfig:
 class DiscordConfig:
     """Discord webhook configuration."""
     daisy_webhook: str = ""
-    storage_webhook: str = ""
 
 
 @dataclass
@@ -82,10 +81,12 @@ class Config:
                     storage_data['other_jellyfin_path'] = storage_data.pop('other_plex_path')
                 elif 'other_plex_path' in storage_data:
                     storage_data.pop('other_plex_path')
+                discord_data = data.get('discord', {})
+                discord_data.pop('storage_webhook', None)  # field removed
                 return cls(
                     qbittorrent=QBittorrentConfig(**data.get('qbittorrent', {})),
                     jellyfin=JellyfinConfig(**data.get('jellyfin', {})),
-                    discord=DiscordConfig(**data.get('discord', {})),
+                    discord=DiscordConfig(**discord_data),
                     storage=StorageConfig(**storage_data)
                 )
         else:
@@ -112,7 +113,6 @@ class Config:
             },
             'discord': {
                 'daisy_webhook': self.discord.daisy_webhook,
-                'storage_webhook': self.discord.storage_webhook,
             },
             'storage': {
                 'movies_path': self.storage.movies_path,

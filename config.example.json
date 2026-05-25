@@ -11,8 +11,7 @@
     "api_key": "your-jellyfin-api-key"
   },
   "discord": {
-    "daisy_webhook": "https://discord.com/api/webhooks/your-webhook-url",
-    "storage_webhook": "https://discord.com/api/webhooks/your-storage-webhook-url"
+    "daisy_webhook": "https://discord.com/api/webhooks/your-webhook-url"
   },
   "storage": {
     "movies_path": "/path/to/movies",

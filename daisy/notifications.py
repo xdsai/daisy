@@ -111,27 +111,3 @@ class DiscordNotifier:
             color=16711680  # Red
         )
 
-    def notify_storage_status(self, storage_report: dict) -> bool:
-        """
-        Send storage status notification.
-
-        Args:
-            storage_report: Dict with 'movies' and 'other' drive info
-
-        Returns:
-            True if successful, False otherwise
-        """
-        movies = storage_report.get('movies', {})
-        other = storage_report.get('other', {})
-
-        title = (
-            f"Free space:\n"
-            f"Shows - {other.get('free_gb', 0)}/{other.get('capacity_gb', 0)} GB\n"
-            f"Movies - {movies.get('free_gb', 0)}/{movies.get('capacity_gb', 0)} GB"
-        )
-
-        return self.send_embed(
-            title,
-            color=65436,
-            webhook=self.config.storage_webhook
-        )

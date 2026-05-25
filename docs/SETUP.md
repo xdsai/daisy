@@ -208,8 +208,7 @@ cat > ~/repos/daisy/config.json << EOF
     "api_key": "$JF_API_KEY"
   },
   "discord": {
-    "daisy_webhook": "",
-    "storage_webhook": ""
+    "daisy_webhook": ""
   },
   "storage": {
     "movies_path": "/home/$USER/storage/movies",
@@ -370,8 +369,7 @@ Once you have webhook URLs, update `config.json`:
 ```json
 {
   "discord": {
-    "daisy_webhook": "https://discord.com/api/webhooks/YOUR_ID/YOUR_TOKEN",
-    "storage_webhook": "https://discord.com/api/webhooks/YOUR_ID/YOUR_TOKEN"
+    "daisy_webhook": "https://discord.com/api/webhooks/YOUR_ID/YOUR_TOKEN"
   }
 }
 ```
