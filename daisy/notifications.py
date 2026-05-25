@@ -22,7 +22,8 @@ class DiscordNotifier:
         self,
         title: str,
         color: int = 65436,  # Green by default
-        webhook: Optional[str] = None
+        webhook: Optional[str] = None,
+        fields: Optional[list] = None,
     ) -> bool:
         """
         Send an embed message to Discord.
@@ -31,6 +32,7 @@ class DiscordNotifier:
             title: Message title
             color: Embed color (default green)
             webhook: Webhook URL (defaults to daisy_webhook)
+            fields: Optional list of {name, value, inline} dicts for embed fields
 
         Returns:
             True if successful, False otherwise
@@ -38,12 +40,10 @@ class DiscordNotifier:
         webhook_url = webhook or self.config.daisy_webhook
 
         try:
-            payload = {
-                'embeds': [{
-                    'title': title,
-                    'color': color
-                }]
-            }
+            embed = {'title': title, 'color': color}
+            if fields:
+                embed['fields'] = fields
+            payload = {'embeds': [embed]}
 
             response = requests.post(webhook_url, json=payload, timeout=10)
             response.raise_for_status()
@@ -62,11 +62,35 @@ class DiscordNotifier:
             color=65436  # Green
         )
 
-    def notify_download_completed(self, name: str) -> bool:
-        """Notify that a download has completed."""
+    def notify_download_completed(
+        self,
+        name: str,
+        storage_report: Optional[dict] = None,
+    ) -> bool:
+        """
+        Notify that a download has completed. Bundles the storage report
+        into the same embed when provided.
+        """
+        fields = None
+        if storage_report:
+            movies = storage_report.get('movies', {})
+            other = storage_report.get('other', {})
+            fields = [
+                {
+                    'name': 'Shows',
+                    'value': f"{other.get('free_gb', 0)} / {other.get('capacity_gb', 0)} GB free",
+                    'inline': True,
+                },
+                {
+                    'name': 'Movies',
+                    'value': f"{movies.get('free_gb', 0)} / {movies.get('capacity_gb', 0)} GB free",
+                    'inline': True,
+                },
+            ]
         return self.send_embed(
             f"Download of {name} completed",
-            color=65436  # Green
+            color=65436,  # Green
+            fields=fields,
         )
 
     def notify_download_failed(self, name: str, reason: str = "") -> bool:

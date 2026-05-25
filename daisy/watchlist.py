@@ -14,7 +14,9 @@ _REPO_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 
 WATCHLIST_USER = os.getenv('WATCHLIST_USER', 'alexsex')
 SEEN_FILE = os.path.join(_REPO_ROOT, 'watchlist_seen.json')
+SKIPPED_FILE = os.path.join(_REPO_ROOT, 'watchlist_skipped.json')
 CHECK_INTERVAL = 120  # 2 minutes
+SKIP_COOLDOWN_HOURS = 24  # retry LLM-skipped movies once per day
 
 API_PORT = os.getenv('DAISY_PORT', '5000')
 API_KEY = os.getenv('DAISY_API_KEY', '')
@@ -50,6 +52,20 @@ def load_seen() -> list[str]:
 def save_seen(seen: list[str]):
     with open(SEEN_FILE, 'w') as f:
         json.dump(seen, f, indent=2)
+
+
+def load_skipped() -> dict[str, float]:
+    """Returns mapping of slug → unix timestamp of most recent skip."""
+    try:
+        with open(SKIPPED_FILE, 'r') as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {}
+
+
+def save_skipped(skipped: dict[str, float]):
+    with open(SKIPPED_FILE, 'w') as f:
+        json.dump(skipped, f, indent=2)
 
 
 # ---- letterboxd ----
@@ -341,18 +357,35 @@ def trigger_download(name: str, magnet: str) -> bool:
 def process_watchlist():
     """Check watchlist for new movies and process them."""
     seen = load_seen()
+    skipped = load_skipped()
     movies = fetch_watchlist(WATCHLIST_USER)
 
     if not movies:
         logger.warning("No movies fetched from watchlist")
         return
 
-    logger.info(f"Watchlist has {len(movies)} movies, {len(seen)} already seen")
+    logger.info(
+        f"Watchlist has {len(movies)} movies, {len(seen)} seen, "
+        f"{len(skipped)} in skip cooldown"
+    )
+
+    now = time.time()
+    cooldown_secs = SKIP_COOLDOWN_HOURS * 3600
 
     for movie in movies:
         key = movie['slug'] or movie['name']
         if key in seen:
             continue
+
+        # if recently SKIP'd by LLM, wait out the cooldown before re-asking
+        if key in skipped:
+            elapsed = now - skipped[key]
+            if elapsed < cooldown_secs:
+                continue
+            logger.info(
+                f"Skip cooldown expired for '{movie['name']}' "
+                f"({elapsed / 3600:.1f}h since last skip) — retrying"
+            )
 
         name = movie['name']
         year = movie.get('year')
@@ -369,10 +402,12 @@ def process_watchlist():
         # ask LLM to pick
         pick = ask_llm_to_pick(name, year, results)
         if pick is None:
-            logger.info(f"LLM skipped '{name}' — no good 1080p match")
-            # still mark as seen so we don't spam the LLM every cycle
-            seen.append(key)
-            save_seen(seen)
+            logger.info(
+                f"LLM skipped '{name}' — no good 1080p match, "
+                f"retry in {SKIP_COOLDOWN_HOURS}h"
+            )
+            skipped[key] = now
+            save_skipped(skipped)
             continue
 
         selected = results[pick]
@@ -382,6 +417,10 @@ def process_watchlist():
         if trigger_download(name, selected['magnet']):
             seen.append(key)
             save_seen(seen)
+            # clear from skipped if it was there
+            if key in skipped:
+                del skipped[key]
+                save_skipped(skipped)
             # avoid hammering the API
             time.sleep(10)
         else:

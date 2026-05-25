@@ -30,6 +30,7 @@ config.json
 autodl_queries.json
 downloaded.json
 watchlist_seen.json
+watchlist_skipped.json
 
 # OS
 .DS_Store

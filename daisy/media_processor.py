@@ -69,10 +69,6 @@ class MediaProcessor:
         else:
             success = self._process_show(magnets, show_name, torrent_type)
 
-        # Send storage status update
-        storage_report = self.file_ops.get_storage_report()
-        self.notifier.notify_storage_status(storage_report)
-
         return success
 
     def _process_movie(self, magnets: list) -> bool:
@@ -133,7 +129,8 @@ class MediaProcessor:
             if dest_video:
                 self._auto_subtitle(dest_video)
 
-            self.notifier.notify_download_completed(torrent_info['name'])
+            storage_report = self.file_ops.get_storage_report()
+            self.notifier.notify_download_completed(torrent_info['name'], storage_report)
             success_count += 1
 
         return success_count == len(magnets)
@@ -244,7 +241,8 @@ class MediaProcessor:
                 # Sync subtitles before updating library
                 self._sync_subtitles(dest_path)
                 self.media_server.update_library()
-                self.notifier.notify_download_completed(torrent_info['name'])
+                storage_report = self.file_ops.get_storage_report()
+                self.notifier.notify_download_completed(torrent_info['name'], storage_report)
                 success_count += 1
 
         return success_count == len(magnets)
