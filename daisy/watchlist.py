@@ -15,7 +15,8 @@ _REPO_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 WATCHLIST_USER = os.getenv('WATCHLIST_USER', 'alexsex')
 SEEN_FILE = os.path.join(_REPO_ROOT, 'watchlist_seen.json')
 SKIPPED_FILE = os.path.join(_REPO_ROOT, 'watchlist_skipped.json')
-CHECK_INTERVAL = 120  # 2 minutes
+CHECK_INTERVAL = 900  # 15 minutes (4 req/hr — friendlier to letterboxd's WAF)
+MAX_BACKOFF = 21600  # cap exponential backoff at 6 hours
 SKIP_COOLDOWN_HOURS = 24  # retry LLM-skipped movies once per day
 
 API_PORT = os.getenv('DAISY_PORT', '5000')
@@ -440,7 +441,15 @@ def main():
         except Exception as e:
             logger.error(f"Error in main loop: {e}", exc_info=True)
 
-        time.sleep(CHECK_INTERVAL)
+        # Exponential backoff on consecutive failures, capped at MAX_BACKOFF.
+        # Reset to CHECK_INTERVAL on the first successful scrape.
+        sleep_secs = min(CHECK_INTERVAL * (2 ** _consecutive_failures), MAX_BACKOFF)
+        if _consecutive_failures > 0:
+            logger.info(
+                f"Backing off after {_consecutive_failures} consecutive failures: "
+                f"sleeping {sleep_secs}s ({sleep_secs / 60:.0f} min)"
+            )
+        time.sleep(sleep_secs)
 
 
 if __name__ == '__main__':
