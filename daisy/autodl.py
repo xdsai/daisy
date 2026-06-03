@@ -123,6 +123,44 @@ def trigger_download(show_name: str, magnet: str) -> bool:
         return False
 
 
+def is_batch_release(title: str) -> bool:
+    """
+    Detect if a torrent title is a batch / season-pack release.
+
+    Catches SubsPlease's `[Batch]` tag and explicit episode range patterns
+    like `(01-10)` or `(1-28)`.
+    """
+    if '[Batch]' in title or '(Batch)' in title:
+        return True
+    if re.search(r'\(\s*\d+\s*-\s*\d+\s*\)', title):
+        return True
+    return False
+
+
+def count_existing_episodes(show_name: str) -> int:
+    """
+    Count episode files already on disk for a show. Used to detect when a
+    batch release would duplicate what we already have.
+    """
+    try:
+        from .config import Config
+        from .file_operations import FileOperations
+        config = Config.load()
+        normalized = FileOperations(config.storage).normalize_name(show_name)
+        show_dir = os.path.join(config.storage.other_path, normalized)
+        if not os.path.isdir(show_dir):
+            return 0
+        count = 0
+        for root, _, files in os.walk(show_dir):
+            for f in files:
+                if f.endswith(('.mkv', '.mp4', '.avi')):
+                    count += 1
+        return count
+    except Exception as e:
+        logger.warning(f"Could not count existing eps for '{show_name}': {e}")
+        return 0
+
+
 def process_releases(queries: list, releases: list, downloaded: list) -> list:
     """
     Process releases and trigger downloads for matches.
@@ -147,6 +185,21 @@ def process_releases(queries: list, releases: list, downloaded: list) -> list:
                 if show['title'] in downloaded:
                     logger.info(f"Already downloaded, skipping: {show['title']}")
                     continue
+
+                # Skip batch releases when we already have episodes on disk —
+                # SubsPlease often posts a [Batch] after a season finishes
+                # airing, and downloading it would duplicate every episode
+                # alongside the originals.
+                if is_batch_release(show['title']):
+                    existing = count_existing_episodes(show['name'])
+                    if existing > 0:
+                        logger.info(
+                            f"Skipping batch '{show['title']}' — "
+                            f"already have {existing} episode file(s) on disk"
+                        )
+                        downloaded.append(show['title'])
+                        save_json_file(DOWNLOADED_FILE, downloaded)
+                        continue
 
                 # Trigger download
                 logger.info(f"New show to download: {show['title']}")
