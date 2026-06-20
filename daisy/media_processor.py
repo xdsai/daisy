@@ -71,6 +71,54 @@ class MediaProcessor:
 
         return success
 
+    def reconcile_stranded(self) -> int:
+        """
+        Organize downloads that completed in qBittorrent but whose files are
+        still sitting in a temp directory — e.g. because the per-request
+        monitoring thread died on a service restart before it could move them.
+
+        Run this at startup. Already-organized torrents are skipped (their temp
+        files no longer exist), so it's safe to call repeatedly.
+
+        Returns the number of stranded downloads organized.
+        """
+        storage = self.config.storage
+        try:
+            torrents = self.download_manager.get_torrents()
+        except Exception as e:
+            logger.error(f"Reconcile: could not list torrents: {e}")
+            return 0
+
+        movies_temp = os.path.abspath(storage.movies_temp_path)
+        other_temp = os.path.abspath(storage.other_temp_path)
+        finalized = 0
+
+        for t in torrents:
+            if t.get('progress', 0) < 1.0:
+                continue
+            content_path = t.get('content_path') or ''
+            if not content_path:
+                continue
+
+            movie_path = re.sub(storage.movies_docker_path, storage.movies_temp_path, content_path)
+            show_path = re.sub(storage.other_docker_path, storage.other_temp_path, content_path)
+
+            try:
+                if os.path.exists(movie_path) and os.path.abspath(movie_path).startswith(movies_temp):
+                    logger.info(f"Reconcile: stranded movie '{t.get('name')}' — organizing")
+                    if self._finalize_movie(t):
+                        finalized += 1
+                elif os.path.exists(show_path) and os.path.abspath(show_path).startswith(other_temp):
+                    logger.info(f"Reconcile: stranded show '{t.get('name')}' — organizing")
+                    if self._finalize_show(t, t.get('name', ''), 'show'):
+                        finalized += 1
+            except Exception as e:
+                logger.error(f"Reconcile: failed to organize '{t.get('name')}': {e}", exc_info=True)
+
+        if finalized:
+            logger.info(f"Reconcile: organized {finalized} stranded download(s)")
+        return finalized
+
     def _process_movie(self, magnets: list) -> bool:
         """
         Process movie download(s).
@@ -97,43 +145,58 @@ class MediaProcessor:
                 logger.error("Download failed")
                 continue
 
-            # Get the actual file system path (remove docker prefix)
-            content_path = torrent_info['content_path']
-            save_path = re.sub(
-                storage.movies_docker_path,
-                storage.movies_temp_path,
-                content_path
-            )
-
-            logger.info(f"Downloaded to: {save_path}")
-
-            # Organize the files
-            if os.path.isdir(save_path):
-                dest_video = self._organize_movie_directory(save_path, storage.movies_dir)
-            else:
-                dest_video = self._organize_movie_file(save_path, storage.movies_dir)
-
-            # Sync any subtitles matching this video
-            if dest_video:
-                video_base = os.path.splitext(dest_video)[0]
-                video_dir = os.path.dirname(dest_video)
-                for f in os.listdir(video_dir):
-                    if f.endswith(('.srt', '.ass', '.ssa', '.sub', '.vtt')) and not f.endswith('.bak'):
-                        full = os.path.join(video_dir, f)
-                        if os.path.splitext(f)[0].startswith(os.path.basename(video_base)):
-                            self._sync_subtitles(full)
-
-            # Update library, auto-download subtitles, and notify
-            self.media_server.update_library()
-
-            if dest_video:
-                self._auto_subtitle(dest_video)
-
-            storage_report = self.file_ops.get_storage_report()
-            self.notifier.notify_download_completed(torrent_info['name'], storage_report)
-            success_count += 1
+            if self._finalize_movie(torrent_info):
+                success_count += 1
 
         return success_count == len(magnets)
+
+    def _finalize_movie(self, torrent_info: dict) -> bool:
+        """
+        Organize a completed movie download into the library: move the video,
+        sync subtitles, refresh Jellyfin, auto-download subs, and notify.
+        Safe to call standalone (used by both the live flow and reconcile).
+        """
+        storage = self.config.storage
+
+        # Get the actual file system path (remove docker prefix)
+        content_path = torrent_info['content_path']
+        save_path = re.sub(
+            storage.movies_docker_path,
+            storage.movies_temp_path,
+            content_path
+        )
+
+        if not os.path.exists(save_path):
+            logger.warning(f"Movie content not found at {save_path}, skipping finalize")
+            return False
+
+        logger.info(f"Organizing movie from: {save_path}")
+
+        # Organize the files
+        if os.path.isdir(save_path):
+            dest_video = self._organize_movie_directory(save_path, storage.movies_dir)
+        else:
+            dest_video = self._organize_movie_file(save_path, storage.movies_dir)
+
+        # Sync any subtitles matching this video
+        if dest_video:
+            video_base = os.path.splitext(dest_video)[0]
+            video_dir = os.path.dirname(dest_video)
+            for f in os.listdir(video_dir):
+                if f.endswith(('.srt', '.ass', '.ssa', '.sub', '.vtt')) and not f.endswith('.bak'):
+                    full = os.path.join(video_dir, f)
+                    if os.path.splitext(f)[0].startswith(os.path.basename(video_base)):
+                        self._sync_subtitles(full)
+
+        # Update library, auto-download subtitles, and notify
+        self.media_server.update_library()
+
+        if dest_video:
+            self._auto_subtitle(dest_video)
+
+        storage_report = self.file_ops.get_storage_report()
+        self.notifier.notify_download_completed(torrent_info['name'], storage_report)
+        return dest_video is not None
 
     def _organize_movie_directory(self, source_dir: str, dest_dir: str) -> Optional[str]:
         """Organize movie from a directory download. Returns dest video path or None."""
@@ -213,39 +276,47 @@ class MediaProcessor:
                 logger.error("Download failed")
                 continue
 
-            # Get actual file system path
-            content_path = torrent_info['content_path']
-            save_path = re.sub(
-                storage.other_docker_path,
-                storage.other_temp_path,
-                content_path
-            )
-
-            logger.info(f"Downloaded to: {save_path}")
-
-            # Organize based on whether it's a directory or file
-            if os.path.isdir(save_path):
-                dest_path = self._organize_show_directory(
-                    save_path,
-                    show_name,
-                    torrent_type
-                )
-            else:
-                dest_path = self._organize_show_file(
-                    save_path,
-                    show_name,
-                    torrent_type
-                )
-
-            if dest_path:
-                # Sync subtitles before updating library
-                self._sync_subtitles(dest_path)
-                self.media_server.update_library()
-                storage_report = self.file_ops.get_storage_report()
-                self.notifier.notify_download_completed(torrent_info['name'], storage_report)
+            if self._finalize_show(torrent_info, show_name, torrent_type):
                 success_count += 1
 
         return success_count == len(magnets)
+
+    def _finalize_show(self, torrent_info: dict, show_name: str, torrent_type: str) -> bool:
+        """
+        Organize a completed show/other download into the library: move the
+        files, sync subtitles, refresh Jellyfin, and notify. Safe to call
+        standalone (used by both the live flow and reconcile).
+        """
+        storage = self.config.storage
+
+        # Get actual file system path
+        content_path = torrent_info['content_path']
+        save_path = re.sub(
+            storage.other_docker_path,
+            storage.other_temp_path,
+            content_path
+        )
+
+        if not os.path.exists(save_path):
+            logger.warning(f"Show content not found at {save_path}, skipping finalize")
+            return False
+
+        logger.info(f"Organizing show from: {save_path}")
+
+        # Organize based on whether it's a directory or file
+        if os.path.isdir(save_path):
+            dest_path = self._organize_show_directory(save_path, show_name, torrent_type)
+        else:
+            dest_path = self._organize_show_file(save_path, show_name, torrent_type)
+
+        if dest_path:
+            # Sync subtitles before updating library
+            self._sync_subtitles(dest_path)
+            self.media_server.update_library()
+            storage_report = self.file_ops.get_storage_report()
+            self.notifier.notify_download_completed(torrent_info['name'], storage_report)
+            return True
+        return False
 
     def _organize_show_directory(
         self,

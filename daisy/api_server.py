@@ -8,6 +8,7 @@ import os
 import re
 import secrets
 import threading
+import time
 from typing import Optional
 from urllib.parse import unquote, urlparse
 from flask import Flask, request, jsonify
@@ -409,6 +410,31 @@ def internal_error(e):
     return jsonify({'error': 'Internal server error'}), 500
 
 
+RECONCILE_INTERVAL = int(os.getenv('DAISY_RECONCILE_INTERVAL', 600))  # 10 min
+
+
+def _reconcile_loop():
+    """
+    Periodically organize downloads that completed but were left stranded in
+    temp — e.g. when a monitoring thread died on a service restart, or a
+    download finished while the server was down. Runs in a daemon thread so it
+    never blocks the server.
+    """
+    global media_processor
+    while True:
+        try:
+            if media_processor is None:
+                media_processor = MediaProcessor(config)
+                if not media_processor.connect():
+                    logger.error("Reconcile: could not connect to qBittorrent")
+                    time.sleep(RECONCILE_INTERVAL)
+                    continue
+            media_processor.reconcile_stranded()
+        except Exception as e:
+            logger.error(f"Reconcile loop error: {e}", exc_info=True)
+        time.sleep(RECONCILE_INTERVAL)
+
+
 def main():
     """Run the Flask server."""
     # Get host and port from environment or use defaults
@@ -418,6 +444,9 @@ def main():
 
     logger.info(f"Starting Daisy API server on {host}:{port}")
     logger.info(f"API Key: {API_KEY[:4]}...{API_KEY[-4:]}")
+
+    # Recover downloads stranded in temp (now + periodically)
+    threading.Thread(target=_reconcile_loop, daemon=True).start()
 
     print(f"""
 ╔══════════════════════════════════════════════════════════╗
