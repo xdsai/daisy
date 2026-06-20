@@ -35,3 +35,4 @@ watchlist_skipped.json
 # OS
 .DS_Store
 Thumbs.db
+redownload_4k_manifest.json

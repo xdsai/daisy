@@ -98,13 +98,13 @@ class TorrentResult:
         # Seeders are most important
         score += self.seeders * 10
 
-        # Quality bonuses
-        if '1080p' in self.quality or '1080p' in self.title.lower():
+        # Quality bonuses — prefer 4K, then 1080p, then 720p
+        if '2160p' in self.quality or '2160p' in self.title.lower() or '4k' in self.title.lower():
+            score += 60
+        elif '1080p' in self.quality or '1080p' in self.title.lower():
             score += 50
         elif '720p' in self.quality or '720p' in self.title.lower():
             score += 30
-        elif '2160p' in self.quality or '4k' in self.title.lower():
-            score += 40
 
         # Trusted uploaders
         trusted_uploaders = ['subsplease', 'eztv', 'yts', 'rarbg', 'ettv']

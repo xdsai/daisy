@@ -1,7 +1,7 @@
 """
 Letterboxd watchlist monitor daemon.
 Polls a Letterboxd watchlist for new movies, uses an LLM to pick the best
-1080p torrent from search results, and triggers download via the Daisy API.
+4K (or 1080p fallback) torrent from search results, and triggers download via the Daisy API.
 """
 
 import json
@@ -247,7 +247,7 @@ def search_movie(name: str, year: int | None) -> list[dict]:
     try:
         resp = requests.get(
             f"{API_BASE}/search",
-            params={'q': query, 'type': 'movie', 'limit': '15'},
+            params={'q': query, 'type': 'movie', 'limit': '25'},
             headers={'X-API-Key': API_KEY},
             timeout=60,
         )
@@ -266,7 +266,8 @@ def search_movie(name: str, year: int | None) -> list[dict]:
 
 def ask_llm_to_pick(movie_name: str, year: int | None, results: list[dict]) -> int | None:
     """
-    Send search results to the LLM and ask it to pick the best 1080p torrent.
+    Send search results to the LLM and ask it to pick the best torrent,
+    preferring 4K/2160p and falling back to 1080p when no good 4K exists.
     Returns the index of the chosen result, or None if it can't decide.
     """
     if not results:
@@ -283,22 +284,22 @@ def ask_llm_to_pick(movie_name: str, year: int | None, results: list[dict]) -> i
     options_text = '\n'.join(options)
 
     year_str = f" ({year})" if year else ""
-    prompt = f"""I want to download the movie "{movie_name}"{year_str} in 1080p.
+    prompt = f"""I want to download the movie "{movie_name}"{year_str}, preferably in 4K (2160p).
 
 Here are the torrent search results:
 
 {options_text}
 
 Pick the single best option. Rules (in priority order):
-1. MUST be 1080p — skip anything that isn't 1080p
-2. MUST have at least 10 seeders — low-seed torrents will never finish downloading
-3. For ALL non-English movies (Japanese, Korean, Cantonese, French, etc.) and anime: ALWAYS prefer nyaa.si or other sources that include original language audio over YTS. YTS often strips original audio and only has English dubs. We want original language audio with subtitles, NEVER dubs.
-4. Prefer BluRay or WEB-DL over cam/hdtv/screener
-5. Prefer reputable sources (nyaa.si for anime/Japanese, YTS for Western films, RARBG, etc.)
-6. Prefer reasonable file size (1-5 GB ideal for 1080p, up to 8 GB acceptable for better quality)
-7. When in doubt, pick the one with the MOST seeders
+1. STRONGLY prefer 4K / 2160p / UHD. Pick a 4K release whenever a decent one exists (at least 5 seeders).
+2. Fall back to 1080p ONLY if there is no 4K release with enough seeders. Never pick anything below 1080p.
+3. Seeders matter — avoid torrents with very few seeders (they may never finish). For 4K, at least 5 seeders; for 1080p fallback, at least 10.
+4. For ALL non-English movies (Japanese, Korean, Cantonese, French, etc.) and anime: ALWAYS prefer nyaa.si or other sources that include original language audio. YTS often strips original audio and only has English dubs. We want original language audio with subtitles, NEVER dubs.
+5. Prefer BluRay/UHD BluRay or WEB-DL over cam/hdtv/screener.
+6. Prefer HEVC/x265 encodes for 4K (reasonable size 8-30 GB). Avoid full REMUX releases over ~50 GB unless nothing else is available.
+7. When choosing between similar 4K options, pick the one with the MOST seeders.
 
-Respond with ONLY the index number (e.g. "3"). Nothing else. If none of the results are a good 1080p match for this specific movie, respond with "SKIP"."""
+Respond with ONLY the index number (e.g. "3"). Nothing else. If none of the results are a usable 1080p-or-better match for this specific movie, respond with "SKIP"."""
 
     try:
         resp = requests.post(
@@ -404,7 +405,7 @@ def process_watchlist():
         pick = ask_llm_to_pick(name, year, results)
         if pick is None:
             logger.info(
-                f"LLM skipped '{name}' — no good 1080p match, "
+                f"LLM skipped '{name}' — no good 4K/1080p match, "
                 f"retry in {SKIP_COOLDOWN_HOURS}h"
             )
             skipped[key] = now
