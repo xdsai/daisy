@@ -241,8 +241,24 @@ def fetch_watchlist(username: str) -> list[dict]:
 
 # ---- torrent search (via daisy API) ----
 
+def _clean_query(name: str) -> str:
+    """
+    Normalize a movie title for torrent indexers, which choke on punctuation.
+    e.g. "Mr. & Mrs. Smith" -> "Mr and Mrs Smith", "Spider-Man: Into..." ->
+    "Spider-Man Into...". Without this, titles with & or . silently return
+    zero results.
+    """
+    import re as _re
+    q = name.replace('&', ' and ')
+    q = _re.sub(r"['’]", '', q)             # strip apostrophes: Who's -> Whos
+    q = _re.sub(r'[._:,!?"()\[\]]', ' ', q)      # other punctuation -> space
+    q = _re.sub(r'\s+', ' ', q).strip()
+    return q
+
+
 def search_movie(name: str, year: int | None) -> list[dict]:
     """Search for torrents via the Daisy API."""
+    name = _clean_query(name)
     query = f"{name} {year}" if year else name
     try:
         resp = requests.get(
