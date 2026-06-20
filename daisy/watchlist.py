@@ -295,7 +295,7 @@ Pick the single best option. Rules (in priority order):
 2. Fall back to 1080p ONLY if there is no 4K release with enough seeders. Never pick anything below 1080p.
 3. Seeders matter — avoid torrents with very few seeders (they may never finish). For 4K, at least 5 seeders; for 1080p fallback, at least 10.
 4. For ALL non-English movies (Japanese, Korean, Cantonese, French, etc.) and anime: ALWAYS prefer nyaa.si or other sources that include original language audio. YTS often strips original audio and only has English dubs. We want original language audio with subtitles, NEVER dubs.
-5. Prefer BluRay/UHD BluRay or WEB-DL over cam/hdtv/screener.
+5. Prefer BluRay/UHD BluRay or WEB-DL over cam/hdtv/screener. NEVER pick "AI Upscale" / AI-enhanced fake 4K — those are 1080p stretched to 2160p, not real UHD.
 6. Prefer HEVC/x265 encodes for 4K (reasonable size 8-30 GB). Avoid full REMUX releases over ~50 GB unless nothing else is available.
 7. When choosing between similar 4K options, pick the one with the MOST seeders.
 
